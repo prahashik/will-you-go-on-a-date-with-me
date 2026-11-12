@@ -188,7 +188,6 @@
       transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    /* Mascot */
     .mascot-wrapper {
       width: 142px;
       height: 142px;
@@ -313,7 +312,6 @@
       opacity: 0.85;
     }
 
-    /* Buttons */
     .button-arena {
       display: flex;
       align-items: center;
@@ -379,7 +377,6 @@
       font-weight: 700;
     }
 
-    /* Screens */
     .screen {
       display: none;
       animation: fadeSlideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -394,7 +391,6 @@
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    /* Planner & Interactive Calendar */
     .planner-section {
       text-align: left;
       margin-top: 12px;
@@ -552,7 +548,28 @@
       box-shadow: 0 4px 14px var(--primary-glow);
     }
 
-    /* Official Meetup Pass Ticket */
+    .note-input {
+      width: 100%;
+      padding: 10px 13px;
+      border-radius: 14px;
+      border: 1.5px solid var(--card-border);
+      background: var(--pill-bg);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.86rem;
+      margin-bottom: 14px;
+    }
+
+    .note-input::placeholder {
+      color: var(--text-muted);
+      opacity: 0.75;
+    }
+
+    .note-input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
     .ticket-card {
       background: var(--ticket-bg);
       border: 2px dashed var(--ticket-accent);
@@ -658,6 +675,21 @@
       font-weight: 700;
     }
 
+    .delivery-status {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #16a34a;
+      background: rgba(22, 163, 74, 0.12);
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    .delivery-status.visible {
+      display: inline-block;
+    }
+
     .celebration-actions {
       display: flex;
       flex-direction: column;
@@ -683,6 +715,12 @@
       transform: translateY(-2px);
     }
 
+    .btn-whatsapp {
+      background: #25D366;
+      color: #ffffff;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+    }
+
     .btn-copy-reply {
       background: var(--primary);
       color: #fff;
@@ -695,7 +733,12 @@
       border: 1.5px solid var(--card-border);
     }
 
-    /* Customizer Drawer */
+    .action-row-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
     .drawer-overlay {
       position: fixed;
       inset: 0;
@@ -752,26 +795,33 @@
     }
 
     .form-group {
-      margin-bottom: 14px;
+      margin-bottom: 13px;
       text-align: left;
     }
 
     .form-group label {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: #4b5563;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
+    }
+
+    .form-group small {
+      display: block;
+      font-size: 0.7rem;
+      color: #6b7280;
+      margin-top: 3px;
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
-      padding: 10px 12px;
+      padding: 9px 12px;
       border: 1.5px solid #d1d5db;
       border-radius: 12px;
       font-family: inherit;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: #111827;
       transition: border-color 0.2s;
     }
@@ -808,8 +858,8 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-top: 20px;
-      padding-top: 16px;
+      margin-top: 18px;
+      padding-top: 14px;
       border-top: 1px solid #e5e7eb;
     }
 
@@ -867,7 +917,6 @@
   </button>
 
   <main class="glass-card">
-    <!-- Interactive SVG Bear Mascot (Tap to boop!) -->
     <div class="mascot-wrapper" id="mascotBoop" title="Tap me!">
       <svg id="bearMascot" class="bear-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
         <g id="bearHearts" style="display: none;">
@@ -890,7 +939,6 @@
         <ellipse cx="100" cy="116" rx="8" ry="5.5" fill="#4a2c18"/>
         <ellipse cx="98" cy="114.5" rx="2.5" ry="1.5" fill="#ffffff" opacity="0.8"/>
 
-        <!-- Hopeful / Cheerful Face -->
         <g id="faceHopeful">
           <circle cx="74" cy="96" r="7" fill="#3a2212"/>
           <circle cx="72" cy="93.5" r="2.5" fill="#ffffff"/>
@@ -899,7 +947,6 @@
           <path d="M90 128 Q100 137 110 128" fill="none" stroke="#4a2c18" stroke-width="3.5" stroke-linecap="round"/>
         </g>
 
-        <!-- Pleading Puppy Eyes (During 3 dodges) -->
         <g id="facePleading" style="display: none;">
           <path d="M63 83 Q74 78 83 84" fill="none" stroke="#4a2c18" stroke-width="3" stroke-linecap="round"/>
           <path d="M137 83 Q126 78 117 84" fill="none" stroke="#4a2c18" stroke-width="3" stroke-linecap="round"/>
@@ -914,14 +961,12 @@
           <path d="M91 133 Q100 126 109 133" fill="none" stroke="#4a2c18" stroke-width="3.2" stroke-linecap="round"/>
         </g>
 
-        <!-- Overjoyed Face (When she clicks Yes) -->
         <g id="faceHappy" style="display: none;">
           <path d="M65 98 Q74 87 83 98" fill="none" stroke="#3a2212" stroke-width="4" stroke-linecap="round"/>
           <path d="M117 98 Q126 87 135 98" fill="none" stroke="#3a2212" stroke-width="4" stroke-linecap="round"/>
           <path d="M88 126 Q100 144 112 126 Z" fill="#ff5c7c" stroke="#4a2c18" stroke-width="3" stroke-linejoin="round"/>
         </g>
 
-        <!-- Gentle Understanding Face (If she picks No after 3 tries) -->
         <g id="faceRespectful" style="display: none;">
           <path d="M65 86 Q74 82 82 86" fill="none" stroke="#4a2c18" stroke-width="2.8" stroke-linecap="round"/>
           <path d="M135 86 Q126 82 118 86" fill="none" stroke="#4a2c18" stroke-width="2.8" stroke-linecap="round"/>
@@ -944,7 +989,7 @@
     <section id="askScreen" class="screen active">
       <div id="recipientBadge" class="recipient-tag">Hey ✨</div>
       <h1 id="mainQuestionText" class="main-question">Let's catch up soon? ✨</h1>
-      <p id="subTextDisplay" class="sub-text">Good coffee, great laughs, and catching up properly — pick a day when you're free! 🙌</p>
+      <p id="subTextDisplay" class="sub-text">Good coffee, great laughs, and catching up properly — pick a date on the calendar when you're free! 🙌</p>
 
       <div class="plea-banner">
         <span id="pleaMessage" class="plea-text"></span>
@@ -957,11 +1002,11 @@
       </div>
     </section>
 
-    <!-- SCREEN 2: INTERACTIVE CALENDAR & MEETUP PASS -->
+    <!-- SCREEN 2: INTERACTIVE CALENDAR & DIRECT REPLY -->
     <section id="celebrationScreen" class="screen">
       <div class="recipient-tag">AWESOME!! IT'S A PLAN 🎉</div>
       <h2 class="main-question">Can't Wait to Catch Up! 😄</h2>
-      <p class="sub-text" style="margin-bottom: 10px;">Pick a date on the calendar & choose our hangout vibe:</p>
+      <p class="sub-text" style="margin-bottom: 10px;">Pick a date & vibe below, then send your reply straight to me:</p>
 
       <div class="planner-section">
         <label class="planner-label">1. Pick a Date on the Calendar 📅</label>
@@ -982,6 +1027,9 @@
 
         <label class="planner-label">3. Hangout Vibe ✨</label>
         <div id="vibeOptionsContainer" class="pill-grid"></div>
+
+        <label class="planner-label" for="customNoteInput">4. Optional Note / Spot Suggestion 💬</label>
+        <input type="text" id="customNoteInput" class="note-input" placeholder="e.g., Let's meet at 5 PM near..." />
       </div>
 
       <!-- Official Meetup Pass Ticket -->
@@ -1016,13 +1064,20 @@
         </div>
       </div>
 
+      <div id="webhookStatusBadge" class="delivery-status">✓ Notified directly in background!</div>
+
       <div class="celebration-actions">
-        <button id="copyReplyBtn" class="btn-action btn-copy-reply">
-          📋 Copy Reply to Send Me
+        <button id="sendWhatsappBtn" class="btn-action btn-whatsapp">
+          💬 Send Reply Directly on WhatsApp
         </button>
-        <button id="downloadPassBtn" class="btn-action btn-download-pass">
-          🎟️ Download Meetup Pass (PNG)
-        </button>
+        <div class="action-row-split">
+          <button id="copyReplyBtn" class="btn-action btn-copy-reply">
+            📋 Copy Reply
+          </button>
+          <button id="downloadPassBtn" class="btn-action btn-download-pass">
+            🎟️ Save Pass PNG
+          </button>
+        </div>
       </div>
     </section>
 
@@ -1031,14 +1086,18 @@
       <div class="recipient-tag">ALL GOOD! 🧸</div>
       <h2 class="main-question">No Worries at All! 😊</h2>
       <p class="sub-text">
-        You used all 3 "No" dodges, so I'll take the hint respectfully! Whenever you're free or feel like catching up later, just drop a text.
+        You used all 3 "No" dodges, so I'll take the hint respectfully! Whenever you're free or feel like catching up later, just let me know.
       </p>
-      <div class="celebration-actions" style="margin-top: 16px;">
+      <div id="noWebhookStatusBadge" class="delivery-status">✓ Raincheck sent directly!</div>
+      <div class="celebration-actions" style="margin-top: 14px;">
+        <button id="sendNoWhatsappBtn" class="btn-action btn-whatsapp">
+          💬 Send Raincheck on WhatsApp
+        </button>
         <button id="copyNoReplyBtn" class="btn-action btn-download-pass">
-          💬 Copy "Raincheck for Later" Reply
+          📋 Copy Raincheck Text
         </button>
         <button id="reconsiderBtn" class="btn-action btn-copy-reply">
-          Wait, I changed my mind! Let's pick a date 📅
+          Wait, I changed my mind! Pick a date 📅
         </button>
       </div>
     </section>
@@ -1060,6 +1119,18 @@
         <button type="button" class="swatch-btn" data-theme-choice="peach">🍑 Peach</button>
         <button type="button" class="swatch-btn" data-theme-choice="matcha">🍵 Matcha</button>
       </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cfgWhatsapp">Your WhatsApp Number (with country code)</label>
+      <input type="tel" id="cfgWhatsapp" placeholder="e.g., 919876543210" />
+      <small>Opens WhatsApp directly to your chat with her reply pre-filled!</small>
+    </div>
+
+    <div class="form-group">
+      <label for="cfgWebhook">Silent Notification Key / URL (Optional)</label>
+      <input type="text" id="cfgWebhook" placeholder="Web3Forms Access Key or Formspree URL" />
+      <small>Sends her response silently to your email the instant she confirms!</small>
     </div>
 
     <div class="form-group">
@@ -1107,7 +1178,9 @@
   <script>
     const DEFAULT_CONFIG = {
       recipientName: "Hey",
-      senderName: "Me",
+      senderName: "Prahashik",
+      whatsappNumber: "",
+      webhookKey: "",
       mainQuestion: "Let's catch up soon? ✨",
       subText: "Good coffee, great laughs, and catching up properly — pick a date on the calendar when you're free! 🙌",
       noMessages: [
@@ -1137,9 +1210,9 @@
     let yesScale = 1;
     let selectedVibe = "";
     let selectedTime = "";
+    let lastWebhookPayload = "";
     const ticketNumber = "#MEET-" + Math.floor(1000 + Math.random() * 9000);
 
-    // Calendar State (defaults to tomorrow)
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     let selectedDate = new Date(today);
@@ -1154,6 +1227,8 @@
         isSharedMode = true;
       }
       if (params.has("from")) config.senderName = params.get("from");
+      if (params.has("wa")) config.whatsappNumber = params.get("wa");
+      if (params.has("wh")) config.webhookKey = params.get("wh");
       if (params.has("q")) config.mainQuestion = params.get("q");
       if (params.has("sub")) config.subText = params.get("sub");
       if (params.has("theme")) config.theme = params.get("theme");
@@ -1192,6 +1267,7 @@
     const noScreen = document.getElementById("noScreen");
     const vibeOptionsContainer = document.getElementById("vibeOptionsContainer");
     const timeOptionsContainer = document.getElementById("timeOptionsContainer");
+    const customNoteInput = document.getElementById("customNoteInput");
 
     const ticketCode = document.getElementById("ticketCode");
     const ticketGuest = document.getElementById("ticketGuest");
@@ -1260,7 +1336,6 @@
       }
     }
 
-    // Interactive Bear Boop
     document.getElementById("mascotBoop").addEventListener("click", () => {
       bearMascot.style.transform = "scale(1.14) rotate(-4deg)";
       setTimeout(() => { bearMascot.style.transform = ""; }, 220);
@@ -1285,13 +1360,13 @@
        3-STRIKE "NO" DODGE LOGIC (AFTER 3 DODGES, IT BECOMES A REAL "NO")
        ========================================================================== */
     function handleNoInteraction(e) {
-      // If she already dodged 3 times, allow normal click to confirm "No"
       if (noDodgeCount >= MAX_NO_DODGES) {
         if (e.type === "mouseenter" || e.type === "touchstart") return;
         noBtn.style.display = "none";
         setMascotMood("respectful");
         askScreen.classList.remove("active");
         noScreen.classList.add("active");
+        triggerSilentWebhook("RAINCHECK (NO)", buildNoReplyMessage());
         return;
       }
 
@@ -1346,7 +1421,7 @@
     noBtn.addEventListener("click", handleNoInteraction);
 
     /* ==========================================================================
-       SCREEN TRANSITIONS ("YES" & RECONSIDER)
+       SCREEN TRANSITIONS & SILENT WEBHOOK NOTIFICATION
        ========================================================================== */
     function openCelebrationScreen() {
       noBtn.style.display = "none";
@@ -1355,16 +1430,106 @@
       noScreen.classList.remove("active");
       celebrationScreen.classList.add("active");
       launchConfettiBurst();
+      triggerSilentWebhook("ACCEPTED (YES)", buildYesReplyMessage());
     }
 
     yesBtn.addEventListener("click", openCelebrationScreen);
     document.getElementById("reconsiderBtn").addEventListener("click", openCelebrationScreen);
 
+    function buildYesReplyMessage() {
+      const formattedDate = formatSelectedDate(selectedDate);
+      const note = customNoteInput.value.trim();
+      let msg =
+        `I'M IN! Let's catch up! 🙌✨\n` +
+        `🎟️ Meetup Pass ${ticketNumber}\n` +
+        `📅 Date: ${formattedDate} (${selectedTime})\n` +
+        `☕ Plan: ${selectedVibe}`;
+      if (note) msg += `\n💬 Note: ${note}`;
+      msg += `\nSee you then! 😊`;
+      return msg;
+    }
+
+    function buildNoReplyMessage() {
+      return `Hey ${config.senderName || ""}! Can't make it right now, let's definitely take a raincheck and catch up soon! 😊🙌`;
+    }
+
+    function openWhatsAppWithText(message) {
+      const cleanPhone = (config.whatsappNumber || "").replace(/[^\d]/g, "");
+      const encoded = encodeURIComponent(message);
+      const waUrl = cleanPhone
+        ? `https://wa.me/${cleanPhone}?text=${encoded}`
+        : `https://api.whatsapp.com/send?text=${encoded}`;
+      window.open(waUrl, "_blank", "noopener,noreferrer");
+    }
+
+    async function triggerSilentWebhook(statusLabel, fullMessage) {
+      const key = (config.webhookKey || "").trim();
+      if (!key) return;
+
+      const payloadSignature = `${statusLabel}|${fullMessage}`;
+      if (payloadSignature === lastWebhookPayload) return;
+      lastWebhookPayload = payloadSignature;
+
+      const cleanGuest = config.recipientName.replace(/^hey\s+/i, "").replace(/✨/g, "").trim() || "Friend";
+      const isFullUrl = /^https?:\/\//i.test(key);
+      const endpoint = isFullUrl ? key : "https://api.web3forms.com/submit";
+
+      const payload = isFullUrl
+        ? {
+            status: statusLabel,
+            guest: cleanGuest,
+            host: config.senderName,
+            date: formatSelectedDate(selectedDate),
+            time: selectedTime,
+            vibe: selectedVibe,
+            note: customNoteInput.value.trim(),
+            ticket: ticketNumber,
+            message: fullMessage
+          }
+        : {
+            access_key: key,
+            subject: `Meetup Reply from ${cleanGuest}: ${statusLabel}`,
+            from_name: cleanGuest,
+            message: fullMessage
+          };
+
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          const badgeId = statusLabel.startsWith("ACCEPTED") ? "webhookStatusBadge" : "noWebhookStatusBadge";
+          const badge = document.getElementById(badgeId);
+          badge.textContent = `✓ Sent directly to ${config.senderName || "host"}!`;
+          badge.classList.add("visible");
+        }
+      } catch (err) {
+        // Silent fallback: WhatsApp & Copy buttons remain active
+      }
+    }
+
+    document.getElementById("sendWhatsappBtn").addEventListener("click", () => {
+      const msg = buildYesReplyMessage();
+      triggerSilentWebhook("ACCEPTED (YES)", msg);
+      openWhatsAppWithText(msg);
+    });
+
+    document.getElementById("sendNoWhatsappBtn").addEventListener("click", () => {
+      const msg = buildNoReplyMessage();
+      triggerSilentWebhook("RAINCHECK (NO)", msg);
+      openWhatsAppWithText(msg);
+    });
+
+    document.getElementById("copyReplyBtn").addEventListener("click", () => {
+      const msg = buildYesReplyMessage();
+      triggerSilentWebhook("ACCEPTED (YES)", msg);
+      copyTextToClipboard(msg, "Reply copied! Paste it in our chat 💌");
+    });
+
     document.getElementById("copyNoReplyBtn").addEventListener("click", () => {
-      copyTextToClipboard(
-        "Hey! Can't make it right now, let's definitely take a raincheck and catch up soon! 😊🙌",
-        "Raincheck message copied! 💬"
-      );
+      copyTextToClipboard(buildNoReplyMessage(), "Raincheck message copied! 💬");
     });
 
     /* ==========================================================================
@@ -1486,20 +1651,8 @@
     }
 
     /* ==========================================================================
-       COPY REPLY & HIGH-RES MEETUP PASS PNG GENERATOR
+       HIGH-RES MEETUP PASS PNG GENERATOR
        ========================================================================== */
-    document.getElementById("copyReplyBtn").addEventListener("click", () => {
-      const formattedDate = formatSelectedDate(selectedDate);
-      const replyText =
-        `I'M IN! Let's catch up! 🙌✨\n` +
-        `🎟️ Meetup Pass ${ticketNumber}\n` +
-        `📅 Date: ${formattedDate} (${selectedTime})\n` +
-        `☕ Plan: ${selectedVibe}\n` +
-        `See you then! 😊`;
-
-      copyTextToClipboard(replyText, "Reply copied! Paste it in our chat 💌");
-    });
-
     document.getElementById("downloadPassBtn").addEventListener("click", () => {
       const canvas = document.createElement("canvas");
       const scale = 2;
@@ -1620,7 +1773,7 @@
       ctx.arcTo(x + w, y, x + w, y + h, r);
       ctx.arcTo(x + w, y + h, x, y + h, r);
       ctx.arcTo(x, y + h, x, y, r);
-      ctx.arcTo(x, y, x + w, y, r);
+      ctx.arcTo(x, y + h, x, y, r);
       ctx.closePath();
     }
 
@@ -1690,6 +1843,8 @@
        ========================================================================== */
     const drawerOverlay = document.getElementById("drawerOverlay");
     const customizerDrawer = document.getElementById("customizerDrawer");
+    const cfgWhatsapp = document.getElementById("cfgWhatsapp");
+    const cfgWebhook = document.getElementById("cfgWebhook");
     const cfgRecipient = document.getElementById("cfgRecipient");
     const cfgSender = document.getElementById("cfgSender");
     const cfgQuestion = document.getElementById("cfgQuestion");
@@ -1698,6 +1853,8 @@
     const cfgTimes = document.getElementById("cfgTimes");
 
     function openDrawer() {
+      cfgWhatsapp.value = config.whatsappNumber;
+      cfgWebhook.value = config.webhookKey;
       cfgRecipient.value = config.recipientName;
       cfgSender.value = config.senderName;
       cfgQuestion.value = config.mainQuestion;
@@ -1714,8 +1871,10 @@
     }
 
     function syncConfigFromInputs() {
+      config.whatsappNumber = cfgWhatsapp.value.trim();
+      config.webhookKey = cfgWebhook.value.trim();
       config.recipientName = cfgRecipient.value.trim() || "Hey";
-      config.senderName = cfgSender.value.trim() || "Me";
+      config.senderName = cfgSender.value.trim() || "Prahashik";
       config.mainQuestion = cfgQuestion.value.trim() || "Let's catch up soon? ✨";
       config.subText = cfgSubtext.value.trim() || "";
       const vList = cfgVibes.value.split(",").map(s => s.trim()).filter(Boolean);
@@ -1729,7 +1888,7 @@
     document.getElementById("closeDrawerBtn").addEventListener("click", closeDrawer);
     drawerOverlay.addEventListener("click", closeDrawer);
 
-    [cfgRecipient, cfgSender, cfgQuestion, cfgSubtext, cfgVibes, cfgTimes].forEach(el => {
+    [cfgWhatsapp, cfgWebhook, cfgRecipient, cfgSender, cfgQuestion, cfgSubtext, cfgVibes, cfgTimes].forEach(el => {
       el.addEventListener("input", syncConfigFromInputs);
     });
 
@@ -1744,6 +1903,8 @@
       const url = new URL(window.location.href.split("?")[0]);
       url.searchParams.set("to", config.recipientName);
       url.searchParams.set("from", config.senderName);
+      if (config.whatsappNumber) url.searchParams.set("wa", config.whatsappNumber);
+      if (config.webhookKey) url.searchParams.set("wh", config.webhookKey);
       url.searchParams.set("q", config.mainQuestion);
       url.searchParams.set("sub", config.subText);
       url.searchParams.set("theme", config.theme);
