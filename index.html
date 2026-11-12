@@ -3,85 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>A Special Question For You ✨</title>
+  <title>Let's Catch Up Soon? ✨</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-gradient: linear-gradient(135deg, #ffe4ec 0%, #ffc2d4 45%, #ffb3c6 100%);
-      --card-bg: rgba(255, 255, 255, 0.72);
-      --card-border: rgba(255, 255, 255, 0.85);
+      --card-bg: rgba(255, 255, 255, 0.76);
+      --card-border: rgba(255, 255, 255, 0.9);
       --text-main: #3d1c2a;
       --text-muted: #7a495c;
       --primary: #ff4d79;
       --primary-hover: #e63965;
-      --primary-glow: rgba(255, 77, 121, 0.45);
-      --secondary-bg: rgba(255, 255, 255, 0.85);
+      --primary-glow: rgba(255, 77, 121, 0.42);
+      --secondary-bg: rgba(255, 255, 255, 0.88);
       --secondary-text: #7a495c;
-      --pill-bg: rgba(255, 255, 255, 0.65);
+      --pill-bg: rgba(255, 255, 255, 0.7);
       --pill-active-bg: #ff4d79;
       --pill-active-text: #ffffff;
       --ticket-bg: #ffffff;
       --ticket-accent: #ff4d79;
       --particle-color: #ff7597;
+      --cal-hover: rgba(255, 77, 121, 0.14);
     }
 
     [data-theme="purple"] {
       --bg-gradient: linear-gradient(135deg, #161129 0%, #271c47 50%, #3b2463 100%);
-      --card-bg: rgba(34, 25, 61, 0.72);
-      --card-border: rgba(183, 148, 244, 0.28);
+      --card-bg: rgba(34, 25, 61, 0.78);
+      --card-border: rgba(183, 148, 244, 0.3);
       --text-main: #f7f3ff;
       --text-muted: #cbbbe8;
       --primary: #a855f7;
       --primary-hover: #9333ea;
       --primary-glow: rgba(168, 85, 247, 0.5);
-      --secondary-bg: rgba(255, 255, 255, 0.12);
+      --secondary-bg: rgba(255, 255, 255, 0.14);
       --secondary-text: #e2d5fa;
-      --pill-bg: rgba(255, 255, 255, 0.1);
+      --pill-bg: rgba(255, 255, 255, 0.12);
       --pill-active-bg: #a855f7;
       --pill-active-text: #ffffff;
       --ticket-bg: #231942;
       --ticket-accent: #c084fc;
       --particle-color: #c084fc;
+      --cal-hover: rgba(168, 85, 247, 0.25);
     }
 
     [data-theme="peach"] {
       --bg-gradient: linear-gradient(135deg, #fff1e6 0%, #ffd6ba 50%, #ffb5a7 100%);
-      --card-bg: rgba(255, 255, 255, 0.74);
-      --card-border: rgba(255, 255, 255, 0.88);
+      --card-bg: rgba(255, 255, 255, 0.78);
+      --card-border: rgba(255, 255, 255, 0.9);
       --text-main: #4a2518;
       --text-muted: #87523e;
       --primary: #f96d4b;
       --primary-hover: #e55836;
       --primary-glow: rgba(249, 109, 75, 0.45);
-      --secondary-bg: rgba(255, 255, 255, 0.85);
+      --secondary-bg: rgba(255, 255, 255, 0.88);
       --secondary-text: #87523e;
-      --pill-bg: rgba(255, 255, 255, 0.65);
+      --pill-bg: rgba(255, 255, 255, 0.7);
       --pill-active-bg: #f96d4b;
       --pill-active-text: #ffffff;
       --ticket-bg: #ffffff;
       --ticket-accent: #f96d4b;
       --particle-color: #ff8c6b;
+      --cal-hover: rgba(249, 109, 75, 0.14);
     }
 
     [data-theme="matcha"] {
       --bg-gradient: linear-gradient(135deg, #eef6eb 0%, #d4e8cd 50%, #b5d6aa 100%);
-      --card-bg: rgba(255, 255, 255, 0.76);
-      --card-border: rgba(255, 255, 255, 0.9);
+      --card-bg: rgba(255, 255, 255, 0.8);
+      --card-border: rgba(255, 255, 255, 0.92);
       --text-main: #1f3623;
       --text-muted: #4b6e52;
       --primary: #4e945b;
       --primary-hover: #3d7a49;
       --primary-glow: rgba(78, 148, 91, 0.42);
-      --secondary-bg: rgba(255, 255, 255, 0.85);
+      --secondary-bg: rgba(255, 255, 255, 0.88);
       --secondary-text: #4b6e52;
-      --pill-bg: rgba(255, 255, 255, 0.65);
+      --pill-bg: rgba(255, 255, 255, 0.7);
       --pill-active-bg: #4e945b;
       --pill-active-text: #ffffff;
       --ticket-bg: #ffffff;
       --ticket-accent: #4e945b;
       --particle-color: #6ab578;
+      --cal-hover: rgba(78, 148, 91, 0.14);
     }
 
     * {
@@ -99,7 +103,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 20px 14px;
       overflow-x: hidden;
       position: relative;
       transition: background 0.5s ease, color 0.3s ease;
@@ -142,8 +146,8 @@
 
     .customize-trigger {
       position: fixed;
-      top: 16px;
-      right: 16px;
+      top: 14px;
+      right: 14px;
       z-index: 40;
       background: var(--card-bg);
       backdrop-filter: blur(12px);
@@ -152,7 +156,7 @@
       color: var(--text-main);
       padding: 8px 14px;
       border-radius: 999px;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -172,23 +176,25 @@
       position: relative;
       z-index: 10;
       width: 100%;
-      max-width: 460px;
+      max-width: 470px;
       background: var(--card-bg);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1.5px solid var(--card-border);
       border-radius: 32px;
-      padding: 32px 26px;
+      padding: 28px 22px;
       text-align: center;
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
       transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
+    /* Mascot */
     .mascot-wrapper {
-      width: 155px;
-      height: 155px;
-      margin: 0 auto 14px;
+      width: 142px;
+      height: 142px;
+      margin: 0 auto 10px;
       position: relative;
+      cursor: pointer;
     }
 
     .bear-svg {
@@ -196,6 +202,11 @@
       height: 100%;
       overflow: visible;
       animation: bearBob 3s ease-in-out infinite;
+      transition: transform 0.25s ease;
+    }
+
+    .mascot-wrapper:hover .bear-svg {
+      transform: scale(1.06);
     }
 
     @keyframes bearBob {
@@ -249,38 +260,40 @@
       font-size: 0.85rem;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       letter-spacing: 0.3px;
     }
 
     .main-question {
-      font-size: clamp(1.65rem, 5vw, 2.05rem);
+      font-size: clamp(1.6rem, 5vw, 2rem);
       line-height: 1.2;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       font-weight: 700;
     }
 
     .sub-text {
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       line-height: 1.5;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .plea-banner {
-      min-height: 36px;
+      min-height: 38px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-bottom: 18px;
+      gap: 4px;
+      margin-bottom: 16px;
     }
 
     .plea-text {
       background: var(--secondary-bg);
       color: var(--primary);
       font-weight: 600;
-      font-size: 0.9rem;
-      padding: 7px 16px;
+      font-size: 0.88rem;
+      padding: 7px 15px;
       border-radius: 999px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
       opacity: 0;
@@ -293,6 +306,14 @@
       transform: scale(1);
     }
 
+    .strike-pill {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      opacity: 0.85;
+    }
+
+    /* Buttons */
     .button-arena {
       display: flex;
       align-items: center;
@@ -306,10 +327,10 @@
       background: var(--primary);
       color: #ffffff;
       border: none;
-      padding: 14px 32px;
+      padding: 14px 30px;
       border-radius: 999px;
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 8px 24px var(--primary-glow);
@@ -337,11 +358,11 @@
       padding: 13px 26px;
       border-radius: 999px;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-      transition: left 0.28s cubic-bezier(0.22, 1, 0.36, 1), top 0.28s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s ease;
+      transition: left 0.26s cubic-bezier(0.22, 1, 0.36, 1), top 0.26s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s ease;
       user-select: none;
       touch-action: manipulation;
     }
@@ -352,6 +373,13 @@
       margin: 0;
     }
 
+    .btn-no.final-no {
+      border-color: var(--primary);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Screens */
     .screen {
       display: none;
       animation: fadeSlideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -366,13 +394,14 @@
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
+    /* Planner & Interactive Calendar */
     .planner-section {
       text-align: left;
-      margin-top: 16px;
+      margin-top: 12px;
     }
 
     .planner-label {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.6px;
@@ -381,20 +410,132 @@
       display: block;
     }
 
+    .calendar-box {
+      background: var(--pill-bg);
+      border: 1.5px solid var(--card-border);
+      border-radius: 20px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .cal-month-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .cal-nav-btn {
+      background: var(--secondary-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .cal-nav-btn:hover {
+      transform: scale(1.08);
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .cal-days-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    .cal-day {
+      aspect-ratio: 1;
+      border: none;
+      background: transparent;
+      border-radius: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+
+    .cal-day:hover:not(:disabled):not(.empty) {
+      background: var(--cal-hover);
+      transform: scale(1.08);
+    }
+
+    .cal-day.today::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .cal-day.selected {
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 700;
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+
+    .cal-day.selected::after {
+      background: #ffffff;
+    }
+
+    .cal-day:disabled {
+      opacity: 0.32;
+      cursor: not-allowed;
+    }
+
+    .cal-day.empty {
+      cursor: default;
+    }
+
     .pill-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
+      gap: 7px;
+      margin-bottom: 14px;
     }
 
     .pill-option {
       background: var(--pill-bg);
       border: 1.5px solid var(--card-border);
       color: var(--text-main);
-      padding: 8px 13px;
-      border-radius: 14px;
-      font-size: 0.85rem;
+      padding: 7px 12px;
+      border-radius: 13px;
+      font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -411,12 +552,13 @@
       box-shadow: 0 4px 14px var(--primary-glow);
     }
 
+    /* Official Meetup Pass Ticket */
     .ticket-card {
       background: var(--ticket-bg);
       border: 2px dashed var(--ticket-accent);
       border-radius: 20px;
-      padding: 18px;
-      margin: 18px 0;
+      padding: 16px;
+      margin: 14px 0;
       position: relative;
       text-align: left;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
@@ -442,14 +584,14 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1.5px dashed rgba(150, 150, 150, 0.3);
-      padding-bottom: 10px;
-      margin-bottom: 12px;
+      padding-bottom: 9px;
+      margin-bottom: 10px;
     }
 
     .ticket-badge {
       background: var(--ticket-accent);
       color: #fff;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 700;
       padding: 4px 10px;
       border-radius: 999px;
@@ -459,33 +601,33 @@
 
     .ticket-id {
       font-family: monospace;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--text-muted);
     }
 
     .ticket-row {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 8px;
-      gap: 12px;
+      margin-bottom: 6px;
+      gap: 10px;
     }
 
     .ticket-field-label {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       text-transform: uppercase;
       color: var(--text-muted);
       letter-spacing: 0.5px;
     }
 
     .ticket-field-val {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 700;
       color: var(--text-main);
     }
 
     .ticket-barcode {
-      margin-top: 12px;
-      padding-top: 10px;
+      margin-top: 10px;
+      padding-top: 9px;
       border-top: 1.5px dashed rgba(150, 150, 150, 0.3);
       display: flex;
       align-items: center;
@@ -493,8 +635,8 @@
     }
 
     .barcode-bars {
-      height: 24px;
-      width: 65%;
+      height: 22px;
+      width: 62%;
       background: repeating-linear-gradient(
         90deg,
         var(--text-main) 0px,
@@ -511,7 +653,7 @@
 
     .ticket-admit {
       font-family: 'Fredoka', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--ticket-accent);
       font-weight: 700;
     }
@@ -519,15 +661,15 @@
     .celebration-actions {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 9px;
     }
 
     .btn-action {
       width: 100%;
-      padding: 13px 18px;
+      padding: 13px 16px;
       border-radius: 16px;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       cursor: pointer;
       border: none;
       display: flex;
@@ -553,6 +695,7 @@
       border: 1.5px solid var(--card-border);
     }
 
+    /* Customizer Drawer */
     .drawer-overlay {
       position: fixed;
       inset: 0;
@@ -699,7 +842,7 @@
       color: #ffffff;
       padding: 12px 22px;
       border-radius: 999px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
       z-index: 100;
@@ -719,12 +862,13 @@
   <div id="bgParticles"></div>
   <canvas id="confettiCanvas"></canvas>
 
-  <button id="customizeBtn" class="customize-trigger" aria-label="Customize Invitation">
+  <button id="customizeBtn" class="customize-trigger" aria-label="Customize Invite">
     Customize ⚙️
   </button>
 
   <main class="glass-card">
-    <div class="mascot-wrapper">
+    <!-- Interactive SVG Bear Mascot (Tap to boop!) -->
+    <div class="mascot-wrapper" id="mascotBoop" title="Tap me!">
       <svg id="bearMascot" class="bear-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
         <g id="bearHearts" style="display: none;">
           <path class="bear-heart-float" d="M35 45 C35 37, 23 37, 23 45 C23 53, 35 61, 35 61 C35 61, 47 53, 47 45 C47 37, 35 37, 35 45 Z" fill="#ff4d79"/>
@@ -746,6 +890,7 @@
         <ellipse cx="100" cy="116" rx="8" ry="5.5" fill="#4a2c18"/>
         <ellipse cx="98" cy="114.5" rx="2.5" ry="1.5" fill="#ffffff" opacity="0.8"/>
 
+        <!-- Hopeful / Cheerful Face -->
         <g id="faceHopeful">
           <circle cx="74" cy="96" r="7" fill="#3a2212"/>
           <circle cx="72" cy="93.5" r="2.5" fill="#ffffff"/>
@@ -754,6 +899,7 @@
           <path d="M90 128 Q100 137 110 128" fill="none" stroke="#4a2c18" stroke-width="3.5" stroke-linecap="round"/>
         </g>
 
+        <!-- Pleading Puppy Eyes (During 3 dodges) -->
         <g id="facePleading" style="display: none;">
           <path d="M63 83 Q74 78 83 84" fill="none" stroke="#4a2c18" stroke-width="3" stroke-linecap="round"/>
           <path d="M137 83 Q126 78 117 84" fill="none" stroke="#4a2c18" stroke-width="3" stroke-linecap="round"/>
@@ -768,10 +914,22 @@
           <path d="M91 133 Q100 126 109 133" fill="none" stroke="#4a2c18" stroke-width="3.2" stroke-linecap="round"/>
         </g>
 
+        <!-- Overjoyed Face (When she clicks Yes) -->
         <g id="faceHappy" style="display: none;">
           <path d="M65 98 Q74 87 83 98" fill="none" stroke="#3a2212" stroke-width="4" stroke-linecap="round"/>
           <path d="M117 98 Q126 87 135 98" fill="none" stroke="#3a2212" stroke-width="4" stroke-linecap="round"/>
           <path d="M88 126 Q100 144 112 126 Z" fill="#ff5c7c" stroke="#4a2c18" stroke-width="3" stroke-linejoin="round"/>
+        </g>
+
+        <!-- Gentle Understanding Face (If she picks No after 3 tries) -->
+        <g id="faceRespectful" style="display: none;">
+          <path d="M65 86 Q74 82 82 86" fill="none" stroke="#4a2c18" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M135 86 Q126 82 118 86" fill="none" stroke="#4a2c18" stroke-width="2.8" stroke-linecap="round"/>
+          <circle cx="74" cy="97" r="6.5" fill="#3a2212"/>
+          <circle cx="72" cy="95" r="2.2" fill="#ffffff"/>
+          <circle cx="126" cy="97" r="6.5" fill="#3a2212"/>
+          <circle cx="124" cy="95" r="2.2" fill="#ffffff"/>
+          <path d="M92 130 Q100 134 108 130" fill="none" stroke="#4a2c18" stroke-width="3.2" stroke-linecap="round"/>
         </g>
 
         <g id="bearPaws">
@@ -782,62 +940,79 @@
       </svg>
     </div>
 
+    <!-- SCREEN 1: MEETUP INVITATION -->
     <section id="askScreen" class="screen active">
-      <div id="recipientBadge" class="recipient-tag">Hey Cutie ✨</div>
-      <h1 id="mainQuestionText" class="main-question">Will you go on a date with me?</h1>
-      <p id="subTextDisplay" class="sub-text">I promise good vibes, great food, and zero awkward silences ✨</p>
+      <div id="recipientBadge" class="recipient-tag">Hey ✨</div>
+      <h1 id="mainQuestionText" class="main-question">Let's catch up soon? ✨</h1>
+      <p id="subTextDisplay" class="sub-text">Good coffee, great laughs, and catching up properly — pick a day when you're free! 🙌</p>
 
       <div class="plea-banner">
         <span id="pleaMessage" class="plea-text"></span>
+        <span id="strikeCounter" class="strike-pill"></span>
       </div>
 
       <div class="button-arena">
-        <button id="yesBtn" class="btn-yes">Yes! 💖</button>
+        <button id="yesBtn" class="btn-yes">Yes, let's meet! 🙌</button>
         <button id="noBtn" class="btn-no">No</button>
       </div>
     </section>
 
+    <!-- SCREEN 2: INTERACTIVE CALENDAR & MEETUP PASS -->
     <section id="celebrationScreen" class="screen">
-      <div class="recipient-tag">YAY!! IT'S A DATE 🎉</div>
-      <h2 class="main-question">Best Decision Ever! 🥰</h2>
-      <p class="sub-text" style="margin-bottom: 10px;">Customize our date pass below & send it back to me:</p>
+      <div class="recipient-tag">AWESOME!! IT'S A PLAN 🎉</div>
+      <h2 class="main-question">Can't Wait to Catch Up! 😄</h2>
+      <p class="sub-text" style="margin-bottom: 10px;">Pick a date on the calendar & choose our hangout vibe:</p>
 
       <div class="planner-section">
-        <label class="planner-label">1. Pick Our Date Vibe</label>
-        <div id="vibeOptionsContainer" class="pill-grid"></div>
+        <label class="planner-label">1. Pick a Date on the Calendar 📅</label>
+        <div class="calendar-box">
+          <div class="cal-header">
+            <button type="button" id="prevMonthBtn" class="cal-nav-btn" aria-label="Previous Month">‹</button>
+            <span id="calMonthTitle" class="cal-month-title">November 2026</span>
+            <button type="button" id="nextMonthBtn" class="cal-nav-btn" aria-label="Next Month">›</button>
+          </div>
+          <div class="cal-weekdays">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div id="calDaysGrid" class="cal-days-grid"></div>
+        </div>
 
-        <label class="planner-label">2. Pick Our Day / Time</label>
-        <div id="dayOptionsContainer" class="pill-grid"></div>
+        <label class="planner-label">2. Preferred Time ⏰</label>
+        <div id="timeOptionsContainer" class="pill-grid"></div>
+
+        <label class="planner-label">3. Hangout Vibe ✨</label>
+        <div id="vibeOptionsContainer" class="pill-grid"></div>
       </div>
 
+      <!-- Official Meetup Pass Ticket -->
       <div class="ticket-card">
         <div class="ticket-header">
-          <span class="ticket-badge">Official Date Pass</span>
-          <span id="ticketCode" class="ticket-id">#VIP-2026</span>
+          <span class="ticket-badge">Official Meetup Pass</span>
+          <span id="ticketCode" class="ticket-id">#MEET-2026</span>
         </div>
         <div class="ticket-row">
           <div>
-            <div class="ticket-field-label">VIP Guest</div>
-            <div id="ticketGuest" class="ticket-field-val">Cutie</div>
+            <div class="ticket-field-label">Guest</div>
+            <div id="ticketGuest" class="ticket-field-val">Friend</div>
           </div>
           <div style="text-align: right;">
             <div class="ticket-field-label">Host</div>
-            <div id="ticketHost" class="ticket-field-val">Yours Truly</div>
+            <div id="ticketHost" class="ticket-field-val">Me</div>
           </div>
         </div>
-        <div class="ticket-row" style="margin-top: 10px;">
+        <div class="ticket-row" style="margin-top: 8px;">
           <div>
-            <div class="ticket-field-label">Activity</div>
-            <div id="ticketVibe" class="ticket-field-val">Coffee & Aesthetic Cafe</div>
+            <div class="ticket-field-label">Selected Date & Time</div>
+            <div id="ticketDay" class="ticket-field-val">Sat, Nov 14 • Evening</div>
           </div>
           <div style="text-align: right;">
-            <div class="ticket-field-label">When</div>
-            <div id="ticketDay" class="ticket-field-val">This Friday</div>
+            <div class="ticket-field-label">Hangout Plan</div>
+            <div id="ticketVibe" class="ticket-field-val">Coffee & Cafe</div>
           </div>
         </div>
         <div class="ticket-barcode">
           <div class="barcode-bars"></div>
-          <span class="ticket-admit">ADMIT ONE ♥</span>
+          <span class="ticket-admit">CONFIRMED ✓</span>
         </div>
       </div>
 
@@ -846,16 +1021,34 @@
           📋 Copy Reply to Send Me
         </button>
         <button id="downloadPassBtn" class="btn-action btn-download-pass">
-          🎟️ Download Official Date Pass (PNG)
+          🎟️ Download Meetup Pass (PNG)
+        </button>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: RESPECTFUL "NO" AFTER 3 TRIES -->
+    <section id="noScreen" class="screen">
+      <div class="recipient-tag">ALL GOOD! 🧸</div>
+      <h2 class="main-question">No Worries at All! 😊</h2>
+      <p class="sub-text">
+        You used all 3 "No" dodges, so I'll take the hint respectfully! Whenever you're free or feel like catching up later, just drop a text.
+      </p>
+      <div class="celebration-actions" style="margin-top: 16px;">
+        <button id="copyNoReplyBtn" class="btn-action btn-download-pass">
+          💬 Copy "Raincheck for Later" Reply
+        </button>
+        <button id="reconsiderBtn" class="btn-action btn-copy-reply">
+          Wait, I changed my mind! Let's pick a date 📅
         </button>
       </div>
     </section>
   </main>
 
+  <!-- Customizer Side Drawer -->
   <div id="drawerOverlay" class="drawer-overlay"></div>
   <aside id="customizerDrawer" class="customizer-drawer" aria-label="Customize Invite Drawer">
     <div class="drawer-header">
-      <h3 style="font-size: 1.2rem;">Customize Invite ✨</h3>
+      <h3 style="font-size: 1.2rem;">Customize Meetup Invite ✨</h3>
       <button id="closeDrawerBtn" class="drawer-close" aria-label="Close">✕</button>
     </div>
 
@@ -870,13 +1063,13 @@
     </div>
 
     <div class="form-group">
-      <label for="cfgRecipient">Her Name / Nickname</label>
-      <input type="text" id="cfgRecipient" placeholder="Hey Cutie" />
+      <label for="cfgRecipient">Her Name / Greeting</label>
+      <input type="text" id="cfgRecipient" placeholder="Hey" />
     </div>
 
     <div class="form-group">
       <label for="cfgSender">Your Name</label>
-      <input type="text" id="cfgSender" placeholder="Your Name" />
+      <input type="text" id="cfgSender" placeholder="Prahashik" />
     </div>
 
     <div class="form-group">
@@ -885,18 +1078,18 @@
     </div>
 
     <div class="form-group">
-      <label for="cfgSubtext">Subtext / Pitch</label>
+      <label for="cfgSubtext">Subtext / Message</label>
       <textarea id="cfgSubtext" rows="2"></textarea>
     </div>
 
     <div class="form-group">
-      <label for="cfgVibes">Date Vibes (comma separated)</label>
+      <label for="cfgVibes">Hangout Vibes (comma separated)</label>
       <input type="text" id="cfgVibes" />
     </div>
 
     <div class="form-group">
-      <label for="cfgDays">Day Options (comma separated)</label>
-      <input type="text" id="cfgDays" />
+      <label for="cfgTimes">Time Slots (comma separated)</label>
+      <input type="text" id="cfgTimes" />
     </div>
 
     <div class="drawer-actions">
@@ -913,45 +1106,46 @@
 
   <script>
     const DEFAULT_CONFIG = {
-      recipientName: "Hey Cutie",
+      recipientName: "Hey",
       senderName: "Me",
-      mainQuestion: "Will you go on a date with me?",
-      subText: "I promise good vibes, great food, and zero awkward silences ✨",
+      mainQuestion: "Let's catch up soon? ✨",
+      subText: "Good coffee, great laughs, and catching up properly — pick a date on the calendar when you're free! 🙌",
       noMessages: [
-        "Wait, are you sure? 🥺",
-        "Come on, press Yes! 💕",
-        "Nice try, that button is broken!",
-        "Okay now you're just testing my reflexes 😭",
-        "Error 404: 'No' not found!",
-        "My bear heart can't take this 💔",
-        "Think about the free snacks though 🍦",
-        "You clicked the wrong one, it's the big pink one 👉",
-        "I'll even let you pick the playlist! 🎶",
-        "Resistance is futile, just hit Yes! 🥰",
-        "Pretty please with a cherry on top? 🍒"
+        "Wait, are you sure? 🥺 (1/3)",
+        "Come on, just a quick coffee or hangout! ☕ (2/3)",
+        "Last chance before I accept defeat! 😭 (3/3)"
       ],
-      dateVibes: [
-        "☕ Coffee & Aesthetic Cafe",
-        "🍝 Cozy Dinner Date",
-        "🎬 Movie Night & Snacks",
-        "🌙 Late Night Drive & Ice Cream"
+      hangoutVibes: [
+        "☕ Coffee & Cafe",
+        "🍔 Food & Street Bites",
+        "🎬 Movie / Chill Hangout",
+        "🚶 Evening Walk & Talk"
       ],
-      dayOptions: [
-        "This Friday",
-        "Saturday Night",
-        "Sunday Evening",
-        "You Pick! ✨"
+      timeOptions: [
+        "Morning ☕",
+        "Afternoon 🌤️",
+        "Evening 🌆",
+        "Night 🌙"
       ],
       theme: "rose"
     };
 
+    const MAX_NO_DODGES = 3;
     let config = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
     let isSharedMode = false;
     let noDodgeCount = 0;
     let yesScale = 1;
     let selectedVibe = "";
-    let selectedDay = "";
-    const ticketNumber = "#VIP-" + Math.floor(1000 + Math.random() * 9000);
+    let selectedTime = "";
+    const ticketNumber = "#MEET-" + Math.floor(1000 + Math.random() * 9000);
+
+    // Calendar State (defaults to tomorrow)
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    let selectedDate = new Date(today);
+    selectedDate.setDate(today.getDate() + 1);
+    let viewYear = selectedDate.getFullYear();
+    let viewMonth = selectedDate.getMonth();
 
     function loadConfigFromURL() {
       const params = new URLSearchParams(window.location.search);
@@ -965,11 +1159,11 @@
       if (params.has("theme")) config.theme = params.get("theme");
       if (params.has("vibes")) {
         const parsedVibes = params.get("vibes").split("|").map(s => s.trim()).filter(Boolean);
-        if (parsedVibes.length) config.dateVibes = parsedVibes;
+        if (parsedVibes.length) config.hangoutVibes = parsedVibes;
       }
-      if (params.has("days")) {
-        const parsedDays = params.get("days").split("|").map(s => s.trim()).filter(Boolean);
-        if (parsedDays.length) config.dayOptions = parsedDays;
+      if (params.has("times")) {
+        const parsedTimes = params.get("times").split("|").map(s => s.trim()).filter(Boolean);
+        if (parsedTimes.length) config.timeOptions = parsedTimes;
       }
       if (params.get("shared") === "1") {
         isSharedMode = true;
@@ -982,19 +1176,22 @@
     const faceHopeful = document.getElementById("faceHopeful");
     const facePleading = document.getElementById("facePleading");
     const faceHappy = document.getElementById("faceHappy");
+    const faceRespectful = document.getElementById("faceRespectful");
     const bearHearts = document.getElementById("bearHearts");
 
     const recipientBadge = document.getElementById("recipientBadge");
     const mainQuestionText = document.getElementById("mainQuestionText");
     const subTextDisplay = document.getElementById("subTextDisplay");
     const pleaMessage = document.getElementById("pleaMessage");
+    const strikeCounter = document.getElementById("strikeCounter");
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
 
     const askScreen = document.getElementById("askScreen");
     const celebrationScreen = document.getElementById("celebrationScreen");
+    const noScreen = document.getElementById("noScreen");
     const vibeOptionsContainer = document.getElementById("vibeOptionsContainer");
-    const dayOptionsContainer = document.getElementById("dayOptionsContainer");
+    const timeOptionsContainer = document.getElementById("timeOptionsContainer");
 
     const ticketCode = document.getElementById("ticketCode");
     const ticketGuest = document.getElementById("ticketGuest");
@@ -1029,9 +1226,14 @@
       mainQuestionText.textContent = config.mainQuestion;
       subTextDisplay.textContent = config.subText;
 
-      selectedVibe = config.dateVibes[0] || "Coffee & Aesthetic Cafe";
-      selectedDay = config.dayOptions[0] || "This Friday";
+      if (!config.hangoutVibes.includes(selectedVibe)) {
+        selectedVibe = config.hangoutVibes[0] || "Coffee & Cafe";
+      }
+      if (!config.timeOptions.includes(selectedTime)) {
+        selectedTime = config.timeOptions[2] || config.timeOptions[0] || "Evening 🌆";
+      }
 
+      renderCalendar();
       renderPlannerPills();
       updateTicketPreview();
     }
@@ -1041,6 +1243,7 @@
       faceHopeful.style.display = "none";
       facePleading.style.display = "none";
       faceHappy.style.display = "none";
+      faceRespectful.style.display = "none";
       bearHearts.style.display = "none";
 
       if (mood === "pleading") {
@@ -1050,14 +1253,22 @@
         bearMascot.classList.add("happy");
         faceHappy.style.display = "block";
         bearHearts.style.display = "block";
+      } else if (mood === "respectful") {
+        faceRespectful.style.display = "block";
       } else {
         faceHopeful.style.display = "block";
       }
     }
 
+    // Interactive Bear Boop
+    document.getElementById("mascotBoop").addEventListener("click", () => {
+      bearMascot.style.transform = "scale(1.14) rotate(-4deg)";
+      setTimeout(() => { bearMascot.style.transform = ""; }, 220);
+    });
+
     function initBackgroundParticles() {
       const container = document.getElementById("bgParticles");
-      const symbols = ["♥", "✦", "♡", "✨", "❀"];
+      const symbols = ["✦", "✨", "♡", "❀", "★"];
       for (let i = 0; i < 18; i++) {
         const span = document.createElement("span");
         span.className = "floating-item";
@@ -1070,21 +1281,44 @@
       }
     }
 
-    function dodgeNoButton(e) {
-      if (e) e.preventDefault();
-      setMascotMood("pleading");
+    /* ==========================================================================
+       3-STRIKE "NO" DODGE LOGIC (AFTER 3 DODGES, IT BECOMES A REAL "NO")
+       ========================================================================== */
+    function handleNoInteraction(e) {
+      // If she already dodged 3 times, allow normal click to confirm "No"
+      if (noDodgeCount >= MAX_NO_DODGES) {
+        if (e.type === "mouseenter" || e.type === "touchstart") return;
+        noBtn.style.display = "none";
+        setMascotMood("respectful");
+        askScreen.classList.remove("active");
+        noScreen.classList.add("active");
+        return;
+      }
 
+      if (e) e.preventDefault();
+
+      setMascotMood("pleading");
       const msg = config.noMessages[noDodgeCount % config.noMessages.length];
       pleaMessage.textContent = msg;
       pleaMessage.classList.add("visible");
-      noDodgeCount++;
 
-      yesScale = Math.min(yesScale + 0.09, 1.85);
+      noDodgeCount++;
+      const remaining = MAX_NO_DODGES - noDodgeCount;
+
+      if (remaining > 0) {
+        strikeCounter.textContent = `${remaining} dodge${remaining === 1 ? "" : "s"} left before "No" unlocks`;
+      } else {
+        strikeCounter.textContent = `"No" is now unlocked if you really mean it 🥺`;
+        noBtn.textContent = "Okay, No 😔";
+        noBtn.classList.add("final-no");
+      }
+
+      yesScale = Math.min(yesScale + 0.11, 1.45);
       yesBtn.style.transform = `scale(${yesScale})`;
       yesBtn.classList.add("pulsing");
 
       const btnRect = noBtn.getBoundingClientRect();
-      const btnWidth = btnRect.width || 95;
+      const btnWidth = btnRect.width || 110;
       const btnHeight = btnRect.height || 46;
       const margin = 20;
 
@@ -1099,7 +1333,7 @@
         attempts++;
       } while (
         attempts < 15 &&
-        Math.hypot(randomX - btnRect.left, randomY - btnRect.top) < 90
+        Math.hypot(randomX - btnRect.left, randomY - btnRect.top) < 85
       );
 
       noBtn.classList.add("dodging");
@@ -1107,21 +1341,128 @@
       noBtn.style.top = `${randomY}px`;
     }
 
-    noBtn.addEventListener("mouseenter", dodgeNoButton);
-    noBtn.addEventListener("touchstart", dodgeNoButton, { passive: false });
-    noBtn.addEventListener("click", dodgeNoButton);
+    noBtn.addEventListener("mouseenter", handleNoInteraction);
+    noBtn.addEventListener("touchstart", handleNoInteraction, { passive: false });
+    noBtn.addEventListener("click", handleNoInteraction);
 
-    yesBtn.addEventListener("click", () => {
+    /* ==========================================================================
+       SCREEN TRANSITIONS ("YES" & RECONSIDER)
+       ========================================================================== */
+    function openCelebrationScreen() {
       noBtn.style.display = "none";
       setMascotMood("happy");
       askScreen.classList.remove("active");
+      noScreen.classList.remove("active");
       celebrationScreen.classList.add("active");
       launchConfettiBurst();
+    }
+
+    yesBtn.addEventListener("click", openCelebrationScreen);
+    document.getElementById("reconsiderBtn").addEventListener("click", openCelebrationScreen);
+
+    document.getElementById("copyNoReplyBtn").addEventListener("click", () => {
+      copyTextToClipboard(
+        "Hey! Can't make it right now, let's definitely take a raincheck and catch up soon! 😊🙌",
+        "Raincheck message copied! 💬"
+      );
     });
 
+    /* ==========================================================================
+       INTERACTIVE MONTHLY CALENDAR WIDGET
+       ========================================================================== */
+    const calMonthTitle = document.getElementById("calMonthTitle");
+    const calDaysGrid = document.getElementById("calDaysGrid");
+
+    document.getElementById("prevMonthBtn").addEventListener("click", () => {
+      viewMonth--;
+      if (viewMonth < 0) {
+        viewMonth = 11;
+        viewYear--;
+      }
+      renderCalendar();
+    });
+
+    document.getElementById("nextMonthBtn").addEventListener("click", () => {
+      viewMonth++;
+      if (viewMonth > 11) {
+        viewMonth = 0;
+        viewYear++;
+      }
+      renderCalendar();
+    });
+
+    function renderCalendar() {
+      const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      calMonthTitle.textContent = `${monthNames[viewMonth]} ${viewYear}`;
+      calDaysGrid.innerHTML = "";
+
+      const firstDayIndex = new Date(viewYear, viewMonth, 1).getDay();
+      const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+      for (let i = 0; i < firstDayIndex; i++) {
+        const emptyCell = document.createElement("div");
+        emptyCell.className = "cal-day empty";
+        calDaysGrid.appendChild(emptyCell);
+      }
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const cellDate = new Date(viewYear, viewMonth, d);
+        cellDate.setHours(0, 0, 0, 0);
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "cal-day";
+        btn.textContent = d;
+
+        if (cellDate.getTime() === today.getTime()) {
+          btn.classList.add("today");
+        }
+        if (cellDate.getTime() === selectedDate.getTime()) {
+          btn.classList.add("selected");
+        }
+        if (cellDate < today) {
+          btn.disabled = true;
+        } else {
+          btn.addEventListener("click", () => {
+            selectedDate = cellDate;
+            renderCalendar();
+            updateTicketPreview();
+          });
+        }
+
+        calDaysGrid.appendChild(btn);
+      }
+    }
+
+    function formatSelectedDate(dateObj) {
+      return dateObj.toLocaleDateString("en-US", {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+      });
+    }
+
     function renderPlannerPills() {
+      timeOptionsContainer.innerHTML = "";
+      config.timeOptions.forEach(t => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "pill-option" + (t === selectedTime ? " selected" : "");
+        btn.textContent = t;
+        btn.addEventListener("click", () => {
+          selectedTime = t;
+          renderPlannerPills();
+          updateTicketPreview();
+        });
+        timeOptionsContainer.appendChild(btn);
+      });
+
       vibeOptionsContainer.innerHTML = "";
-      config.dateVibes.forEach(vibe => {
+      config.hangoutVibes.forEach(vibe => {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "pill-option" + (vibe === selectedVibe ? " selected" : "");
@@ -1133,40 +1474,30 @@
         });
         vibeOptionsContainer.appendChild(btn);
       });
-
-      dayOptionsContainer.innerHTML = "";
-      config.dayOptions.forEach(day => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "pill-option" + (day === selectedDay ? " selected" : "");
-        btn.textContent = day;
-        btn.addEventListener("click", () => {
-          selectedDay = day;
-          renderPlannerPills();
-          updateTicketPreview();
-        });
-        dayOptionsContainer.appendChild(btn);
-      });
     }
 
     function updateTicketPreview() {
-      const cleanGuest = config.recipientName.replace(/^hey\s+/i, "").replace(/✨/g, "").trim() || "VIP Guest";
+      const cleanGuest = config.recipientName.replace(/^hey\s+/i, "").replace(/✨/g, "").trim() || "Friend";
       ticketCode.textContent = ticketNumber;
       ticketGuest.textContent = cleanGuest;
-      ticketHost.textContent = config.senderName || "Yours Truly";
+      ticketHost.textContent = config.senderName || "Me";
+      ticketDay.textContent = `${formatSelectedDate(selectedDate)} (${stripEmojiPrefix(selectedTime)})`;
       ticketVibe.textContent = selectedVibe;
-      ticketDay.textContent = selectedDay;
     }
 
+    /* ==========================================================================
+       COPY REPLY & HIGH-RES MEETUP PASS PNG GENERATOR
+       ========================================================================== */
     document.getElementById("copyReplyBtn").addEventListener("click", () => {
+      const formattedDate = formatSelectedDate(selectedDate);
       const replyText =
-        `I SAID YES!! 💖🥳\n` +
-        `🎟️ Official Date Pass ${ticketNumber}\n` +
-        `✨ Vibe: ${selectedVibe}\n` +
-        `📅 When: ${selectedDay}\n` +
-        `Can't wait! 🥰`;
+        `I'M IN! Let's catch up! 🙌✨\n` +
+        `🎟️ Meetup Pass ${ticketNumber}\n` +
+        `📅 Date: ${formattedDate} (${selectedTime})\n` +
+        `☕ Plan: ${selectedVibe}\n` +
+        `See you then! 😊`;
 
-      copyTextToClipboard(replyText, "Cute reply copied! Paste it in our chat 💌");
+      copyTextToClipboard(replyText, "Reply copied! Paste it in our chat 💌");
     });
 
     document.getElementById("downloadPassBtn").addEventListener("click", () => {
@@ -1218,11 +1549,11 @@
       ctx.fill();
 
       ctx.fillStyle = pal.accent;
-      roundRect(ctx, pad + 28, pad + 26, 185, 30, 15);
+      roundRect(ctx, pad + 28, pad + 26, 210, 30, 15);
       ctx.fill();
       ctx.fillStyle = "#ffffff";
       ctx.font = "bold 13px sans-serif";
-      ctx.fillText("OFFICIAL DATE PASS ♥", pad + 44, pad + 46);
+      ctx.fillText("OFFICIAL MEETUP PASS ✨", pad + 44, pad + 46);
 
       ctx.fillStyle = pal.muted;
       ctx.font = "bold 15px monospace";
@@ -1237,11 +1568,12 @@
       ctx.lineTo(width - pad - 28, pad + 72);
       ctx.stroke();
 
-      const cleanGuest = config.recipientName.replace(/^hey\s+/i, "").replace(/✨/g, "").trim() || "VIP Guest";
-      drawTicketField(ctx, "VIP GUEST", cleanGuest, pad + 30, pad + 105, pal);
-      drawTicketField(ctx, "HOST", config.senderName || "Yours Truly", width / 2 + 20, pad + 105, pal);
-      drawTicketField(ctx, "DATE VIBE", stripEmojiPrefix(selectedVibe), pad + 30, pad + 175, pal);
-      drawTicketField(ctx, "DATE & TIME", stripEmojiPrefix(selectedDay), width / 2 + 20, pad + 175, pal);
+      const cleanGuest = config.recipientName.replace(/^hey\s+/i, "").replace(/✨/g, "").trim() || "Friend";
+      const dateAndTime = `${formatSelectedDate(selectedDate)} (${stripEmojiPrefix(selectedTime)})`;
+      drawTicketField(ctx, "GUEST", cleanGuest, pad + 30, pad + 105, pal);
+      drawTicketField(ctx, "HOST", config.senderName || "Me", width / 2 + 30, pad + 105, pal);
+      drawTicketField(ctx, "DATE & TIME", dateAndTime, pad + 30, pad + 175, pal);
+      drawTicketField(ctx, "HANGOUT PLAN", stripEmojiPrefix(selectedVibe), width / 2 + 30, pad + 175, pal);
 
       ctx.beginPath();
       ctx.moveTo(pad + 28, height - pad - 68);
@@ -1259,13 +1591,13 @@
       ctx.fillStyle = pal.accent;
       ctx.font = "bold 18px sans-serif";
       ctx.textAlign = "right";
-      ctx.fillText("ADMIT ONE • CONFIRMED ✓", width - pad - 30, height - pad - 32);
+      ctx.fillText("CONFIRMED MEETUP ✓", width - pad - 30, height - pad - 32);
 
       const link = document.createElement("a");
-      link.download = `Official-Date-Pass-${cleanGuest.replace(/\s+/g, "-")}.png`;
+      link.download = `Meetup-Pass-${cleanGuest.replace(/\s+/g, "-")}.png`;
       link.href = canvas.toDataURL("image/png");
       link.click();
-      showToast("Date Pass PNG downloaded! 🎟️");
+      showToast("Meetup Pass PNG downloaded! 🎟️");
     });
 
     function drawTicketField(ctx, label, value, x, y, pal) {
@@ -1273,13 +1605,13 @@
       ctx.font = "bold 11px sans-serif";
       ctx.fillText(label, x, y);
       ctx.fillStyle = pal.text;
-      ctx.font = "bold 20px sans-serif";
-      const truncated = value.length > 22 ? value.slice(0, 21) + "…" : value;
-      ctx.fillText(truncated, x, y + 25);
+      ctx.font = "bold 18px sans-serif";
+      const truncated = value.length > 24 ? value.slice(0, 23) + "…" : value;
+      ctx.fillText(truncated, x, y + 24);
     }
 
     function stripEmojiPrefix(str) {
-      return str.replace(/^[\p{Emoji}\p{Extended_Pictographic}\s]+/u, "").trim() || str;
+      return str.replace(/^[\p{Emoji}\p{Extended_Pictographic}\s]+/u, "").replace(/[\p{Emoji}\p{Extended_Pictographic}]+$/u, "").trim() || str;
     }
 
     function roundRect(ctx, x, y, w, h, r) {
@@ -1309,7 +1641,7 @@
           vy: (Math.random() - 0.75) * 18,
           size: 6 + Math.random() * 7,
           color: colors[Math.floor(Math.random() * colors.length)],
-          isHeart: Math.random() > 0.45,
+          isStar: Math.random() > 0.45,
           rotation: Math.random() * Math.PI * 2,
           rotSpeed: (Math.random() - 0.5) * 0.2,
           alpha: 1
@@ -1336,12 +1668,9 @@
             ctx.rotate(p.rotation);
             ctx.fillStyle = p.color;
 
-            if (p.isHeart) {
-              const s = p.size * 0.6;
+            if (p.isStar) {
               ctx.beginPath();
-              ctx.moveTo(0, s);
-              ctx.bezierCurveTo(-s * 2, -s, -s, -s * 2.2, 0, -s * 0.7);
-              ctx.bezierCurveTo(s, -s * 2.2, s * 2, -s, 0, s);
+              ctx.arc(0, 0, p.size * 0.55, 0, Math.PI * 2);
               ctx.fill();
             } else {
               ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
@@ -1356,6 +1685,9 @@
       animate();
     }
 
+    /* ==========================================================================
+       CUSTOMIZER DRAWER
+       ========================================================================== */
     const drawerOverlay = document.getElementById("drawerOverlay");
     const customizerDrawer = document.getElementById("customizerDrawer");
     const cfgRecipient = document.getElementById("cfgRecipient");
@@ -1363,15 +1695,15 @@
     const cfgQuestion = document.getElementById("cfgQuestion");
     const cfgSubtext = document.getElementById("cfgSubtext");
     const cfgVibes = document.getElementById("cfgVibes");
-    const cfgDays = document.getElementById("cfgDays");
+    const cfgTimes = document.getElementById("cfgTimes");
 
     function openDrawer() {
       cfgRecipient.value = config.recipientName;
       cfgSender.value = config.senderName;
       cfgQuestion.value = config.mainQuestion;
       cfgSubtext.value = config.subText;
-      cfgVibes.value = config.dateVibes.join(", ");
-      cfgDays.value = config.dayOptions.join(", ");
+      cfgVibes.value = config.hangoutVibes.join(", ");
+      cfgTimes.value = config.timeOptions.join(", ");
       drawerOverlay.classList.add("open");
       customizerDrawer.classList.add("open");
     }
@@ -1382,14 +1714,14 @@
     }
 
     function syncConfigFromInputs() {
-      config.recipientName = cfgRecipient.value.trim() || "Hey Cutie";
+      config.recipientName = cfgRecipient.value.trim() || "Hey";
       config.senderName = cfgSender.value.trim() || "Me";
-      config.mainQuestion = cfgQuestion.value.trim() || "Will you go on a date with me?";
+      config.mainQuestion = cfgQuestion.value.trim() || "Let's catch up soon? ✨";
       config.subText = cfgSubtext.value.trim() || "";
       const vList = cfgVibes.value.split(",").map(s => s.trim()).filter(Boolean);
-      if (vList.length) config.dateVibes = vList;
-      const dList = cfgDays.value.split(",").map(s => s.trim()).filter(Boolean);
-      if (dList.length) config.dayOptions = dList;
+      if (vList.length) config.hangoutVibes = vList;
+      const tList = cfgTimes.value.split(",").map(s => s.trim()).filter(Boolean);
+      if (tList.length) config.timeOptions = tList;
       renderApp();
     }
 
@@ -1397,7 +1729,7 @@
     document.getElementById("closeDrawerBtn").addEventListener("click", closeDrawer);
     drawerOverlay.addEventListener("click", closeDrawer);
 
-    [cfgRecipient, cfgSender, cfgQuestion, cfgSubtext, cfgVibes, cfgDays].forEach(el => {
+    [cfgRecipient, cfgSender, cfgQuestion, cfgSubtext, cfgVibes, cfgTimes].forEach(el => {
       el.addEventListener("input", syncConfigFromInputs);
     });
 
@@ -1415,8 +1747,8 @@
       url.searchParams.set("q", config.mainQuestion);
       url.searchParams.set("sub", config.subText);
       url.searchParams.set("theme", config.theme);
-      url.searchParams.set("vibes", config.dateVibes.join("|"));
-      url.searchParams.set("days", config.dayOptions.join("|"));
+      url.searchParams.set("vibes", config.hangoutVibes.join("|"));
+      url.searchParams.set("times", config.timeOptions.join("|"));
       url.searchParams.set("shared", "1");
 
       copyTextToClipboard(url.toString(), "Shareable link copied! Customize button is hidden for her 🔗");
