@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>A Special Question For You ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #ffe4ec 0%, #ffc2d4 45%, #ffb3c6 100%);
+      --card-bg: rgba(255, 255, 255, 0.72);
+      --card-border: rgba(255, 255, 255, 0.85);
+      --text-main: #3d1c2a;
+      --text-muted: #7a495c;
+      --primary: #ff4d79;
+      --primary-hover: #e63965;
+      --primary-glow: rgba(255, 77, 121, 0.45);
+      --secondary-bg: rgba(255, 255, 255, 0.85);
+      --secondary-text: #7a495c;
+      --pill-bg: rgba(255, 255, 255, 0.65);
+      --pill-active-bg: #ff4d79;
+      --pill-active-text: #ffffff;
+      --ticket-bg: #ffffff;
+      --ticket-accent: #ff4d79;
+      --particle-color: #ff7597;
+    }
+
+    [data-theme="purple"] {
+      --bg-gradient: linear-gradient(135deg, #161129 0%, #271c47 50%, #3b2463 100%);
+      --card-bg: rgba(34, 25, 61, 0.72);
+      --card-border: rgba(183, 148, 244, 0.28);
+      --text-main: #f7f3ff;
+      --text-muted: #cbbbe8;
+      --primary: #a855f7;
+      --primary-hover: #9333ea;
+      --primary-glow: rgba(168, 85, 247, 0.5);
+      --secondary-bg: rgba(255, 255, 255, 0.12);
+      --secondary-text: #e2d5fa;
+      --pill-bg: rgba(255, 255, 255, 0.1);
+      --pill-active-bg: #a855f7;
+      --pill-active-text: #ffffff;
+      --ticket-bg: #231942;
+      --ticket-accent: #c084fc;
+      --particle-color: #c084fc;
+    }
+
+    [data-theme="peach"] {
+      --bg-gradient: linear-gradient(135deg, #fff1e6 0%, #ffd6ba 50%, #ffb5a7 100%);
+      --card-bg: rgba(255, 255, 255, 0.74);
+      --card-border: rgba(255, 255, 255, 0.88);
+      --text-main: #4a2518;
+      --text-muted: #87523e;
+      --primary: #f96d4b;
+      --primary-hover: #e55836;
+      --primary-glow: rgba(249, 109, 75, 0.45);
+      --secondary-bg: rgba(255, 255, 255, 0.85);
+      --secondary-text: #87523e;
+      --pill-bg: rgba(255, 255, 255, 0.65);
+      --pill-active-bg: #f96d4b;
+      --pill-active-text: #ffffff;
+      --ticket-bg: #ffffff;
+      --ticket-accent: #f96d4b;
+      --particle-color: #ff8c6b;
+    }
+
+    [data-theme="matcha"] {
+      --bg-gradient: linear-gradient(135deg, #eef6eb 0%, #d4e8cd 50%, #b5d6aa 100%);
+      --card-bg: rgba(255, 255, 255, 0.76);
+      --card-border: rgba(255, 255, 255, 0.9);
+      --text-main: #1f3623;
+      --text-muted: #4b6e52;
+      --primary: #4e945b;
+      --primary-hover: #3d7a49;
+      --primary-glow: rgba(78, 148, 91, 0.42);
+      --secondary-bg: rgba(255, 255, 255, 0.85);
+      --secondary-text: #4b6e52;
+      --pill-bg: rgba(255, 255, 255, 0.65);
+      --pill-active-bg: #4e945b;
+      --pill-active-text: #ffffff;
+      --ticket-bg: #ffffff;
+      --ticket-accent: #4e945b;
+      --particle-color: #6ab578;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+      transition: background 0.5s ease, color 0.3s ease;
+    }
+
+    h1, h2, h3, .display-font {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
+
+    #bgParticles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .floating-item {
+      position: absolute;
+      bottom: -40px;
+      color: var(--particle-color);
+      opacity: 0.45;
+      animation: floatUp linear infinite;
+      user-select: none;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+      15% { opacity: 0.55; }
+      85% { opacity: 0.45; }
+      100% { transform: translateY(-110vh) rotate(360deg) scale(1.15); opacity: 0; }
+    }
+
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    .customize-trigger {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 40;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .customize-trigger:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .customize-trigger.hidden {
+      display: none !important;
+    }
+
+    .glass-card {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 460px;
+      background: var(--card-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1.5px solid var(--card-border);
+      border-radius: 32px;
+      padding: 32px 26px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .mascot-wrapper {
+      width: 155px;
+      height: 155px;
+      margin: 0 auto 14px;
+      position: relative;
+    }
+
+    .bear-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      animation: bearBob 3s ease-in-out infinite;
+    }
+
+    @keyframes bearBob {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .bear-svg.pleading {
+      animation: bearShiver 0.45s ease-in-out infinite;
+    }
+
+    @keyframes bearShiver {
+      0%, 100% { transform: rotate(0deg) translateY(0); }
+      25% { transform: rotate(-2.5deg) translateY(1px); }
+      75% { transform: rotate(2.5deg) translateY(1px); }
+    }
+
+    .bear-svg.happy {
+      animation: bearJump 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    }
+
+    @keyframes bearJump {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-12px) scale(1.04); }
+    }
+
+    .bear-heart-float {
+      animation: pulseHeart 1s ease-in-out infinite alternate;
+      transform-origin: center;
+    }
+
+    @keyframes pulseHeart {
+      from { transform: scale(0.9); }
+      to { transform: scale(1.15); }
+    }
+
+    .tear-drop {
+      animation: tearFall 1.3s ease-in infinite;
+    }
+
+    @keyframes tearFall {
+      0% { transform: translateY(0); opacity: 0.9; }
+      100% { transform: translateY(14px); opacity: 0; }
+    }
+
+    .recipient-tag {
+      display: inline-block;
+      background: var(--pill-bg);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+
+    .main-question {
+      font-size: clamp(1.65rem, 5vw, 2.05rem);
+      line-height: 1.2;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .sub-text {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .plea-banner {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .plea-text {
+      background: var(--secondary-bg);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 7px 16px;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .plea-text.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .button-arena {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      min-height: 64px;
+      flex-wrap: wrap;
+    }
+
+    .btn-yes {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 24px var(--primary-glow);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, box-shadow 0.25s ease;
+      z-index: 15;
+    }
+
+    .btn-yes:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-yes.pulsing {
+      animation: yesPulse 1.2s infinite;
+    }
+
+    @keyframes yesPulse {
+      0%, 100% { box-shadow: 0 8px 25px var(--primary-glow); }
+      50% { box-shadow: 0 0 38px 8px var(--primary-glow); }
+    }
+
+    .btn-no {
+      background: var(--secondary-bg);
+      color: var(--secondary-text);
+      border: 1.5px solid var(--card-border);
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transition: left 0.28s cubic-bezier(0.22, 1, 0.36, 1), top 0.28s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s ease;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .btn-no.dodging {
+      position: fixed;
+      z-index: 35;
+      margin: 0;
+    }
+
+    .screen {
+      display: none;
+      animation: fadeSlideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(18px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .planner-section {
+      text-align: left;
+      margin-top: 16px;
+    }
+
+    .planner-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .pill-option {
+      background: var(--pill-bg);
+      border: 1.5px solid var(--card-border);
+      color: var(--text-main);
+      padding: 8px 13px;
+      border-radius: 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pill-option:hover {
+      transform: translateY(-1px);
+    }
+
+    .pill-option.selected {
+      background: var(--pill-active-bg);
+      color: var(--pill-active-text);
+      border-color: var(--pill-active-bg);
+      box-shadow: 0 4px 14px var(--primary-glow);
+    }
+
+    .ticket-card {
+      background: var(--ticket-bg);
+      border: 2px dashed var(--ticket-accent);
+      border-radius: 20px;
+      padding: 18px;
+      margin: 18px 0;
+      position: relative;
+      text-align: left;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .ticket-card::before,
+    .ticket-card::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 22px;
+      height: 22px;
+      background: var(--bg-gradient);
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+
+    .ticket-card::before { left: -13px; }
+    .ticket-card::after { right: -13px; }
+
+    .ticket-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px dashed rgba(150, 150, 150, 0.3);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+
+    .ticket-badge {
+      background: var(--ticket-accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .ticket-id {
+      font-family: monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .ticket-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      gap: 12px;
+    }
+
+    .ticket-field-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .ticket-field-val {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .ticket-barcode {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1.5px dashed rgba(150, 150, 150, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .barcode-bars {
+      height: 24px;
+      width: 65%;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--text-main) 0px,
+        var(--text-main) 2px,
+        transparent 2px,
+        transparent 5px,
+        var(--text-main) 5px,
+        var(--text-main) 6px,
+        transparent 6px,
+        transparent 9px
+      );
+      opacity: 0.75;
+    }
+
+    .ticket-admit {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.85rem;
+      color: var(--ticket-accent);
+      font-weight: 700;
+    }
+
+    .celebration-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-action {
+      width: 100%;
+      padding: 13px 18px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-copy-reply {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 6px 20px var(--primary-glow);
+    }
+
+    .btn-download-pass {
+      background: var(--secondary-bg);
+      color: var(--text-main);
+      border: 1.5px solid var(--card-border);
+    }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
+      z-index: 60;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .drawer-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .customizer-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      max-width: 390px;
+      height: 100dvh;
+      background: #ffffff;
+      color: #1f2937;
+      z-index: 70;
+      padding: 24px 20px;
+      overflow-y: auto;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+      transition: right 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .customizer-drawer.open {
+      right: 0;
+    }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .drawer-close {
+      background: #f3f4f6;
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #4b5563;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid #d1d5db;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: #111827;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #ff4d79;
+    }
+
+    .theme-swatches {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .swatch-btn {
+      padding: 8px 4px;
+      border-radius: 10px;
+      border: 2px solid #e5e7eb;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: #fff;
+      color: #374151;
+    }
+
+    .swatch-btn.active {
+      border-color: #111827;
+      background: #f9fafb;
+    }
+
+    .drawer-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .btn-drawer-primary {
+      background: #ff4d79;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-drawer-secondary {
+      background: #1f2937;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #1f2937;
+      color: #ffffff;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="bgParticles"></div>
+  <canvas id="confettiCanvas"></canvas>
+
+  <button id="customizeBtn" class="customize-trigger" aria-label="Customize Invitation">
+    Customize ⚙️
+  </button>
+
+  <main class="glass-card">
+    <div class="mascot-wrapper">
+      <svg id="bearMascot" class="bear-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <g id="bearHearts" style="display: none;">
+          <path class="bear-heart-float" d="M35 45 C35 37, 23 37, 23 45 C23 53, 35 61, 35 61 C35 61, 47 53, 47 45 C47 37, 35 37, 35 45 Z" fill="#ff4d79"/>
+          <path class="bear-heart-float" d="M168 40 C168 33, 158 33, 158 40 C158 47, 168 54, 168 54 C168 54, 178 47, 178 40 C178 33, 168 33, 168 40 Z" fill="#ff7597"/>
+          <path class="bear-heart-float" d="M100 18 C100 12, 91 12, 91 18 C91 24, 100 30, 100 30 C100 30, 109 24, 109 18 C109 12, 100 12, 100 18 Z" fill="#ff4d79"/>
+        </g>
+
+        <circle cx="54" cy="58" r="24" fill="#c68b59" stroke="#5c3a21" stroke-width="4"/>
+        <circle cx="54" cy="58" r="13" fill="#f3c69f"/>
+        <circle cx="146" cy="58" r="24" fill="#c68b59" stroke="#5c3a21" stroke-width="4"/>
+        <circle cx="146" cy="58" r="13" fill="#f3c69f"/>
+
+        <ellipse cx="100" cy="108" rx="64" ry="56" fill="#d99b66" stroke="#5c3a21" stroke-width="4"/>
+        <ellipse cx="100" cy="124" rx="26" ry="20" fill="#faebd7"/>
+
+        <ellipse cx="58" cy="116" rx="11" ry="7" fill="#ff8fa3" opacity="0.7"/>
+        <ellipse cx="142" cy="116" rx="11" ry="7" fill="#ff8fa3" opacity="0.7"/>
+
+        <ellipse cx="100" cy="116" rx="8" ry="5.5" fill="#4a2c18"/>
+        <ellipse cx="98" cy="114.5" rx="2.5" ry="1.5" fill="#ffffff" opacity="0.8"/>
+
+        <g id="faceHopeful">
+          <circle cx="74" cy="96" r="7" fill="#3a2212"/>
+          <circle cx="72" cy="93.5" r="2.5" fill="#ffffff"/>
+          <circle cx="126" cy="96" r="7" fill="#3a2212"/>
+          <circle cx="124" cy="93.5" r="2.5" fill="#ffffff"/>
+          <path d="M90 128 Q100 137 110 128" fill="none" stroke="#4a2c18" stroke-width="3.5" stroke-linecap="round"/>
+        </g>
+
+        <g id="facePleading" style="display: none;">
+          <path d="M63 83 Q74 78 83 84" fill="none" stroke="#4a2c18" stroke-width="3" stroke-linecap="round"/>
+          <path d="M137 83 Q126 78 117 84" fill="none" stroke="#4a2c18" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="74" cy="97" r="9.5" fill="#3a2212"/>
+          <circle cx="71" cy="93" r="3.8" fill="#ffffff"/>
+          <circle cx="77" cy="100" r="2" fill="#ffffff"/>
+          <circle cx="126" cy="97" r="9.5" fill="#3a2212"/>
+          <circle cx="123" cy="93" r="3.8" fill="#ffffff"/>
+          <circle cx="129" cy="100" r="2" fill="#ffffff"/>
+          <path class="tear-drop" d="M62 104 Q58 112 62 115 Q66 112 62 104 Z" fill="#60a5fa"/>
+          <path class="tear-drop" d="M138 104 Q134 112 138 115 Q142 112 138 104 Z" fill="#60a5fa" style="animation-delay: 0.5s;"/>
+          <path d="M91 133 Q100 126 109 133" fill="none" stroke="#4a2c18" stroke-width="3.2" stroke-linecap="round"/>
+        </g>
+
+        <g id="faceHappy" style="display: none;">
+          <path d="M65 98 Q74 87 83 98" fill="none" stroke="#3a2212" stroke-width="4" stroke-linecap="round"/>
+          <path d="M117 98 Q126 87 135 98" fill="none" stroke="#3a2212" stroke-width="4" stroke-linecap="round"/>
+          <path d="M88 126 Q100 144 112 126 Z" fill="#ff5c7c" stroke="#4a2c18" stroke-width="3" stroke-linejoin="round"/>
+        </g>
+
+        <g id="bearPaws">
+          <ellipse cx="76" cy="162" rx="16" ry="12" fill="#d99b66" stroke="#5c3a21" stroke-width="3.5"/>
+          <ellipse cx="124" cy="162" rx="16" ry="12" fill="#d99b66" stroke="#5c3a21" stroke-width="3.5"/>
+          <path d="M100 154 C100 146, 88 146, 88 154 C88 162, 100 170, 100 170 C100 170, 112 162, 112 154 C112 146, 100 146, 100 154 Z" fill="#ff4d79" stroke="#5c3a21" stroke-width="2.5"/>
+        </g>
+      </svg>
+    </div>
+
+    <section id="askScreen" class="screen active">
+      <div id="recipientBadge" class="recipient-tag">Hey Cutie ✨</div>
+      <h1 id="mainQuestionText" class="main-question">Will you go on a date with me?</h1>
+      <p id="subTextDisplay" class="sub-text">I promise good vibes, great food, and zero awkward silences ✨</p>
+
+      <div class="plea-banner">
+        <span id="pleaMessage" class="plea-text"></span>
+      </div>
+
+      <div class="button-arena">
+        <button id="yesBtn" class="btn-yes">Yes! 💖</button>
+        <button id="noBtn" class="btn-no">No</button>
+      </div>
+    </section>
+
+    <section id="celebrationScreen" class="screen">
+      <div class="recipient-tag">YAY!! IT'S A DATE 🎉</div>
+      <h2 class="main-question">Best Decision Ever! 🥰</h2>
+      <p class="sub-text" style="margin-bottom: 10px;">Customize our date pass below & send it back to me:</p>
+
+      <div class="planner-section">
+        <label class="planner-label">1. Pick Our Date Vibe</label>
+        <div id="vibeOptionsContainer" class="pill-grid"></div>
+
+        <label class="planner-label">2. Pick Our Day / Time</label>
+        <div id="dayOptionsContainer" class="pill-grid"></div>
+      </div>
+
+      <div class="ticket-card">
+        <div class="ticket-header">
+          <span class="ticket-badge">Official Date Pass</span>
+          <span id="ticketCode" class="ticket-id">#VIP-2026</span>
+        </div>
+        <div class="ticket-row">
+          <div>
+            <div class="ticket-field-label">VIP Guest</div>
+            <div id="ticketGuest" class="ticket-field-val">Cutie</div>
+          </div>
+          <div style="text-align: right;">
+            <div class="ticket-field-label">Host</div>
+            <div id="ticketHost" class="ticket-field-val">Yours Truly</div>
+          </div>
+        </div>
+        <div class="ticket-row" style="margin-top: 10px;">
+          <div>
+            <div class="ticket-field-label">Activity</div>
+            <div id="ticketVibe" class="ticket-field-val">Coffee & Aesthetic Cafe</div>
+          </div>
+          <div style="text-align: right;">
+            <div class="ticket-field-label">When</div>
+            <div id="ticketDay" class="ticket-field-val">This Friday</div>
+          </div>
+        </div>
+        <div class="ticket-barcode">
+          <div class="barcode-bars"></div>
+          <span class="ticket-admit">ADMIT ONE ♥</span>
+        </div>
+      </div>
+
+      <div class="celebration-actions">
+        <button id="copyReplyBtn" class="btn-action btn-copy-reply">
+          📋 Copy Reply to Send Me
+        </button>
+        <button id="downloadPassBtn" class="btn-action btn-download-pass">
+          🎟️ Download Official Date Pass (PNG)
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <div id="drawerOverlay" class="drawer-overlay"></div>
+  <aside id="customizerDrawer" class="customizer-drawer" aria-label="Customize Invite Drawer">
+    <div class="drawer-header">
+      <h3 style="font-size: 1.2rem;">Customize Invite ✨</h3>
+      <button id="closeDrawerBtn" class="drawer-close" aria-label="Close">✕</button>
+    </div>
+
+    <div class="form-group">
+      <label>Color Theme</label>
+      <div class="theme-swatches">
+        <button type="button" class="swatch-btn" data-theme-choice="rose">🌸 Rose</button>
+        <button type="button" class="swatch-btn" data-theme-choice="purple">🔮 Purple</button>
+        <button type="button" class="swatch-btn" data-theme-choice="peach">🍑 Peach</button>
+        <button type="button" class="swatch-btn" data-theme-choice="matcha">🍵 Matcha</button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cfgRecipient">Her Name / Nickname</label>
+      <input type="text" id="cfgRecipient" placeholder="Hey Cutie" />
+    </div>
+
+    <div class="form-group">
+      <label for="cfgSender">Your Name</label>
+      <input type="text" id="cfgSender" placeholder="Your Name" />
+    </div>
+
+    <div class="form-group">
+      <label for="cfgQuestion">Main Question</label>
+      <input type="text" id="cfgQuestion" />
+    </div>
+
+    <div class="form-group">
+      <label for="cfgSubtext">Subtext / Pitch</label>
+      <textarea id="cfgSubtext" rows="2"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="cfgVibes">Date Vibes (comma separated)</label>
+      <input type="text" id="cfgVibes" />
+    </div>
+
+    <div class="form-group">
+      <label for="cfgDays">Day Options (comma separated)</label>
+      <input type="text" id="cfgDays" />
+    </div>
+
+    <div class="drawer-actions">
+      <button id="copyShareLinkBtn" class="btn-drawer-primary">
+        🔗 Copy Shareable Link (Hides Settings)
+      </button>
+      <button id="downloadHtmlBtn" class="btn-drawer-secondary">
+        💾 Download Custom index.html
+      </button>
+    </div>
+  </aside>
+
+  <div id="toast" class="toast">Copied to clipboard!</div>
+
+  <script>
+    const DEFAULT_CONFIG = {
+      recipientName: "Hey Cutie",
+      senderName: "Me",
+      mainQuestion: "Will you go on a date with me?",
+      subText: "I promise good vibes, great food, and zero awkward silences ✨",
+      noMessages: [
+        "Wait, are you sure? 🥺",
+        "Come on, press Yes! 💕",
+        "Nice try, that button is broken!",
+        "Okay now you're just testing my reflexes 😭",
+        "Error 404: 'No' not found!",
+        "My bear heart can't take this 💔",
+        "Think about the free snacks though 🍦",
+        "You clicked the wrong one, it's the big pink one 👉",
+        "I'll even let you pick the playlist! 🎶",
+        "Resistance is futile, just hit Yes! 🥰",
+        "Pretty please with a cherry on top? 🍒"
+      ],
+      dateVibes: [
+        "☕ Coffee & Aesthetic Cafe",
+        "🍝 Cozy Dinner Date",
+        "🎬 Movie Night & Snacks",
+        "🌙 Late Night Drive & Ice Cream"
+      ],
+      dayOptions: [
+        "This Friday",
+        "Saturday Night",
+        "Sunday Evening",
+        "You Pick! ✨"
+      ],
+      theme: "rose"
+    };
+
+    let config = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+    let isSharedMode = false;
+    let noDodgeCount = 0;
+    let yesScale = 1;
+    let selectedVibe = "";
+    let selectedDay = "";
+    const ticketNumber = "#VIP-" + Math.floor(1000 + Math.random() * 9000);
+
+    function loadConfigFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has("to")) {
+        config.recipientName = params.get("to");
+        isSharedMode = true;
+      }
+      if (params.has("from")) config.senderName = params.get("from");
+      if (params.has("q")) config.mainQuestion = params.get("q");
+      if (params.has("sub")) config.subText = params.get("sub");
+      if (params.has("theme")) config.theme = params.get("theme");
+      if (params.has("vibes")) {
+        const parsedVibes = params.get("vibes").split("|").map(s => s.trim()).filter(Boolean);
+        if (parsedVibes.length) config.dateVibes = parsedVibes;
+      }
+      if (params.has("days")) {
+        const parsedDays = params.get("days").split("|").map(s => s.trim()).filter(Boolean);
+        if (parsedDays.length) config.dayOptions = parsedDays;
+      }
+      if (params.get("shared") === "1") {
+        isSharedMode = true;
+      }
+    }
+
+    const bodyEl = document.body;
+    const customizeBtn = document.getElementById("customizeBtn");
+    const bearMascot = document.getElementById("bearMascot");
+    const faceHopeful = document.getElementById("faceHopeful");
+    const facePleading = document.getElementById("facePleading");
+    const faceHappy = document.getElementById("faceHappy");
+    const bearHearts = document.getElementById("bearHearts");
+
+    const recipientBadge = document.getElementById("recipientBadge");
+    const mainQuestionText = document.getElementById("mainQuestionText");
+    const subTextDisplay = document.getElementById("subTextDisplay");
+    const pleaMessage = document.getElementById("pleaMessage");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
+    const askScreen = document.getElementById("askScreen");
+    const celebrationScreen = document.getElementById("celebrationScreen");
+    const vibeOptionsContainer = document.getElementById("vibeOptionsContainer");
+    const dayOptionsContainer = document.getElementById("dayOptionsContainer");
+
+    const ticketCode = document.getElementById("ticketCode");
+    const ticketGuest = document.getElementById("ticketGuest");
+    const ticketHost = document.getElementById("ticketHost");
+    const ticketVibe = document.getElementById("ticketVibe");
+    const ticketDay = document.getElementById("ticketDay");
+
+    function applyTheme(themeName) {
+      const validThemes = ["rose", "purple", "peach", "matcha"];
+      const chosen = validThemes.includes(themeName) ? themeName : "rose";
+      config.theme = chosen;
+      if (chosen === "rose") {
+        bodyEl.removeAttribute("data-theme");
+      } else {
+        bodyEl.setAttribute("data-theme", chosen);
+      }
+      document.querySelectorAll(".swatch-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.themeChoice === chosen);
+      });
+    }
+
+    function renderApp() {
+      applyTheme(config.theme);
+
+      if (isSharedMode) {
+        customizeBtn.classList.add("hidden");
+      }
+
+      recipientBadge.textContent = config.recipientName.includes("✨")
+        ? config.recipientName
+        : `${config.recipientName} ✨`;
+      mainQuestionText.textContent = config.mainQuestion;
+      subTextDisplay.textContent = config.subText;
+
+      selectedVibe = config.dateVibes[0] || "Coffee & Aesthetic Cafe";
+      selectedDay = config.dayOptions[0] || "This Friday";
+
+      renderPlannerPills();
+      updateTicketPreview();
+    }
+
+    function setMascotMood(mood) {
+      bearMascot.classList.remove("pleading", "happy");
+      faceHopeful.style.display = "none";
+      facePleading.style.display = "none";
+      faceHappy.style.display = "none";
+      bearHearts.style.display = "none";
+
+      if (mood === "pleading") {
+        bearMascot.classList.add("pleading");
+        facePleading.style.display = "block";
+      } else if (mood === "happy") {
+        bearMascot.classList.add("happy");
+        faceHappy.style.display = "block";
+        bearHearts.style.display = "block";
+      } else {
+        faceHopeful.style.display = "block";
+      }
+    }
+
+    function initBackgroundParticles() {
+      const container = document.getElementById("bgParticles");
+      const symbols = ["♥", "✦", "♡", "✨", "❀"];
+      for (let i = 0; i < 18; i++) {
+        const span = document.createElement("span");
+        span.className = "floating-item";
+        span.textContent = symbols[i % symbols.length];
+        span.style.left = Math.random() * 100 + "vw";
+        span.style.fontSize = (14 + Math.random() * 18) + "px";
+        span.style.animationDuration = (9 + Math.random() * 11) + "s";
+        span.style.animationDelay = (-Math.random() * 15) + "s";
+        container.appendChild(span);
+      }
+    }
+
+    function dodgeNoButton(e) {
+      if (e) e.preventDefault();
+      setMascotMood("pleading");
+
+      const msg = config.noMessages[noDodgeCount % config.noMessages.length];
+      pleaMessage.textContent = msg;
+      pleaMessage.classList.add("visible");
+      noDodgeCount++;
+
+      yesScale = Math.min(yesScale + 0.09, 1.85);
+      yesBtn.style.transform = `scale(${yesScale})`;
+      yesBtn.classList.add("pulsing");
+
+      const btnRect = noBtn.getBoundingClientRect();
+      const btnWidth = btnRect.width || 95;
+      const btnHeight = btnRect.height || 46;
+      const margin = 20;
+
+      const maxX = Math.max(margin, window.innerWidth - btnWidth - margin);
+      const maxY = Math.max(margin, window.innerHeight - btnHeight - margin);
+
+      let randomX, randomY;
+      let attempts = 0;
+      do {
+        randomX = margin + Math.random() * (maxX - margin);
+        randomY = margin + Math.random() * (maxY - margin);
+        attempts++;
+      } while (
+        attempts < 15 &&
+        Math.hypot(randomX - btnRect.left, randomY - btnRect.top) < 90
+      );
+
+      noBtn.classList.add("dodging");
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
+    }
+
+    noBtn.addEventListener("mouseenter", dodgeNoButton);
+    noBtn.addEventListener("touchstart", dodgeNoButton, { passive: false });
+    noBtn.addEventListener("click", dodgeNoButton);
+
+    yesBtn.addEventListener("click", () => {
+      noBtn.style.display = "none";
+      setMascotMood("happy");
+      askScreen.classList.remove("active");
+      celebrationScreen.classList.add("active");
+      launchConfettiBurst();
+    });
+
+    function renderPlannerPills() {
+      vibeOptionsContainer.innerHTML = "";
+      config.dateVibes.forEach(vibe => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "pill-option" + (vibe === selectedVibe ? " selected" : "");
+        btn.textContent = vibe;
+        btn.addEventListener("click", () => {
+          selectedVibe = vibe;
+          renderPlannerPills();
+          updateTicketPreview();
+        });
+        vibeOptionsContainer.appendChild(btn);
+      });
+
+      dayOptionsContainer.innerHTML = "";
+      config.dayOptions.forEach(day => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "pill-option" + (day === selectedDay ? " selected" : "");
+        btn.textContent = day;
+        btn.addEventListener("click", () => {
+          selectedDay = day;
+          renderPlannerPills();
+          updateTicketPreview();
+        });
+        dayOptionsContainer.appendChild(btn);
+      });
+    }
+
+    function updateTicketPreview() {
+      const cleanGuest = config.recipientName.replace(/^hey\s+/i, "").replace(/✨/g, "").trim() || "VIP Guest";
+      ticketCode.textContent = ticketNumber;
+      ticketGuest.textContent = cleanGuest;
+      ticketHost.textContent = config.senderName || "Yours Truly";
+      ticketVibe.textContent = selectedVibe;
+      ticketDay.textContent = selectedDay;
+    }
+
+    document.getElementById("copyReplyBtn").addEventListener("click", () => {
+      const replyText =
+        `I SAID YES!! 💖🥳\n` +
+        `🎟️ Official Date Pass ${ticketNumber}\n` +
+        `✨ Vibe: ${selectedVibe}\n` +
+        `📅 When: ${selectedDay}\n` +
+        `Can't wait! 🥰`;
+
+      copyTextToClipboard(replyText, "Cute reply copied! Paste it in our chat 💌");
+    });
+
+    document.getElementById("downloadPassBtn").addEventListener("click", () => {
+      const canvas = document.createElement("canvas");
+      const scale = 2;
+      const width = 640;
+      const height = 380;
+      canvas.width = width * scale;
+      canvas.height = height * scale;
+      const ctx = canvas.getContext("2d");
+      ctx.scale(scale, scale);
+
+      const palettes = {
+        rose: { bg1: "#ffe4ec", bg2: "#ffb3c6", card: "#ffffff", accent: "#ff4d79", text: "#3d1c2a", muted: "#7a495c" },
+        purple: { bg1: "#161129", bg2: "#3b2463", card: "#231942", accent: "#c084fc", text: "#f7f3ff", muted: "#cbbbe8" },
+        peach: { bg1: "#fff1e6", bg2: "#ffb5a7", card: "#ffffff", accent: "#f96d4b", text: "#4a2518", muted: "#87523e" },
+        matcha: { bg1: "#eef6eb", bg2: "#b5d6aa", card: "#ffffff", accent: "#4e945b", text: "#1f3623", muted: "#4b6e52" }
+      };
+      const pal = palettes[config.theme] || palettes.rose;
+
+      const bgGrad = ctx.createLinearGradient(0, 0, width, height);
+      bgGrad.addColorStop(0, pal.bg1);
+      bgGrad.addColorStop(1, pal.bg2);
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, width, height);
+
+      const pad = 32;
+      const tW = width - pad * 2;
+      const tH = height - pad * 2;
+      ctx.fillStyle = pal.card;
+      roundRect(ctx, pad, pad, tW, tH, 24);
+      ctx.fill();
+
+      ctx.save();
+      ctx.strokeStyle = pal.accent;
+      ctx.lineWidth = 3;
+      ctx.setLineDash([8, 6]);
+      roundRect(ctx, pad + 8, pad + 8, tW - 16, tH - 16, 18);
+      ctx.stroke();
+      ctx.restore();
+
+      ctx.fillStyle = pal.bg1;
+      ctx.beginPath();
+      ctx.arc(pad, height / 2, 16, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = pal.bg2;
+      ctx.beginPath();
+      ctx.arc(width - pad, height / 2, 16, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = pal.accent;
+      roundRect(ctx, pad + 28, pad + 26, 185, 30, 15);
+      ctx.fill();
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 13px sans-serif";
+      ctx.fillText("OFFICIAL DATE PASS ♥", pad + 44, pad + 46);
+
+      ctx.fillStyle = pal.muted;
+      ctx.font = "bold 15px monospace";
+      ctx.textAlign = "right";
+      ctx.fillText(ticketNumber, width - pad - 30, pad + 46);
+      ctx.textAlign = "left";
+
+      ctx.strokeStyle = "rgba(150,150,150,0.3)";
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(pad + 28, pad + 72);
+      ctx.lineTo(width - pad - 28, pad + 72);
+      ctx.stroke();
+
+      const cleanGuest = config.recipientName.replace(/^hey\s+/i, "").replace(/✨/g, "").trim() || "VIP Guest";
+      drawTicketField(ctx, "VIP GUEST", cleanGuest, pad + 30, pad + 105, pal);
+      drawTicketField(ctx, "HOST", config.senderName || "Yours Truly", width / 2 + 20, pad + 105, pal);
+      drawTicketField(ctx, "DATE VIBE", stripEmojiPrefix(selectedVibe), pad + 30, pad + 175, pal);
+      drawTicketField(ctx, "DATE & TIME", stripEmojiPrefix(selectedDay), width / 2 + 20, pad + 175, pal);
+
+      ctx.beginPath();
+      ctx.moveTo(pad + 28, height - pad - 68);
+      ctx.lineTo(width - pad - 28, height - pad - 68);
+      ctx.stroke();
+
+      ctx.fillStyle = pal.text;
+      let bx = pad + 30;
+      for (let i = 0; i < 42; i++) {
+        const bw = (i % 3 === 0) ? 4 : 2;
+        ctx.fillRect(bx, height - pad - 52, bw, 28);
+        bx += bw + ((i % 2 === 0) ? 4 : 3);
+      }
+
+      ctx.fillStyle = pal.accent;
+      ctx.font = "bold 18px sans-serif";
+      ctx.textAlign = "right";
+      ctx.fillText("ADMIT ONE • CONFIRMED ✓", width - pad - 30, height - pad - 32);
+
+      const link = document.createElement("a");
+      link.download = `Official-Date-Pass-${cleanGuest.replace(/\s+/g, "-")}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+      showToast("Date Pass PNG downloaded! 🎟️");
+    });
+
+    function drawTicketField(ctx, label, value, x, y, pal) {
+      ctx.fillStyle = pal.muted;
+      ctx.font = "bold 11px sans-serif";
+      ctx.fillText(label, x, y);
+      ctx.fillStyle = pal.text;
+      ctx.font = "bold 20px sans-serif";
+      const truncated = value.length > 22 ? value.slice(0, 21) + "…" : value;
+      ctx.fillText(truncated, x, y + 25);
+    }
+
+    function stripEmojiPrefix(str) {
+      return str.replace(/^[\p{Emoji}\p{Extended_Pictographic}\s]+/u, "").trim() || str;
+    }
+
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+
+    function launchConfettiBurst() {
+      const canvas = document.getElementById("confettiCanvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const colors = ["#ff4d79", "#ff8fa3", "#fbbf24", "#a855f7", "#34d399", "#60a5fa"];
+      const particles = [];
+
+      for (let i = 0; i < 130; i++) {
+        particles.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2 + 20,
+          vx: (Math.random() - 0.5) * 18,
+          vy: (Math.random() - 0.75) * 18,
+          size: 6 + Math.random() * 7,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          isHeart: Math.random() > 0.45,
+          rotation: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.2,
+          alpha: 1
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let alive = false;
+
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.38;
+          p.vx *= 0.98;
+          p.rotation += p.rotSpeed;
+          p.alpha -= 0.011;
+
+          if (p.alpha > 0) {
+            alive = true;
+            ctx.save();
+            ctx.globalAlpha = Math.max(0, p.alpha);
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rotation);
+            ctx.fillStyle = p.color;
+
+            if (p.isHeart) {
+              const s = p.size * 0.6;
+              ctx.beginPath();
+              ctx.moveTo(0, s);
+              ctx.bezierCurveTo(-s * 2, -s, -s, -s * 2.2, 0, -s * 0.7);
+              ctx.bezierCurveTo(s, -s * 2.2, s * 2, -s, 0, s);
+              ctx.fill();
+            } else {
+              ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+            }
+            ctx.restore();
+          }
+        });
+
+        if (alive) requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+    const drawerOverlay = document.getElementById("drawerOverlay");
+    const customizerDrawer = document.getElementById("customizerDrawer");
+    const cfgRecipient = document.getElementById("cfgRecipient");
+    const cfgSender = document.getElementById("cfgSender");
+    const cfgQuestion = document.getElementById("cfgQuestion");
+    const cfgSubtext = document.getElementById("cfgSubtext");
+    const cfgVibes = document.getElementById("cfgVibes");
+    const cfgDays = document.getElementById("cfgDays");
+
+    function openDrawer() {
+      cfgRecipient.value = config.recipientName;
+      cfgSender.value = config.senderName;
+      cfgQuestion.value = config.mainQuestion;
+      cfgSubtext.value = config.subText;
+      cfgVibes.value = config.dateVibes.join(", ");
+      cfgDays.value = config.dayOptions.join(", ");
+      drawerOverlay.classList.add("open");
+      customizerDrawer.classList.add("open");
+    }
+
+    function closeDrawer() {
+      drawerOverlay.classList.remove("open");
+      customizerDrawer.classList.remove("open");
+    }
+
+    function syncConfigFromInputs() {
+      config.recipientName = cfgRecipient.value.trim() || "Hey Cutie";
+      config.senderName = cfgSender.value.trim() || "Me";
+      config.mainQuestion = cfgQuestion.value.trim() || "Will you go on a date with me?";
+      config.subText = cfgSubtext.value.trim() || "";
+      const vList = cfgVibes.value.split(",").map(s => s.trim()).filter(Boolean);
+      if (vList.length) config.dateVibes = vList;
+      const dList = cfgDays.value.split(",").map(s => s.trim()).filter(Boolean);
+      if (dList.length) config.dayOptions = dList;
+      renderApp();
+    }
+
+    customizeBtn.addEventListener("click", openDrawer);
+    document.getElementById("closeDrawerBtn").addEventListener("click", closeDrawer);
+    drawerOverlay.addEventListener("click", closeDrawer);
+
+    [cfgRecipient, cfgSender, cfgQuestion, cfgSubtext, cfgVibes, cfgDays].forEach(el => {
+      el.addEventListener("input", syncConfigFromInputs);
+    });
+
+    document.querySelectorAll(".swatch-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        applyTheme(btn.dataset.themeChoice);
+      });
+    });
+
+    document.getElementById("copyShareLinkBtn").addEventListener("click", () => {
+      syncConfigFromInputs();
+      const url = new URL(window.location.href.split("?")[0]);
+      url.searchParams.set("to", config.recipientName);
+      url.searchParams.set("from", config.senderName);
+      url.searchParams.set("q", config.mainQuestion);
+      url.searchParams.set("sub", config.subText);
+      url.searchParams.set("theme", config.theme);
+      url.searchParams.set("vibes", config.dateVibes.join("|"));
+      url.searchParams.set("days", config.dayOptions.join("|"));
+      url.searchParams.set("shared", "1");
+
+      copyTextToClipboard(url.toString(), "Shareable link copied! Customize button is hidden for her 🔗");
+    });
+
+    document.getElementById("downloadHtmlBtn").addEventListener("click", () => {
+      syncConfigFromInputs();
+      const rawHtml = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      const serializedConfig = JSON.stringify(config, null, 6);
+      const updatedHtml = rawHtml.replace(
+        /const DEFAULT_CONFIG = \{[\s\S]*?\n    \};/,
+        `const DEFAULT_CONFIG = ${serializedConfig};`
+      );
+
+      const blob = new Blob([updatedHtml], { type: "text/html;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "index.html";
+      link.click();
+      URL.revokeObjectURL(link.href);
+      showToast("Custom index.html downloaded! Ready for GitHub Pages 🚀");
+    });
+
+    function copyTextToClipboard(text, successMsg) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast(successMsg));
+      } else {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        showToast(successMsg);
+      }
+    }
+
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 3200);
+    }
+
+    loadConfigFromURL();
+    initBackgroundParticles();
+    renderApp();
+  </script>
+</body>
+</html>
