@@ -10,16 +10,16 @@
   <style>
     :root {
       --bg-gradient: linear-gradient(135deg, #ffe4ec 0%, #ffc2d4 45%, #ffb3c6 100%);
-      --card-bg: rgba(255, 255, 255, 0.76);
-      --card-border: rgba(255, 255, 255, 0.9);
+      --card-bg: rgba(255, 255, 255, 0.78);
+      --card-border: rgba(255, 255, 255, 0.92);
       --text-main: #3d1c2a;
       --text-muted: #7a495c;
       --primary: #ff4d79;
       --primary-hover: #e63965;
       --primary-glow: rgba(255, 77, 121, 0.42);
-      --secondary-bg: rgba(255, 255, 255, 0.88);
+      --secondary-bg: rgba(255, 255, 255, 0.9);
       --secondary-text: #7a495c;
-      --pill-bg: rgba(255, 255, 255, 0.7);
+      --pill-bg: rgba(255, 255, 255, 0.72);
       --pill-active-bg: #ff4d79;
       --pill-active-text: #ffffff;
       --ticket-bg: #ffffff;
@@ -30,7 +30,7 @@
 
     [data-theme="purple"] {
       --bg-gradient: linear-gradient(135deg, #161129 0%, #271c47 50%, #3b2463 100%);
-      --card-bg: rgba(34, 25, 61, 0.78);
+      --card-bg: rgba(34, 25, 61, 0.8);
       --card-border: rgba(183, 148, 244, 0.3);
       --text-main: #f7f3ff;
       --text-muted: #cbbbe8;
@@ -50,16 +50,16 @@
 
     [data-theme="peach"] {
       --bg-gradient: linear-gradient(135deg, #fff1e6 0%, #ffd6ba 50%, #ffb5a7 100%);
-      --card-bg: rgba(255, 255, 255, 0.78);
-      --card-border: rgba(255, 255, 255, 0.9);
+      --card-bg: rgba(255, 255, 255, 0.8);
+      --card-border: rgba(255, 255, 255, 0.92);
       --text-main: #4a2518;
       --text-muted: #87523e;
       --primary: #f96d4b;
       --primary-hover: #e55836;
       --primary-glow: rgba(249, 109, 75, 0.45);
-      --secondary-bg: rgba(255, 255, 255, 0.88);
+      --secondary-bg: rgba(255, 255, 255, 0.9);
       --secondary-text: #87523e;
-      --pill-bg: rgba(255, 255, 255, 0.7);
+      --pill-bg: rgba(255, 255, 255, 0.72);
       --pill-active-bg: #f96d4b;
       --pill-active-text: #ffffff;
       --ticket-bg: #ffffff;
@@ -70,16 +70,16 @@
 
     [data-theme="matcha"] {
       --bg-gradient: linear-gradient(135deg, #eef6eb 0%, #d4e8cd 50%, #b5d6aa 100%);
-      --card-bg: rgba(255, 255, 255, 0.8);
-      --card-border: rgba(255, 255, 255, 0.92);
+      --card-bg: rgba(255, 255, 255, 0.82);
+      --card-border: rgba(255, 255, 255, 0.94);
       --text-main: #1f3623;
       --text-muted: #4b6e52;
       --primary: #4e945b;
       --primary-hover: #3d7a49;
       --primary-glow: rgba(78, 148, 91, 0.42);
-      --secondary-bg: rgba(255, 255, 255, 0.88);
+      --secondary-bg: rgba(255, 255, 255, 0.9);
       --secondary-text: #4b6e52;
-      --pill-bg: rgba(255, 255, 255, 0.7);
+      --pill-bg: rgba(255, 255, 255, 0.72);
       --pill-active-bg: #4e945b;
       --pill-active-text: #ffffff;
       --ticket-bg: #ffffff;
@@ -189,8 +189,8 @@
     }
 
     .mascot-wrapper {
-      width: 142px;
-      height: 142px;
+      width: 140px;
+      height: 140px;
       margin: 0 auto 10px;
       position: relative;
       cursor: pointer;
@@ -550,13 +550,13 @@
 
     .note-input {
       width: 100%;
-      padding: 10px 13px;
+      padding: 11px 13px;
       border-radius: 14px;
       border: 1.5px solid var(--card-border);
       background: var(--pill-bg);
       color: var(--text-main);
       font-family: inherit;
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       margin-bottom: 14px;
     }
 
@@ -676,13 +676,14 @@
     }
 
     .delivery-status {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      color: #16a34a;
-      background: rgba(22, 163, 74, 0.12);
-      padding: 6px 12px;
+      color: #15803d;
+      background: rgba(22, 163, 74, 0.14);
+      border: 1px solid rgba(22, 163, 74, 0.28);
+      padding: 8px 14px;
       border-radius: 999px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       display: none;
     }
 
@@ -701,33 +702,33 @@
       padding: 13px 16px;
       border-radius: 16px;
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       cursor: pointer;
       border: none;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
     }
 
-    .btn-action:hover {
+    .btn-action:hover:not(:disabled) {
       transform: translateY(-2px);
     }
 
-    .btn-whatsapp {
-      background: #25D366;
-      color: #ffffff;
-      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+    .btn-action:disabled {
+      opacity: 0.7;
+      cursor: wait;
     }
 
-    .btn-copy-reply {
+    .btn-primary-send {
       background: var(--primary);
-      color: #fff;
-      box-shadow: 0 6px 20px var(--primary-glow);
+      color: #ffffff;
+      box-shadow: 0 8px 22px var(--primary-glow);
+      font-size: 1rem;
     }
 
-    .btn-download-pass {
+    .btn-secondary-act {
       background: var(--secondary-bg);
       color: var(--text-main);
       border: 1.5px solid var(--card-border);
@@ -760,7 +761,7 @@
       top: 0;
       right: -100%;
       width: 100%;
-      max-width: 390px;
+      max-width: 400px;
       height: 100dvh;
       background: #ffffff;
       color: #1f2937;
@@ -779,7 +780,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       padding-bottom: 12px;
       border-bottom: 1px solid #e5e7eb;
     }
@@ -794,8 +795,18 @@
       cursor: pointer;
     }
 
+    .drawer-section-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: #ff4d79;
+      margin: 14px 0 8px;
+      text-align: left;
+    }
+
     .form-group {
-      margin-bottom: 13px;
+      margin-bottom: 12px;
       text-align: left;
     }
 
@@ -821,7 +832,7 @@
       border: 1.5px solid #d1d5db;
       border-radius: 12px;
       font-family: inherit;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: #111827;
       transition: border-color 0.2s;
     }
@@ -1002,11 +1013,11 @@
       </div>
     </section>
 
-    <!-- SCREEN 2: INTERACTIVE CALENDAR & DIRECT REPLY -->
+    <!-- SCREEN 2: INTERACTIVE CALENDAR & FORMSPREE DIRECT REPLY -->
     <section id="celebrationScreen" class="screen">
       <div class="recipient-tag">AWESOME!! IT'S A PLAN 🎉</div>
-      <h2 class="main-question">Can't Wait to Catch Up! 😄</h2>
-      <p class="sub-text" style="margin-bottom: 10px;">Pick a date & vibe below, then send your reply straight to me:</p>
+      <h2 id="celebrationTitleDisplay" class="main-question">Can't Wait to Catch Up! 😄</h2>
+      <p id="celebrationSubtextDisplay" class="sub-text" style="margin-bottom: 10px;">Pick a date on the calendar, choose the vibe, and hit send below:</p>
 
       <div class="planner-section">
         <label class="planner-label">1. Pick a Date on the Calendar 📅</label>
@@ -1028,8 +1039,8 @@
         <label class="planner-label">3. Hangout Vibe ✨</label>
         <div id="vibeOptionsContainer" class="pill-grid"></div>
 
-        <label class="planner-label" for="customNoteInput">4. Optional Note / Spot Suggestion 💬</label>
-        <input type="text" id="customNoteInput" class="note-input" placeholder="e.g., Let's meet at 5 PM near..." />
+        <label class="planner-label" for="customNoteInput">4. Your Reply / Spot Suggestion 💬</label>
+        <input type="text" id="customNoteInput" class="note-input" placeholder="Write a message or spot idea (e.g., 5 PM at Cafe)..." />
       </div>
 
       <!-- Official Meetup Pass Ticket -->
@@ -1045,7 +1056,7 @@
           </div>
           <div style="text-align: right;">
             <div class="ticket-field-label">Host</div>
-            <div id="ticketHost" class="ticket-field-val">Me</div>
+            <div id="ticketHost" class="ticket-field-val">Prahashik</div>
           </div>
         </div>
         <div class="ticket-row" style="margin-top: 8px;">
@@ -1064,17 +1075,17 @@
         </div>
       </div>
 
-      <div id="webhookStatusBadge" class="delivery-status">✓ Notified directly in background!</div>
+      <div id="webhookStatusBadge" class="delivery-status">✓ Sent directly!</div>
 
       <div class="celebration-actions">
-        <button id="sendWhatsappBtn" class="btn-action btn-whatsapp">
-          💬 Send Reply Directly on WhatsApp
+        <button id="confirmSendReplyBtn" class="btn-action btn-primary-send">
+          💌 Confirm & Send Reply Directly
         </button>
         <div class="action-row-split">
-          <button id="copyReplyBtn" class="btn-action btn-copy-reply">
+          <button id="copyReplyBtn" class="btn-action btn-secondary-act">
             📋 Copy Reply
           </button>
-          <button id="downloadPassBtn" class="btn-action btn-download-pass">
+          <button id="downloadPassBtn" class="btn-action btn-secondary-act">
             🎟️ Save Pass PNG
           </button>
         </div>
@@ -1084,19 +1095,26 @@
     <!-- SCREEN 3: RESPECTFUL "NO" AFTER 3 TRIES -->
     <section id="noScreen" class="screen">
       <div class="recipient-tag">ALL GOOD! 🧸</div>
-      <h2 class="main-question">No Worries at All! 😊</h2>
-      <p class="sub-text">
-        You used all 3 "No" dodges, so I'll take the hint respectfully! Whenever you're free or feel like catching up later, just let me know.
+      <h2 id="noScreenTitleDisplay" class="main-question">No Worries at All! 😊</h2>
+      <p id="noScreenSubtextDisplay" class="sub-text">
+        You used all 3 "No" dodges, so I'll take the hint respectfully! Drop a quick note below if you'd like to take a raincheck for later.
       </p>
+
+      <div class="planner-section">
+        <label class="planner-label" for="noNoteInput">Optional Reply / Raincheck Note 💬</label>
+        <input type="text" id="noNoteInput" class="note-input" placeholder="e.g., Busy this week, let's plan next month!" />
+      </div>
+
       <div id="noWebhookStatusBadge" class="delivery-status">✓ Raincheck sent directly!</div>
-      <div class="celebration-actions" style="margin-top: 14px;">
-        <button id="sendNoWhatsappBtn" class="btn-action btn-whatsapp">
-          💬 Send Raincheck on WhatsApp
+
+      <div class="celebration-actions">
+        <button id="sendNoReplyBtn" class="btn-action btn-primary-send">
+          💌 Send Raincheck Reply Directly
         </button>
-        <button id="copyNoReplyBtn" class="btn-action btn-download-pass">
+        <button id="copyNoReplyBtn" class="btn-action btn-secondary-act">
           📋 Copy Raincheck Text
         </button>
-        <button id="reconsiderBtn" class="btn-action btn-copy-reply">
+        <button id="reconsiderBtn" class="btn-action btn-secondary-act">
           Wait, I changed my mind! Pick a date 📅
         </button>
       </div>
@@ -1107,10 +1125,11 @@
   <div id="drawerOverlay" class="drawer-overlay"></div>
   <aside id="customizerDrawer" class="customizer-drawer" aria-label="Customize Invite Drawer">
     <div class="drawer-header">
-      <h3 style="font-size: 1.2rem;">Customize Meetup Invite ✨</h3>
+      <h3 style="font-size: 1.2rem;">Customize Everything ✨</h3>
       <button id="closeDrawerBtn" class="drawer-close" aria-label="Close">✕</button>
     </div>
 
+    <div class="drawer-section-title">1. Theme & Direct Reply (Formspree)</div>
     <div class="form-group">
       <label>Color Theme</label>
       <div class="theme-swatches">
@@ -1122,25 +1141,20 @@
     </div>
 
     <div class="form-group">
-      <label for="cfgWhatsapp">Your WhatsApp Number (with country code)</label>
-      <input type="tel" id="cfgWhatsapp" placeholder="e.g., 919876543210" />
-      <small>Opens WhatsApp directly to your chat with her reply pre-filled!</small>
+      <label for="cfgWebhook">Formspree Endpoint URL (or Web3Forms Key)</label>
+      <input type="text" id="cfgWebhook" placeholder="https://formspree.io/f/yourFormId" />
+      <small>Delivers her selected calendar date, time, vibe & message straight to your Formspree inbox!</small>
     </div>
 
+    <div class="drawer-section-title">2. Invite Screen Text</div>
     <div class="form-group">
-      <label for="cfgWebhook">Silent Notification Key / URL (Optional)</label>
-      <input type="text" id="cfgWebhook" placeholder="Web3Forms Access Key or Formspree URL" />
-      <small>Sends her response silently to your email the instant she confirms!</small>
-    </div>
-
-    <div class="form-group">
-      <label for="cfgRecipient">Her Name / Greeting</label>
-      <input type="text" id="cfgRecipient" placeholder="Hey" />
+      <label for="cfgRecipient">Her Name / Greeting Badge</label>
+      <input type="text" id="cfgRecipient" />
     </div>
 
     <div class="form-group">
       <label for="cfgSender">Your Name</label>
-      <input type="text" id="cfgSender" placeholder="Prahashik" />
+      <input type="text" id="cfgSender" />
     </div>
 
     <div class="form-group">
@@ -1149,8 +1163,29 @@
     </div>
 
     <div class="form-group">
-      <label for="cfgSubtext">Subtext / Message</label>
+      <label for="cfgSubtext">Subtext / Description</label>
       <textarea id="cfgSubtext" rows="2"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="cfgYesBtn">"Yes" Button Label</label>
+      <input type="text" id="cfgYesBtn" />
+    </div>
+
+    <div class="form-group">
+      <label for="cfgNoBtn">"No" Button Label</label>
+      <input type="text" id="cfgNoBtn" />
+    </div>
+
+    <div class="form-group">
+      <label for="cfgNoMessages">3 Dodge Messages (separated by | )</label>
+      <textarea id="cfgNoMessages" rows="2"></textarea>
+    </div>
+
+    <div class="drawer-section-title">3. Calendar Planner & Outcomes</div>
+    <div class="form-group">
+      <label for="cfgTimes">Time Slots (comma separated)</label>
+      <input type="text" id="cfgTimes" />
     </div>
 
     <div class="form-group">
@@ -1159,8 +1194,23 @@
     </div>
 
     <div class="form-group">
-      <label for="cfgTimes">Time Slots (comma separated)</label>
-      <input type="text" id="cfgTimes" />
+      <label for="cfgCelebTitle">"Yes" Screen Heading</label>
+      <input type="text" id="cfgCelebTitle" />
+    </div>
+
+    <div class="form-group">
+      <label for="cfgCelebSub">"Yes" Screen Subtext</label>
+      <input type="text" id="cfgCelebSub" />
+    </div>
+
+    <div class="form-group">
+      <label for="cfgNoTitle">"No" Screen Heading</label>
+      <input type="text" id="cfgNoTitle" />
+    </div>
+
+    <div class="form-group">
+      <label for="cfgNoSub">"No" Screen Subtext</label>
+      <textarea id="cfgNoSub" rows="2"></textarea>
     </div>
 
     <div class="drawer-actions">
@@ -1179,10 +1229,11 @@
     const DEFAULT_CONFIG = {
       recipientName: "Hey",
       senderName: "Prahashik",
-      whatsappNumber: "",
-      webhookKey: "",
+      formspreeUrl: "",
       mainQuestion: "Let's catch up soon? ✨",
       subText: "Good coffee, great laughs, and catching up properly — pick a date on the calendar when you're free! 🙌",
+      yesButtonText: "Yes, let's meet! 🙌",
+      noButtonText: "No",
       noMessages: [
         "Wait, are you sure? 🥺 (1/3)",
         "Come on, just a quick coffee or hangout! ☕ (2/3)",
@@ -1200,6 +1251,10 @@
         "Evening 🌆",
         "Night 🌙"
       ],
+      celebrationTitle: "Can't Wait to Catch Up! 😄",
+      celebrationSubtext: "Pick a date on the calendar, choose the vibe, and hit send below:",
+      noScreenTitle: "No Worries at All! 😊",
+      noScreenSubtext: "You used all 3 \"No\" dodges, so I'll take the hint respectfully! Drop a quick note below if you'd like to take a raincheck for later.",
       theme: "rose"
     };
 
@@ -1210,7 +1265,6 @@
     let yesScale = 1;
     let selectedVibe = "";
     let selectedTime = "";
-    let lastWebhookPayload = "";
     const ticketNumber = "#MEET-" + Math.floor(1000 + Math.random() * 9000);
 
     const today = new Date();
@@ -1227,11 +1281,21 @@
         isSharedMode = true;
       }
       if (params.has("from")) config.senderName = params.get("from");
-      if (params.has("wa")) config.whatsappNumber = params.get("wa");
-      if (params.has("wh")) config.webhookKey = params.get("wh");
+      if (params.has("fs")) config.formspreeUrl = params.get("fs");
+      if (params.has("wh")) config.formspreeUrl = params.get("wh");
       if (params.has("q")) config.mainQuestion = params.get("q");
       if (params.has("sub")) config.subText = params.get("sub");
+      if (params.has("yes")) config.yesButtonText = params.get("yes");
+      if (params.has("no")) config.noButtonText = params.get("no");
       if (params.has("theme")) config.theme = params.get("theme");
+      if (params.has("ct")) config.celebrationTitle = params.get("ct");
+      if (params.has("cs")) config.celebrationSubtext = params.get("cs");
+      if (params.has("nt")) config.noScreenTitle = params.get("nt");
+      if (params.has("ns")) config.noScreenSubtext = params.get("ns");
+      if (params.has("nomsg")) {
+        const parsedNo = params.get("nomsg").split("|").map(s => s.trim()).filter(Boolean);
+        if (parsedNo.length) config.noMessages = parsedNo;
+      }
       if (params.has("vibes")) {
         const parsedVibes = params.get("vibes").split("|").map(s => s.trim()).filter(Boolean);
         if (parsedVibes.length) config.hangoutVibes = parsedVibes;
@@ -1268,6 +1332,7 @@
     const vibeOptionsContainer = document.getElementById("vibeOptionsContainer");
     const timeOptionsContainer = document.getElementById("timeOptionsContainer");
     const customNoteInput = document.getElementById("customNoteInput");
+    const noNoteInput = document.getElementById("noNoteInput");
 
     const ticketCode = document.getElementById("ticketCode");
     const ticketGuest = document.getElementById("ticketGuest");
@@ -1301,6 +1366,16 @@
         : `${config.recipientName} ✨`;
       mainQuestionText.textContent = config.mainQuestion;
       subTextDisplay.textContent = config.subText;
+      yesBtn.textContent = config.yesButtonText;
+      if (noDodgeCount < MAX_NO_DODGES) {
+        noBtn.textContent = config.noButtonText;
+      }
+
+      document.getElementById("celebrationTitleDisplay").textContent = config.celebrationTitle;
+      document.getElementById("celebrationSubtextDisplay").textContent = config.celebrationSubtext;
+      document.getElementById("noScreenTitleDisplay").textContent = config.noScreenTitle;
+      document.getElementById("noScreenSubtextDisplay").textContent = config.noScreenSubtext;
+      document.getElementById("confirmSendReplyBtn").textContent = `💌 Confirm & Send Reply to ${config.senderName || "Host"}`;
 
       if (!config.hangoutVibes.includes(selectedVibe)) {
         selectedVibe = config.hangoutVibes[0] || "Coffee & Cafe";
@@ -1366,7 +1441,6 @@
         setMascotMood("respectful");
         askScreen.classList.remove("active");
         noScreen.classList.add("active");
-        triggerSilentWebhook("RAINCHECK (NO)", buildNoReplyMessage());
         return;
       }
 
@@ -1381,10 +1455,10 @@
       const remaining = MAX_NO_DODGES - noDodgeCount;
 
       if (remaining > 0) {
-        strikeCounter.textContent = `${remaining} dodge${remaining === 1 ? "" : "s"} left before "No" unlocks`;
+        strikeCounter.textContent = `${remaining} dodge${remaining === 1 ? "" : "s"} left before "${config.noButtonText}" unlocks`;
       } else {
-        strikeCounter.textContent = `"No" is now unlocked if you really mean it 🥺`;
-        noBtn.textContent = "Okay, No 😔";
+        strikeCounter.textContent = `"${config.noButtonText}" is now unlocked if you really mean it 🥺`;
+        noBtn.textContent = `Okay, ${config.noButtonText} 😔`;
         noBtn.classList.add("final-no");
       }
 
@@ -1421,7 +1495,7 @@
     noBtn.addEventListener("click", handleNoInteraction);
 
     /* ==========================================================================
-       SCREEN TRANSITIONS & SILENT WEBHOOK NOTIFICATION
+       SCREEN TRANSITIONS & FORMSPREE DIRECT REPLY SUBMISSION
        ========================================================================== */
     function openCelebrationScreen() {
       noBtn.style.display = "none";
@@ -1430,7 +1504,6 @@
       noScreen.classList.remove("active");
       celebrationScreen.classList.add("active");
       launchConfettiBurst();
-      triggerSilentWebhook("ACCEPTED (YES)", buildYesReplyMessage());
     }
 
     yesBtn.addEventListener("click", openCelebrationScreen);
@@ -1441,95 +1514,109 @@
       const note = customNoteInput.value.trim();
       let msg =
         `I'M IN! Let's catch up! 🙌✨\n` +
-        `🎟️ Meetup Pass ${ticketNumber}\n` +
-        `📅 Date: ${formattedDate} (${selectedTime})\n` +
-        `☕ Plan: ${selectedVibe}`;
-      if (note) msg += `\n💬 Note: ${note}`;
-      msg += `\nSee you then! 😊`;
+        `🎟️ Meetup Pass: ${ticketNumber}\n` +
+        `📅 Calendar Date: ${formattedDate}\n` +
+        `⏰ Time: ${selectedTime}\n` +
+        `☕ Hangout Vibe: ${selectedVibe}`;
+      if (note) msg += `\n💬 Her Reply / Note: ${note}`;
       return msg;
     }
 
     function buildNoReplyMessage() {
-      return `Hey ${config.senderName || ""}! Can't make it right now, let's definitely take a raincheck and catch up soon! 😊🙌`;
+      const note = noNoteInput.value.trim();
+      let msg = `Hey ${config.senderName || ""}! Taking a raincheck for now 😊🙌`;
+      if (note) msg += `\n💬 Her Note: ${note}`;
+      return msg;
     }
 
-    function openWhatsAppWithText(message) {
-      const cleanPhone = (config.whatsappNumber || "").replace(/[^\d]/g, "");
-      const encoded = encodeURIComponent(message);
-      const waUrl = cleanPhone
-        ? `https://wa.me/${cleanPhone}?text=${encoded}`
-        : `https://api.whatsapp.com/send?text=${encoded}`;
-      window.open(waUrl, "_blank", "noopener,noreferrer");
-    }
-
-    async function triggerSilentWebhook(statusLabel, fullMessage) {
-      const key = (config.webhookKey || "").trim();
-      if (!key) return;
-
-      const payloadSignature = `${statusLabel}|${fullMessage}`;
-      if (payloadSignature === lastWebhookPayload) return;
-      lastWebhookPayload = payloadSignature;
+    async function sendFormspreeReply(statusLabel, fullMessage, triggerBtn, badgeId) {
+      const endpointRaw = (config.formspreeUrl || "").trim();
+      if (!endpointRaw) {
+        copyTextToClipboard(fullMessage, "Reply copied! (Add your Formspree URL in Customize ⚙️ for direct delivery)");
+        return;
+      }
 
       const cleanGuest = config.recipientName.replace(/^hey\s+/i, "").replace(/✨/g, "").trim() || "Friend";
-      const isFullUrl = /^https?:\/\//i.test(key);
-      const endpoint = isFullUrl ? key : "https://api.web3forms.com/submit";
+      const isFullUrl = /^https?:\/\//i.test(endpointRaw);
+      const endpoint = isFullUrl ? endpointRaw : "https://api.web3forms.com/submit";
+
+      const isYes = statusLabel.startsWith("ACCEPTED");
+      const formattedCalDate = isYes ? formatSelectedDate(selectedDate) : "Not selected (Raincheck)";
+      const chosenTime = isYes ? selectedTime : "N/A";
+      const chosenVibe = isYes ? selectedVibe : "N/A";
+      const herNote = isYes ? (customNoteInput.value.trim() || "(No extra note)") : (noNoteInput.value.trim() || "(No extra note)");
 
       const payload = isFullUrl
         ? {
-            status: statusLabel,
-            guest: cleanGuest,
-            host: config.senderName,
-            date: formatSelectedDate(selectedDate),
-            time: selectedTime,
-            vibe: selectedVibe,
-            note: customNoteInput.value.trim(),
-            ticket: ticketNumber,
-            message: fullMessage
+            _subject: `Meetup Reply from ${cleanGuest}: ${statusLabel} (${formattedCalDate})`,
+            Status: statusLabel,
+            Guest: cleanGuest,
+            Calendar_Date: formattedCalDate,
+            Preferred_Time: chosenTime,
+            Hangout_Vibe: chosenVibe,
+            Her_Reply_Note: herNote,
+            Ticket_ID: ticketNumber,
+            Full_Summary: fullMessage
           }
         : {
-            access_key: key,
-            subject: `Meetup Reply from ${cleanGuest}: ${statusLabel}`,
+            access_key: endpointRaw,
+            subject: `Meetup Reply from ${cleanGuest}: ${statusLabel} (${formattedCalDate})`,
             from_name: cleanGuest,
+            Status: statusLabel,
+            Calendar_Date: formattedCalDate,
+            Preferred_Time: chosenTime,
+            Hangout_Vibe: chosenVibe,
+            Her_Reply_Note: herNote,
             message: fullMessage
           };
+
+      const originalBtnText = triggerBtn.textContent;
+      triggerBtn.disabled = true;
+      triggerBtn.textContent = "Sending reply... ⏳";
 
       try {
         const res = await fetch(endpoint, {
           method: "POST",
-          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
           body: JSON.stringify(payload)
         });
+
         if (res.ok) {
-          const badgeId = statusLabel.startsWith("ACCEPTED") ? "webhookStatusBadge" : "noWebhookStatusBadge";
           const badge = document.getElementById(badgeId);
-          badge.textContent = `✓ Sent directly to ${config.senderName || "host"}!`;
+          badge.textContent = isYes
+            ? `✓ Sent! (${formattedCalDate} • ${stripEmojiPrefix(chosenTime)}) delivered to ${config.senderName || "host"}!`
+            : `✓ Raincheck reply delivered to ${config.senderName || "host"}!`;
           badge.classList.add("visible");
+          triggerBtn.textContent = "✅ Reply Sent Successfully!";
+          showToast(`Reply & calendar date sent directly to ${config.senderName || "host"}! 💌`);
+        } else {
+          throw new Error("Submission failed");
         }
       } catch (err) {
-        // Silent fallback: WhatsApp & Copy buttons remain active
+        triggerBtn.textContent = originalBtnText;
+        copyTextToClipboard(fullMessage, "Couldn't reach server — reply copied to clipboard instead! 📋");
+      } finally {
+        triggerBtn.disabled = false;
       }
     }
 
-    document.getElementById("sendWhatsappBtn").addEventListener("click", () => {
-      const msg = buildYesReplyMessage();
-      triggerSilentWebhook("ACCEPTED (YES)", msg);
-      openWhatsAppWithText(msg);
+    document.getElementById("confirmSendReplyBtn").addEventListener("click", (e) => {
+      sendFormspreeReply("ACCEPTED (YES)", buildYesReplyMessage(), e.currentTarget, "webhookStatusBadge");
     });
 
-    document.getElementById("sendNoWhatsappBtn").addEventListener("click", () => {
-      const msg = buildNoReplyMessage();
-      triggerSilentWebhook("RAINCHECK (NO)", msg);
-      openWhatsAppWithText(msg);
+    document.getElementById("sendNoReplyBtn").addEventListener("click", (e) => {
+      sendFormspreeReply("RAINCHECK (NO)", buildNoReplyMessage(), e.currentTarget, "noWebhookStatusBadge");
     });
 
     document.getElementById("copyReplyBtn").addEventListener("click", () => {
-      const msg = buildYesReplyMessage();
-      triggerSilentWebhook("ACCEPTED (YES)", msg);
-      copyTextToClipboard(msg, "Reply copied! Paste it in our chat 💌");
+      copyTextToClipboard(buildYesReplyMessage(), "Reply & calendar date copied! 📋");
     });
 
     document.getElementById("copyNoReplyBtn").addEventListener("click", () => {
-      copyTextToClipboard(buildNoReplyMessage(), "Raincheck message copied! 💬");
+      copyTextToClipboard(buildNoReplyMessage(), "Raincheck message copied! 📋");
     });
 
     /* ==========================================================================
@@ -1645,7 +1732,7 @@
       const cleanGuest = config.recipientName.replace(/^hey\s+/i, "").replace(/✨/g, "").trim() || "Friend";
       ticketCode.textContent = ticketNumber;
       ticketGuest.textContent = cleanGuest;
-      ticketHost.textContent = config.senderName || "Me";
+      ticketHost.textContent = config.senderName || "Prahashik";
       ticketDay.textContent = `${formatSelectedDate(selectedDate)} (${stripEmojiPrefix(selectedTime)})`;
       ticketVibe.textContent = selectedVibe;
     }
@@ -1724,7 +1811,7 @@
       const cleanGuest = config.recipientName.replace(/^hey\s+/i, "").replace(/✨/g, "").trim() || "Friend";
       const dateAndTime = `${formatSelectedDate(selectedDate)} (${stripEmojiPrefix(selectedTime)})`;
       drawTicketField(ctx, "GUEST", cleanGuest, pad + 30, pad + 105, pal);
-      drawTicketField(ctx, "HOST", config.senderName || "Me", width / 2 + 30, pad + 105, pal);
+      drawTicketField(ctx, "HOST", config.senderName || "Prahashik", width / 2 + 30, pad + 105, pal);
       drawTicketField(ctx, "DATE & TIME", dateAndTime, pad + 30, pad + 175, pal);
       drawTicketField(ctx, "HANGOUT PLAN", stripEmojiPrefix(selectedVibe), width / 2 + 30, pad + 175, pal);
 
@@ -1839,28 +1926,42 @@
     }
 
     /* ==========================================================================
-       CUSTOMIZER DRAWER
+       FULL CUSTOMIZER DRAWER
        ========================================================================== */
     const drawerOverlay = document.getElementById("drawerOverlay");
     const customizerDrawer = document.getElementById("customizerDrawer");
-    const cfgWhatsapp = document.getElementById("cfgWhatsapp");
+
     const cfgWebhook = document.getElementById("cfgWebhook");
     const cfgRecipient = document.getElementById("cfgRecipient");
     const cfgSender = document.getElementById("cfgSender");
     const cfgQuestion = document.getElementById("cfgQuestion");
     const cfgSubtext = document.getElementById("cfgSubtext");
-    const cfgVibes = document.getElementById("cfgVibes");
+    const cfgYesBtn = document.getElementById("cfgYesBtn");
+    const cfgNoBtn = document.getElementById("cfgNoBtn");
+    const cfgNoMessages = document.getElementById("cfgNoMessages");
     const cfgTimes = document.getElementById("cfgTimes");
+    const cfgVibes = document.getElementById("cfgVibes");
+    const cfgCelebTitle = document.getElementById("cfgCelebTitle");
+    const cfgCelebSub = document.getElementById("cfgCelebSub");
+    const cfgNoTitle = document.getElementById("cfgNoTitle");
+    const cfgNoSub = document.getElementById("cfgNoSub");
 
     function openDrawer() {
-      cfgWhatsapp.value = config.whatsappNumber;
-      cfgWebhook.value = config.webhookKey;
+      cfgWebhook.value = config.formspreeUrl;
       cfgRecipient.value = config.recipientName;
       cfgSender.value = config.senderName;
       cfgQuestion.value = config.mainQuestion;
       cfgSubtext.value = config.subText;
-      cfgVibes.value = config.hangoutVibes.join(", ");
+      cfgYesBtn.value = config.yesButtonText;
+      cfgNoBtn.value = config.noButtonText;
+      cfgNoMessages.value = config.noMessages.join(" | ");
       cfgTimes.value = config.timeOptions.join(", ");
+      cfgVibes.value = config.hangoutVibes.join(", ");
+      cfgCelebTitle.value = config.celebrationTitle;
+      cfgCelebSub.value = config.celebrationSubtext;
+      cfgNoTitle.value = config.noScreenTitle;
+      cfgNoSub.value = config.noScreenSubtext;
+
       drawerOverlay.classList.add("open");
       customizerDrawer.classList.add("open");
     }
@@ -1871,16 +1972,28 @@
     }
 
     function syncConfigFromInputs() {
-      config.whatsappNumber = cfgWhatsapp.value.trim();
-      config.webhookKey = cfgWebhook.value.trim();
+      config.formspreeUrl = cfgWebhook.value.trim();
       config.recipientName = cfgRecipient.value.trim() || "Hey";
       config.senderName = cfgSender.value.trim() || "Prahashik";
       config.mainQuestion = cfgQuestion.value.trim() || "Let's catch up soon? ✨";
-      config.subText = cfgSubtext.value.trim() || "";
-      const vList = cfgVibes.value.split(",").map(s => s.trim()).filter(Boolean);
-      if (vList.length) config.hangoutVibes = vList;
+      config.subText = cfgSubtext.value.trim();
+      config.yesButtonText = cfgYesBtn.value.trim() || "Yes, let's meet! 🙌";
+      config.noButtonText = cfgNoBtn.value.trim() || "No";
+
+      const noMsgList = cfgNoMessages.value.split("|").map(s => s.trim()).filter(Boolean);
+      if (noMsgList.length) config.noMessages = noMsgList;
+
       const tList = cfgTimes.value.split(",").map(s => s.trim()).filter(Boolean);
       if (tList.length) config.timeOptions = tList;
+
+      const vList = cfgVibes.value.split(",").map(s => s.trim()).filter(Boolean);
+      if (vList.length) config.hangoutVibes = vList;
+
+      config.celebrationTitle = cfgCelebTitle.value.trim() || "Can't Wait to Catch Up! 😄";
+      config.celebrationSubtext = cfgCelebSub.value.trim();
+      config.noScreenTitle = cfgNoTitle.value.trim() || "No Worries at All! 😊";
+      config.noScreenSubtext = cfgNoSub.value.trim();
+
       renderApp();
     }
 
@@ -1888,7 +2001,11 @@
     document.getElementById("closeDrawerBtn").addEventListener("click", closeDrawer);
     drawerOverlay.addEventListener("click", closeDrawer);
 
-    [cfgWhatsapp, cfgWebhook, cfgRecipient, cfgSender, cfgQuestion, cfgSubtext, cfgVibes, cfgTimes].forEach(el => {
+    [
+      cfgWebhook, cfgRecipient, cfgSender, cfgQuestion, cfgSubtext,
+      cfgYesBtn, cfgNoBtn, cfgNoMessages, cfgTimes, cfgVibes,
+      cfgCelebTitle, cfgCelebSub, cfgNoTitle, cfgNoSub
+    ].forEach(el => {
       el.addEventListener("input", syncConfigFromInputs);
     });
 
@@ -1903,16 +2020,22 @@
       const url = new URL(window.location.href.split("?")[0]);
       url.searchParams.set("to", config.recipientName);
       url.searchParams.set("from", config.senderName);
-      if (config.whatsappNumber) url.searchParams.set("wa", config.whatsappNumber);
-      if (config.webhookKey) url.searchParams.set("wh", config.webhookKey);
+      if (config.formspreeUrl) url.searchParams.set("fs", config.formspreeUrl);
       url.searchParams.set("q", config.mainQuestion);
       url.searchParams.set("sub", config.subText);
+      url.searchParams.set("yes", config.yesButtonText);
+      url.searchParams.set("no", config.noButtonText);
+      url.searchParams.set("nomsg", config.noMessages.join("|"));
       url.searchParams.set("theme", config.theme);
       url.searchParams.set("vibes", config.hangoutVibes.join("|"));
       url.searchParams.set("times", config.timeOptions.join("|"));
+      url.searchParams.set("ct", config.celebrationTitle);
+      url.searchParams.set("cs", config.celebrationSubtext);
+      url.searchParams.set("nt", config.noScreenTitle);
+      url.searchParams.set("ns", config.noScreenSubtext);
       url.searchParams.set("shared", "1");
 
-      copyTextToClipboard(url.toString(), "Shareable link copied! Customize button is hidden for her 🔗");
+      copyTextToClipboard(url.toString(), "Shareable link copied! Settings gear is hidden for her 🔗");
     });
 
     document.getElementById("downloadHtmlBtn").addEventListener("click", () => {
@@ -1930,7 +2053,7 @@
       link.download = "index.html";
       link.click();
       URL.revokeObjectURL(link.href);
-      showToast("Custom index.html downloaded! Ready for GitHub Pages 🚀");
+      showToast("Custom index.html downloaded! 🚀");
     });
 
     function copyTextToClipboard(text, successMsg) {
