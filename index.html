@@ -3,35 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Let's Catch Up Soon? ✨</title>
+  <title>A Little Surprise For You ✨</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-gradient: linear-gradient(135deg, #ffe4ec 0%, #ffc2d4 45%, #ffb3c6 100%);
-      --card-bg: rgba(255, 255, 255, 0.78);
-      --card-border: rgba(255, 255, 255, 0.92);
+      --card-bg: rgba(255, 255, 255, 0.8);
+      --card-border: rgba(255, 255, 255, 0.94);
       --text-main: #3d1c2a;
       --text-muted: #7a495c;
       --primary: #ff4d79;
       --primary-hover: #e63965;
       --primary-glow: rgba(255, 77, 121, 0.42);
-      --secondary-bg: rgba(255, 255, 255, 0.9);
+      --secondary-bg: rgba(255, 255, 255, 0.92);
       --secondary-text: #7a495c;
-      --pill-bg: rgba(255, 255, 255, 0.72);
+      --pill-bg: rgba(255, 255, 255, 0.75);
       --pill-active-bg: #ff4d79;
       --pill-active-text: #ffffff;
       --ticket-bg: #ffffff;
       --ticket-accent: #ff4d79;
       --particle-color: #ff7597;
       --cal-hover: rgba(255, 77, 121, 0.14);
+      --env-body: #fff5f8;
+      --env-flap: #ffd6e2;
     }
 
     [data-theme="purple"] {
       --bg-gradient: linear-gradient(135deg, #161129 0%, #271c47 50%, #3b2463 100%);
-      --card-bg: rgba(34, 25, 61, 0.8);
-      --card-border: rgba(183, 148, 244, 0.3);
+      --card-bg: rgba(34, 25, 61, 0.82);
+      --card-border: rgba(183, 148, 244, 0.32);
       --text-main: #f7f3ff;
       --text-muted: #cbbbe8;
       --primary: #a855f7;
@@ -46,46 +48,52 @@
       --ticket-accent: #c084fc;
       --particle-color: #c084fc;
       --cal-hover: rgba(168, 85, 247, 0.25);
+      --env-body: #2a1e4d;
+      --env-flap: #3b2a6b;
     }
 
     [data-theme="peach"] {
       --bg-gradient: linear-gradient(135deg, #fff1e6 0%, #ffd6ba 50%, #ffb5a7 100%);
-      --card-bg: rgba(255, 255, 255, 0.8);
-      --card-border: rgba(255, 255, 255, 0.92);
+      --card-bg: rgba(255, 255, 255, 0.82);
+      --card-border: rgba(255, 255, 255, 0.94);
       --text-main: #4a2518;
       --text-muted: #87523e;
       --primary: #f96d4b;
       --primary-hover: #e55836;
       --primary-glow: rgba(249, 109, 75, 0.45);
-      --secondary-bg: rgba(255, 255, 255, 0.9);
+      --secondary-bg: rgba(255, 255, 255, 0.92);
       --secondary-text: #87523e;
-      --pill-bg: rgba(255, 255, 255, 0.72);
+      --pill-bg: rgba(255, 255, 255, 0.75);
       --pill-active-bg: #f96d4b;
       --pill-active-text: #ffffff;
       --ticket-bg: #ffffff;
       --ticket-accent: #f96d4b;
       --particle-color: #ff8c6b;
       --cal-hover: rgba(249, 109, 75, 0.14);
+      --env-body: #fff7f2;
+      --env-flap: #ffe1d1;
     }
 
     [data-theme="matcha"] {
       --bg-gradient: linear-gradient(135deg, #eef6eb 0%, #d4e8cd 50%, #b5d6aa 100%);
-      --card-bg: rgba(255, 255, 255, 0.82);
-      --card-border: rgba(255, 255, 255, 0.94);
+      --card-bg: rgba(255, 255, 255, 0.84);
+      --card-border: rgba(255, 255, 255, 0.95);
       --text-main: #1f3623;
       --text-muted: #4b6e52;
       --primary: #4e945b;
       --primary-hover: #3d7a49;
       --primary-glow: rgba(78, 148, 91, 0.42);
-      --secondary-bg: rgba(255, 255, 255, 0.9);
+      --secondary-bg: rgba(255, 255, 255, 0.92);
       --secondary-text: #4b6e52;
-      --pill-bg: rgba(255, 255, 255, 0.72);
+      --pill-bg: rgba(255, 255, 255, 0.75);
       --pill-active-bg: #4e945b;
       --pill-active-text: #ffffff;
       --ticket-bg: #ffffff;
       --ticket-accent: #4e945b;
       --particle-color: #6ab578;
       --cal-hover: rgba(78, 148, 91, 0.14);
+      --env-body: #f4faf2;
+      --env-flap: #dcf0d6;
     }
 
     * {
@@ -106,6 +114,7 @@
       padding: 20px 14px;
       overflow-x: hidden;
       position: relative;
+      perspective: 1100px;
       transition: background 0.5s ease, color 0.3s ease;
     }
 
@@ -135,6 +144,21 @@
       15% { opacity: 0.55; }
       85% { opacity: 0.45; }
       100% { transform: translateY(-110vh) rotate(360deg) scale(1.15); opacity: 0; }
+    }
+
+    .burst-emoji {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1.5rem;
+      z-index: 80;
+      animation: emojiPopUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      user-select: none;
+    }
+
+    @keyframes emojiPopUp {
+      0% { transform: translate(-50%, -50%) scale(0.4) rotate(0deg); opacity: 1; }
+      60% { opacity: 1; }
+      100% { transform: translate(calc(-50% + var(--dx)), calc(-50% - 110px)) scale(1.3) rotate(var(--rot)); opacity: 0; }
     }
 
     #confettiCanvas {
@@ -172,28 +196,198 @@
       display: none !important;
     }
 
+    /* 3D Interactive Glass Card with Dynamic Sheen */
     .glass-card {
       position: relative;
       z-index: 10;
       width: 100%;
       max-width: 470px;
       background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
       border: 1.5px solid var(--card-border);
       border-radius: 32px;
       padding: 28px 22px;
       text-align: center;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
-      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 26px 65px rgba(0, 0, 0, 0.14);
+      transform-style: preserve-3d;
+      transition: transform 0.18s ease-out, box-shadow 0.3s ease;
+      overflow: hidden;
     }
 
+    .card-sheen {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.38) 0%, transparent 62%);
+      opacity: 0.7;
+      z-index: 1;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ==========================================================================
+       INTERACTIVE SEALED ENVELOPE INTRO SCREEN (IMPRESSIVE FIRST IMPRESSION)
+       ========================================================================== */
+    .envelope-stage {
+      padding: 12px 6px 6px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .envelope-box {
+      position: relative;
+      width: 260px;
+      height: 172px;
+      margin: 12px auto 22px;
+      background: var(--env-body);
+      border-radius: 18px;
+      border: 2px solid var(--card-border);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      overflow: hidden;
+    }
+
+    .envelope-stage:hover .envelope-box {
+      transform: translateY(-6px) scale(1.03);
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 98px;
+      background: var(--env-flap);
+      clip-path: polygon(0 0, 50% 88%, 100% 0);
+      transform-origin: top center;
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 3;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .envelope-box.opened .envelope-flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope-pocket {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 42%, rgba(0,0,0,0.03) 100%);
+      clip-path: polygon(0 100%, 0 38%, 50% 78%, 100% 38%, 100% 100%);
+      z-index: 2;
+    }
+
+    .envelope-letter-peek {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 14px;
+      height: 118px;
+      background: #ffffff;
+      color: #3d1c2a;
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      z-index: 1;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .envelope-box.opened .envelope-letter-peek {
+      transform: translateY(-48px);
+    }
+
+    .wax-seal {
+      position: absolute;
+      top: 56%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      z-index: 4;
+      box-shadow: 0 8px 22px var(--primary-glow), inset 0 2px 6px rgba(255,255,255,0.45);
+      animation: sealPulse 1.6s ease-in-out infinite;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+
+    .envelope-box.opened .wax-seal {
+      transform: translate(-50%, -50%) scale(1.5);
+      opacity: 0;
+    }
+
+    @keyframes sealPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .tap-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary);
+      color: #fff;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.95rem;
+      padding: 10px 22px;
+      border-radius: 999px;
+      box-shadow: 0 8px 22px var(--primary-glow);
+      animation: bounceHint 1.8s ease-in-out infinite;
+    }
+
+    @keyframes bounceHint {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    /* ==========================================================================
+       MASCOT & INTERACTIVE SPEECH BUBBLE
+       ========================================================================== */
     .mascot-wrapper {
-      width: 140px;
-      height: 140px;
-      margin: 0 auto 10px;
+      width: 138px;
+      height: 138px;
+      margin: 0 auto 8px;
       position: relative;
       cursor: pointer;
+    }
+
+    .bear-speech-bubble {
+      position: absolute;
+      top: -8px;
+      right: -24px;
+      background: #ffffff;
+      color: #3d1c2a;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 6px 11px;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      white-space: nowrap;
+      opacity: 0;
+      transform: scale(0.8) translateY(6px);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .bear-speech-bubble.show {
+      opacity: 1;
+      transform: scale(1) translateY(0);
     }
 
     .bear-svg {
@@ -202,10 +396,6 @@
       overflow: visible;
       animation: bearBob 3s ease-in-out infinite;
       transition: transform 0.25s ease;
-    }
-
-    .mascot-wrapper:hover .bear-svg {
-      transform: scale(1.06);
     }
 
     @keyframes bearBob {
@@ -264,35 +454,66 @@
     }
 
     .main-question {
-      font-size: clamp(1.6rem, 5vw, 2rem);
+      font-size: clamp(1.58rem, 5vw, 1.98rem);
       line-height: 1.2;
       margin-bottom: 8px;
       font-weight: 700;
     }
 
     .sub-text {
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       color: var(--text-muted);
       line-height: 1.5;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+    }
+
+    /* Interactive First-Page Vibe Reaction Pills */
+    .vibe-reaction-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .reaction-chip {
+      background: var(--pill-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease;
+    }
+
+    .reaction-chip:hover {
+      transform: translateY(-2px) scale(1.06);
+      background: var(--secondary-bg);
+    }
+
+    .reaction-chip:active {
+      transform: scale(0.94);
     }
 
     .plea-banner {
-      min-height: 38px;
+      min-height: 36px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 4px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .plea-text {
       background: var(--secondary-bg);
       color: var(--primary);
       font-weight: 600;
-      font-size: 0.88rem;
-      padding: 7px 15px;
+      font-size: 0.86rem;
+      padding: 6px 14px;
       border-radius: 999px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
       opacity: 0;
@@ -306,7 +527,7 @@
     }
 
     .strike-pill {
-      font-size: 0.74rem;
+      font-size: 0.73rem;
       font-weight: 700;
       color: var(--text-muted);
       opacity: 0.85;
@@ -317,7 +538,7 @@
       align-items: center;
       justify-content: center;
       gap: 16px;
-      min-height: 64px;
+      min-height: 62px;
       flex-wrap: wrap;
     }
 
@@ -927,198 +1148,238 @@
     Customize ⚙️
   </button>
 
-  <main class="glass-card">
-    <div class="mascot-wrapper" id="mascotBoop" title="Tap me!">
-      <svg id="bearMascot" class="bear-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <g id="bearHearts" style="display: none;">
-          <path class="bear-heart-float" d="M35 45 C35 37, 23 37, 23 45 C23 53, 35 61, 35 61 C35 61, 47 53, 47 45 C47 37, 35 37, 35 45 Z" fill="#ff4d79"/>
-          <path class="bear-heart-float" d="M168 40 C168 33, 158 33, 158 40 C158 47, 168 54, 168 54 C168 54, 178 47, 178 40 C178 33, 168 33, 168 40 Z" fill="#ff7597"/>
-          <path class="bear-heart-float" d="M100 18 C100 12, 91 12, 91 18 C91 24, 100 30, 100 30 C100 30, 109 24, 109 18 C109 12, 100 12, 100 18 Z" fill="#ff4d79"/>
-        </g>
+  <main id="tiltCard" class="glass-card">
+    <div class="card-sheen"></div>
+    <div class="card-inner">
 
-        <circle cx="54" cy="58" r="24" fill="#c68b59" stroke="#5c3a21" stroke-width="4"/>
-        <circle cx="54" cy="58" r="13" fill="#f3c69f"/>
-        <circle cx="146" cy="58" r="24" fill="#c68b59" stroke="#5c3a21" stroke-width="4"/>
-        <circle cx="146" cy="58" r="13" fill="#f3c69f"/>
+      <!-- SCREEN 0: INTERACTIVE SEALED VIP ENVELOPE INTRO -->
+      <section id="envelopeScreen" class="screen active">
+        <div id="envRecipientBadge" class="recipient-tag">For You ✨</div>
+        <h1 class="main-question" style="font-size: 1.65rem;">You've Got a Special Invite 💌</h1>
+        <p id="envFromText" class="sub-text" style="margin-bottom: 6px;">From Prahashik • Tap the wax seal to unseal</p>
 
-        <ellipse cx="100" cy="108" rx="64" ry="56" fill="#d99b66" stroke="#5c3a21" stroke-width="4"/>
-        <ellipse cx="100" cy="124" rx="26" ry="20" fill="#faebd7"/>
+        <div id="envelopeTrigger" class="envelope-stage" role="button" tabindex="0" aria-label="Open Invite Envelope">
+          <div id="envelopeBox" class="envelope-box">
+            <div class="envelope-flap"></div>
+            <div class="envelope-letter-peek">
+              <span>✨ VIP Meetup Pass ✨</span>
+              <span style="font-size: 0.78rem; opacity: 0.7; margin-top: 4px;">Unsealing...</span>
+            </div>
+            <div class="envelope-pocket"></div>
+            <div class="wax-seal">💌</div>
+          </div>
+          <div class="tap-hint">Tap Seal to Open ✨</div>
+        </div>
+      </section>
 
-        <ellipse cx="58" cy="116" rx="11" ry="7" fill="#ff8fa3" opacity="0.7"/>
-        <ellipse cx="142" cy="116" rx="11" ry="7" fill="#ff8fa3" opacity="0.7"/>
+      <!-- MASCOT (Shown once envelope opens) -->
+      <div id="mascotContainer" class="mascot-wrapper" style="display: none;" title="Tap me!">
+        <div id="bearSpeech" class="bear-speech-bubble">Boop! 🐾</div>
+        <svg id="bearMascot" class="bear-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <g id="bearHearts" style="display: none;">
+            <path class="bear-heart-float" d="M35 45 C35 37, 23 37, 23 45 C23 53, 35 61, 35 61 C35 61, 47 53, 47 45 C47 37, 35 37, 35 45 Z" fill="#ff4d79"/>
+            <path class="bear-heart-float" d="M168 40 C168 33, 158 33, 158 40 C158 47, 168 54, 168 54 C168 54, 178 47, 178 40 C178 33, 168 33, 168 40 Z" fill="#ff7597"/>
+            <path class="bear-heart-float" d="M100 18 C100 12, 91 12, 91 18 C91 24, 100 30, 100 30 C100 30, 109 24, 109 18 C109 12, 100 12, 100 18 Z" fill="#ff4d79"/>
+          </g>
 
-        <ellipse cx="100" cy="116" rx="8" ry="5.5" fill="#4a2c18"/>
-        <ellipse cx="98" cy="114.5" rx="2.5" ry="1.5" fill="#ffffff" opacity="0.8"/>
+          <circle cx="54" cy="58" r="24" fill="#c68b59" stroke="#5c3a21" stroke-width="4"/>
+          <circle cx="54" cy="58" r="13" fill="#f3c69f"/>
+          <circle cx="146" cy="58" r="24" fill="#c68b59" stroke="#5c3a21" stroke-width="4"/>
+          <circle cx="146" cy="58" r="13" fill="#f3c69f"/>
 
-        <g id="faceHopeful">
-          <circle cx="74" cy="96" r="7" fill="#3a2212"/>
-          <circle cx="72" cy="93.5" r="2.5" fill="#ffffff"/>
-          <circle cx="126" cy="96" r="7" fill="#3a2212"/>
-          <circle cx="124" cy="93.5" r="2.5" fill="#ffffff"/>
-          <path d="M90 128 Q100 137 110 128" fill="none" stroke="#4a2c18" stroke-width="3.5" stroke-linecap="round"/>
-        </g>
+          <ellipse cx="100" cy="108" rx="64" ry="56" fill="#d99b66" stroke="#5c3a21" stroke-width="4"/>
+          <ellipse cx="100" cy="124" rx="26" ry="20" fill="#faebd7"/>
 
-        <g id="facePleading" style="display: none;">
-          <path d="M63 83 Q74 78 83 84" fill="none" stroke="#4a2c18" stroke-width="3" stroke-linecap="round"/>
-          <path d="M137 83 Q126 78 117 84" fill="none" stroke="#4a2c18" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="74" cy="97" r="9.5" fill="#3a2212"/>
-          <circle cx="71" cy="93" r="3.8" fill="#ffffff"/>
-          <circle cx="77" cy="100" r="2" fill="#ffffff"/>
-          <circle cx="126" cy="97" r="9.5" fill="#3a2212"/>
-          <circle cx="123" cy="93" r="3.8" fill="#ffffff"/>
-          <circle cx="129" cy="100" r="2" fill="#ffffff"/>
-          <path class="tear-drop" d="M62 104 Q58 112 62 115 Q66 112 62 104 Z" fill="#60a5fa"/>
-          <path class="tear-drop" d="M138 104 Q134 112 138 115 Q142 112 138 104 Z" fill="#60a5fa" style="animation-delay: 0.5s;"/>
-          <path d="M91 133 Q100 126 109 133" fill="none" stroke="#4a2c18" stroke-width="3.2" stroke-linecap="round"/>
-        </g>
+          <ellipse cx="58" cy="116" rx="11" ry="7" fill="#ff8fa3" opacity="0.7"/>
+          <ellipse cx="142" cy="116" rx="11" ry="7" fill="#ff8fa3" opacity="0.7"/>
 
-        <g id="faceHappy" style="display: none;">
-          <path d="M65 98 Q74 87 83 98" fill="none" stroke="#3a2212" stroke-width="4" stroke-linecap="round"/>
-          <path d="M117 98 Q126 87 135 98" fill="none" stroke="#3a2212" stroke-width="4" stroke-linecap="round"/>
-          <path d="M88 126 Q100 144 112 126 Z" fill="#ff5c7c" stroke="#4a2c18" stroke-width="3" stroke-linejoin="round"/>
-        </g>
+          <ellipse cx="100" cy="116" rx="8" ry="5.5" fill="#4a2c18"/>
+          <ellipse cx="98" cy="114.5" rx="2.5" ry="1.5" fill="#ffffff" opacity="0.8"/>
 
-        <g id="faceRespectful" style="display: none;">
-          <path d="M65 86 Q74 82 82 86" fill="none" stroke="#4a2c18" stroke-width="2.8" stroke-linecap="round"/>
-          <path d="M135 86 Q126 82 118 86" fill="none" stroke="#4a2c18" stroke-width="2.8" stroke-linecap="round"/>
-          <circle cx="74" cy="97" r="6.5" fill="#3a2212"/>
-          <circle cx="72" cy="95" r="2.2" fill="#ffffff"/>
-          <circle cx="126" cy="97" r="6.5" fill="#3a2212"/>
-          <circle cx="124" cy="95" r="2.2" fill="#ffffff"/>
-          <path d="M92 130 Q100 134 108 130" fill="none" stroke="#4a2c18" stroke-width="3.2" stroke-linecap="round"/>
-        </g>
+          <!-- Hopeful Face with Cursor-Tracking Eyes -->
+          <g id="faceHopeful">
+            <g id="eyeLeftGroup">
+              <circle cx="74" cy="96" r="7" fill="#3a2212"/>
+              <circle cx="72" cy="93.5" r="2.5" fill="#ffffff"/>
+            </g>
+            <g id="eyeRightGroup">
+              <circle cx="126" cy="96" r="7" fill="#3a2212"/>
+              <circle cx="124" cy="93.5" r="2.5" fill="#ffffff"/>
+            </g>
+            <path d="M90 128 Q100 137 110 128" fill="none" stroke="#4a2c18" stroke-width="3.5" stroke-linecap="round"/>
+          </g>
 
-        <g id="bearPaws">
-          <ellipse cx="76" cy="162" rx="16" ry="12" fill="#d99b66" stroke="#5c3a21" stroke-width="3.5"/>
-          <ellipse cx="124" cy="162" rx="16" ry="12" fill="#d99b66" stroke="#5c3a21" stroke-width="3.5"/>
-          <path d="M100 154 C100 146, 88 146, 88 154 C88 162, 100 170, 100 170 C100 170, 112 162, 112 154 C112 146, 100 146, 100 154 Z" fill="#ff4d79" stroke="#5c3a21" stroke-width="2.5"/>
-        </g>
-      </svg>
+          <g id="facePleading" style="display: none;">
+            <path d="M63 83 Q74 78 83 84" fill="none" stroke="#4a2c18" stroke-width="3" stroke-linecap="round"/>
+            <path d="M137 83 Q126 78 117 84" fill="none" stroke="#4a2c18" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="74" cy="97" r="9.5" fill="#3a2212"/>
+            <circle cx="71" cy="93" r="3.8" fill="#ffffff"/>
+            <circle cx="77" cy="100" r="2" fill="#ffffff"/>
+            <circle cx="126" cy="97" r="9.5" fill="#3a2212"/>
+            <circle cx="123" cy="93" r="3.8" fill="#ffffff"/>
+            <circle cx="129" cy="100" r="2" fill="#ffffff"/>
+            <path class="tear-drop" d="M62 104 Q58 112 62 115 Q66 112 62 104 Z" fill="#60a5fa"/>
+            <path class="tear-drop" d="M138 104 Q134 112 138 115 Q142 112 138 104 Z" fill="#60a5fa" style="animation-delay: 0.5s;"/>
+            <path d="M91 133 Q100 126 109 133" fill="none" stroke="#4a2c18" stroke-width="3.2" stroke-linecap="round"/>
+          </g>
+
+          <g id="faceHappy" style="display: none;">
+            <path d="M65 98 Q74 87 83 98" fill="none" stroke="#3a2212" stroke-width="4" stroke-linecap="round"/>
+            <path d="M117 98 Q126 87 135 98" fill="none" stroke="#3a2212" stroke-width="4" stroke-linecap="round"/>
+            <path d="M88 126 Q100 144 112 126 Z" fill="#ff5c7c" stroke="#4a2c18" stroke-width="3" stroke-linejoin="round"/>
+          </g>
+
+          <g id="faceRespectful" style="display: none;">
+            <path d="M65 86 Q74 82 82 86" fill="none" stroke="#4a2c18" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M135 86 Q126 82 118 86" fill="none" stroke="#4a2c18" stroke-width="2.8" stroke-linecap="round"/>
+            <circle cx="74" cy="97" r="6.5" fill="#3a2212"/>
+            <circle cx="72" cy="95" r="2.2" fill="#ffffff"/>
+            <circle cx="126" cy="97" r="6.5" fill="#3a2212"/>
+            <circle cx="124" cy="95" r="2.2" fill="#ffffff"/>
+            <path d="M92 130 Q100 134 108 130" fill="none" stroke="#4a2c18" stroke-width="3.2" stroke-linecap="round"/>
+          </g>
+
+          <g id="bearPaws">
+            <ellipse cx="76" cy="162" rx="16" ry="12" fill="#d99b66" stroke="#5c3a21" stroke-width="3.5"/>
+            <ellipse cx="124" cy="162" rx="16" ry="12" fill="#d99b66" stroke="#5c3a21" stroke-width="3.5"/>
+            <path d="M100 154 C100 146, 88 146, 88 154 C88 162, 100 170, 100 170 C100 170, 112 162, 112 154 C112 146, 100 146, 100 154 Z" fill="#ff4d79" stroke="#5c3a21" stroke-width="2.5"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- SCREEN 1: MEETUP INVITATION -->
+      <section id="askScreen" class="screen">
+        <div id="recipientBadge" class="recipient-tag">Hey ✨</div>
+        <h1 id="mainQuestionText" class="main-question">Let's catch up soon? ✨</h1>
+        <p id="subTextDisplay" class="sub-text">Good coffee, great laughs, and catching up properly — pick a date on the calendar when you're free! 🙌</p>
+
+        <!-- Interactive Floating Reaction Chips -->
+        <div class="vibe-reaction-bar">
+          <button type="button" class="reaction-chip" data-emoji="☕" data-quote="Coffee is on me! ☕">☕ Coffee?</button>
+          <button type="button" class="reaction-chip" data-emoji="✨" data-quote="Ooh, good vibes! ✨">✨ Curious!</button>
+          <button type="button" class="reaction-chip" data-emoji="🥺" data-quote="Aww stop it! 🥺">🥺 Aww</button>
+          <button type="button" class="reaction-chip" data-emoji="🎉" data-quote="Let's gooo! 🎉">🎉 Hyped!</button>
+        </div>
+
+        <div class="plea-banner">
+          <span id="pleaMessage" class="plea-text"></span>
+          <span id="strikeCounter" class="strike-pill"></span>
+        </div>
+
+        <div class="button-arena">
+          <button id="yesBtn" class="btn-yes">Yes, let's meet! 🙌</button>
+          <button id="noBtn" class="btn-no">No</button>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: INTERACTIVE CALENDAR & FORMSPREE DIRECT REPLY -->
+      <section id="celebrationScreen" class="screen">
+        <div class="recipient-tag">AWESOME!! IT'S A PLAN 🎉</div>
+        <h2 id="celebrationTitleDisplay" class="main-question">Can't Wait to Catch Up! 😄</h2>
+        <p id="celebrationSubtextDisplay" class="sub-text" style="margin-bottom: 10px;">Pick a date on the calendar, choose the vibe, and hit send below:</p>
+
+        <div class="planner-section">
+          <label class="planner-label">1. Pick a Date on the Calendar 📅</label>
+          <div class="calendar-box">
+            <div class="cal-header">
+              <button type="button" id="prevMonthBtn" class="cal-nav-btn" aria-label="Previous Month">‹</button>
+              <span id="calMonthTitle" class="cal-month-title">November 2026</span>
+              <button type="button" id="nextMonthBtn" class="cal-nav-btn" aria-label="Next Month">›</button>
+            </div>
+            <div class="cal-weekdays">
+              <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+            <div id="calDaysGrid" class="cal-days-grid"></div>
+          </div>
+
+          <label class="planner-label">2. Preferred Time ⏰</label>
+          <div id="timeOptionsContainer" class="pill-grid"></div>
+
+          <label class="planner-label">3. Hangout Vibe ✨</label>
+          <div id="vibeOptionsContainer" class="pill-grid"></div>
+
+          <label class="planner-label" for="customNoteInput">4. Your Reply / Spot Suggestion 💬</label>
+          <input type="text" id="customNoteInput" class="note-input" placeholder="Write a message or spot idea (e.g., 5 PM at Cafe)..." />
+        </div>
+
+        <!-- Official Meetup Pass Ticket -->
+        <div class="ticket-card">
+          <div class="ticket-header">
+            <span class="ticket-badge">Official Meetup Pass</span>
+            <span id="ticketCode" class="ticket-id">#MEET-2026</span>
+          </div>
+          <div class="ticket-row">
+            <div>
+              <div class="ticket-field-label">Guest</div>
+              <div id="ticketGuest" class="ticket-field-val">Friend</div>
+            </div>
+            <div style="text-align: right;">
+              <div class="ticket-field-label">Host</div>
+              <div id="ticketHost" class="ticket-field-val">Prahashik</div>
+            </div>
+          </div>
+          <div class="ticket-row" style="margin-top: 8px;">
+            <div>
+              <div class="ticket-field-label">Selected Date & Time</div>
+              <div id="ticketDay" class="ticket-field-val">Sat, Nov 14 • Evening</div>
+            </div>
+            <div style="text-align: right;">
+              <div class="ticket-field-label">Hangout Plan</div>
+              <div id="ticketVibe" class="ticket-field-val">Coffee & Cafe</div>
+            </div>
+          </div>
+          <div class="ticket-barcode">
+            <div class="barcode-bars"></div>
+            <span class="ticket-admit">CONFIRMED ✓</span>
+          </div>
+        </div>
+
+        <div id="webhookStatusBadge" class="delivery-status">✓ Sent directly!</div>
+
+        <div class="celebration-actions">
+          <button id="confirmSendReplyBtn" class="btn-action btn-primary-send">
+            💌 Confirm & Send Reply Directly
+          </button>
+          <div class="action-row-split">
+            <button id="copyReplyBtn" class="btn-action btn-secondary-act">
+              📋 Copy Reply
+            </button>
+            <button id="downloadPassBtn" class="btn-action btn-secondary-act">
+              🎟️ Save Pass PNG
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: RESPECTFUL "NO" AFTER 3 TRIES -->
+      <section id="noScreen" class="screen">
+        <div class="recipient-tag">ALL GOOD! 🧸</div>
+        <h2 id="noScreenTitleDisplay" class="main-question">No Worries at All! 😊</h2>
+        <p id="noScreenSubtextDisplay" class="sub-text">
+          You used all 3 "No" dodges, so I'll take the hint respectfully! Drop a quick note below if you'd like to take a raincheck for later.
+        </p>
+
+        <div class="planner-section">
+          <label class="planner-label" for="noNoteInput">Optional Reply / Raincheck Note 💬</label>
+          <input type="text" id="noNoteInput" class="note-input" placeholder="e.g., Busy this week, let's plan next month!" />
+        </div>
+
+        <div id="noWebhookStatusBadge" class="delivery-status">✓ Raincheck sent directly!</div>
+
+        <div class="celebration-actions">
+          <button id="sendNoReplyBtn" class="btn-action btn-primary-send">
+            💌 Send Raincheck Reply Directly
+          </button>
+          <button id="copyNoReplyBtn" class="btn-action btn-secondary-act">
+            📋 Copy Raincheck Text
+          </button>
+          <button id="reconsiderBtn" class="btn-action btn-secondary-act">
+            Wait, I changed my mind! Pick a date 📅
+          </button>
+        </div>
+      </section>
+
     </div>
-
-    <!-- SCREEN 1: MEETUP INVITATION -->
-    <section id="askScreen" class="screen active">
-      <div id="recipientBadge" class="recipient-tag">Hey ✨</div>
-      <h1 id="mainQuestionText" class="main-question">Let's catch up soon? ✨</h1>
-      <p id="subTextDisplay" class="sub-text">Good coffee, great laughs, and catching up properly — pick a date on the calendar when you're free! 🙌</p>
-
-      <div class="plea-banner">
-        <span id="pleaMessage" class="plea-text"></span>
-        <span id="strikeCounter" class="strike-pill"></span>
-      </div>
-
-      <div class="button-arena">
-        <button id="yesBtn" class="btn-yes">Yes, let's meet! 🙌</button>
-        <button id="noBtn" class="btn-no">No</button>
-      </div>
-    </section>
-
-    <!-- SCREEN 2: INTERACTIVE CALENDAR & FORMSPREE DIRECT REPLY -->
-    <section id="celebrationScreen" class="screen">
-      <div class="recipient-tag">AWESOME!! IT'S A PLAN 🎉</div>
-      <h2 id="celebrationTitleDisplay" class="main-question">Can't Wait to Catch Up! 😄</h2>
-      <p id="celebrationSubtextDisplay" class="sub-text" style="margin-bottom: 10px;">Pick a date on the calendar, choose the vibe, and hit send below:</p>
-
-      <div class="planner-section">
-        <label class="planner-label">1. Pick a Date on the Calendar 📅</label>
-        <div class="calendar-box">
-          <div class="cal-header">
-            <button type="button" id="prevMonthBtn" class="cal-nav-btn" aria-label="Previous Month">‹</button>
-            <span id="calMonthTitle" class="cal-month-title">November 2026</span>
-            <button type="button" id="nextMonthBtn" class="cal-nav-btn" aria-label="Next Month">›</button>
-          </div>
-          <div class="cal-weekdays">
-            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
-          </div>
-          <div id="calDaysGrid" class="cal-days-grid"></div>
-        </div>
-
-        <label class="planner-label">2. Preferred Time ⏰</label>
-        <div id="timeOptionsContainer" class="pill-grid"></div>
-
-        <label class="planner-label">3. Hangout Vibe ✨</label>
-        <div id="vibeOptionsContainer" class="pill-grid"></div>
-
-        <label class="planner-label" for="customNoteInput">4. Your Reply / Spot Suggestion 💬</label>
-        <input type="text" id="customNoteInput" class="note-input" placeholder="Write a message or spot idea (e.g., 5 PM at Cafe)..." />
-      </div>
-
-      <!-- Official Meetup Pass Ticket -->
-      <div class="ticket-card">
-        <div class="ticket-header">
-          <span class="ticket-badge">Official Meetup Pass</span>
-          <span id="ticketCode" class="ticket-id">#MEET-2026</span>
-        </div>
-        <div class="ticket-row">
-          <div>
-            <div class="ticket-field-label">Guest</div>
-            <div id="ticketGuest" class="ticket-field-val">Friend</div>
-          </div>
-          <div style="text-align: right;">
-            <div class="ticket-field-label">Host</div>
-            <div id="ticketHost" class="ticket-field-val">Prahashik</div>
-          </div>
-        </div>
-        <div class="ticket-row" style="margin-top: 8px;">
-          <div>
-            <div class="ticket-field-label">Selected Date & Time</div>
-            <div id="ticketDay" class="ticket-field-val">Sat, Nov 14 • Evening</div>
-          </div>
-          <div style="text-align: right;">
-            <div class="ticket-field-label">Hangout Plan</div>
-            <div id="ticketVibe" class="ticket-field-val">Coffee & Cafe</div>
-          </div>
-        </div>
-        <div class="ticket-barcode">
-          <div class="barcode-bars"></div>
-          <span class="ticket-admit">CONFIRMED ✓</span>
-        </div>
-      </div>
-
-      <div id="webhookStatusBadge" class="delivery-status">✓ Sent directly!</div>
-
-      <div class="celebration-actions">
-        <button id="confirmSendReplyBtn" class="btn-action btn-primary-send">
-          💌 Confirm & Send Reply Directly
-        </button>
-        <div class="action-row-split">
-          <button id="copyReplyBtn" class="btn-action btn-secondary-act">
-            📋 Copy Reply
-          </button>
-          <button id="downloadPassBtn" class="btn-action btn-secondary-act">
-            🎟️ Save Pass PNG
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- SCREEN 3: RESPECTFUL "NO" AFTER 3 TRIES -->
-    <section id="noScreen" class="screen">
-      <div class="recipient-tag">ALL GOOD! 🧸</div>
-      <h2 id="noScreenTitleDisplay" class="main-question">No Worries at All! 😊</h2>
-      <p id="noScreenSubtextDisplay" class="sub-text">
-        You used all 3 "No" dodges, so I'll take the hint respectfully! Drop a quick note below if you'd like to take a raincheck for later.
-      </p>
-
-      <div class="planner-section">
-        <label class="planner-label" for="noNoteInput">Optional Reply / Raincheck Note 💬</label>
-        <input type="text" id="noNoteInput" class="note-input" placeholder="e.g., Busy this week, let's plan next month!" />
-      </div>
-
-      <div id="noWebhookStatusBadge" class="delivery-status">✓ Raincheck sent directly!</div>
-
-      <div class="celebration-actions">
-        <button id="sendNoReplyBtn" class="btn-action btn-primary-send">
-          💌 Send Raincheck Reply Directly
-        </button>
-        <button id="copyNoReplyBtn" class="btn-action btn-secondary-act">
-          📋 Copy Raincheck Text
-        </button>
-        <button id="reconsiderBtn" class="btn-action btn-secondary-act">
-          Wait, I changed my mind! Pick a date 📅
-        </button>
-      </div>
-    </section>
   </main>
 
   <!-- Customizer Side Drawer -->
@@ -1265,6 +1526,7 @@
     let yesScale = 1;
     let selectedVibe = "";
     let selectedTime = "";
+    let tappedReactions = [];
     const ticketNumber = "#MEET-" + Math.floor(1000 + Math.random() * 9000);
 
     const today = new Date();
@@ -1310,13 +1572,20 @@
     }
 
     const bodyEl = document.body;
+    const tiltCard = document.getElementById("tiltCard");
     const customizeBtn = document.getElementById("customizeBtn");
+    const envelopeScreen = document.getElementById("envelopeScreen");
+    const envelopeBox = document.getElementById("envelopeBox");
+    const mascotContainer = document.getElementById("mascotContainer");
     const bearMascot = document.getElementById("bearMascot");
+    const bearSpeech = document.getElementById("bearSpeech");
     const faceHopeful = document.getElementById("faceHopeful");
     const facePleading = document.getElementById("facePleading");
     const faceHappy = document.getElementById("faceHappy");
     const faceRespectful = document.getElementById("faceRespectful");
     const bearHearts = document.getElementById("bearHearts");
+    const eyeLeftGroup = document.getElementById("eyeLeftGroup");
+    const eyeRightGroup = document.getElementById("eyeRightGroup");
 
     const recipientBadge = document.getElementById("recipientBadge");
     const mainQuestionText = document.getElementById("mainQuestionText");
@@ -1340,6 +1609,92 @@
     const ticketVibe = document.getElementById("ticketVibe");
     const ticketDay = document.getElementById("ticketDay");
 
+    /* ==========================================================================
+       INTERACTIVE 3D CARD TILT & POINTER-TRACKING BEAR EYES
+       ========================================================================== */
+    function handlePointerMove(clientX, clientY) {
+      const rect = tiltCard.getBoundingClientRect();
+      const relX = (clientX - rect.left) / rect.width;
+      const relY = (clientY - rect.top) / rect.height;
+
+      // Dynamic light sheen
+      tiltCard.style.setProperty("--mx", `${Math.round(relX * 100)}%`);
+      tiltCard.style.setProperty("--my", `${Math.round(relY * 100)}%`);
+
+      // Gentle 3D card tilt on desktop
+      if (window.innerWidth > 640 && relX >= 0 && relX <= 1 && relY >= 0 && relY <= 1) {
+        const rotateY = (relX - 0.5) * 9;
+        const rotateX = (0.5 - relY) * 9;
+        tiltCard.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+      }
+
+      // Bear eyes subtly follow cursor/finger
+      const dx = Math.max(-3.5, Math.min(3.5, (clientX - window.innerWidth / 2) / 90));
+      const dy = Math.max(-2.5, Math.min(2.5, (clientY - window.innerHeight / 2) / 90));
+      eyeLeftGroup.setAttribute("transform", `translate(${dx}, ${dy})`);
+      eyeRightGroup.setAttribute("transform", `translate(${dx}, ${dy})`);
+    }
+
+    document.addEventListener("mousemove", (e) => handlePointerMove(e.clientX, e.clientY));
+    document.addEventListener("touchmove", (e) => {
+      if (e.touches[0]) handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+    document.addEventListener("mouseleave", () => {
+      tiltCard.style.transform = "rotateX(0deg) rotateY(0deg)";
+    });
+
+    /* ==========================================================================
+       INTERACTIVE SEALED ENVELOPE UNSEALING ANIMATION
+       ========================================================================== */
+    let envelopeOpened = false;
+    function unsealEnvelope() {
+      if (envelopeOpened) return;
+      envelopeOpened = true;
+      envelopeBox.classList.add("opened");
+
+      const rect = envelopeBox.getBoundingClientRect();
+      spawnEmojiBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, ["✨", "💌", "💖", "🌸", "⭐"]);
+
+      setTimeout(() => {
+        envelopeScreen.classList.remove("active");
+        mascotContainer.style.display = "block";
+        askScreen.classList.add("active");
+        showBearSpeech(`Hi ${config.recipientName.replace(/^hey\s+/i, "").trim() || "there"}! 👋`);
+      }, 650);
+    }
+
+    document.getElementById("envelopeTrigger").addEventListener("click", unsealEnvelope);
+    document.getElementById("envelopeTrigger").addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") unsealEnvelope();
+    });
+
+    let speechTimer;
+    function showBearSpeech(text) {
+      bearSpeech.textContent = text;
+      bearSpeech.classList.add("show");
+      clearTimeout(speechTimer);
+      speechTimer = setTimeout(() => bearSpeech.classList.remove("show"), 2000);
+    }
+
+    function spawnEmojiBurst(x, y, emojis) {
+      for (let i = 0; i < 8; i++) {
+        const el = document.createElement("span");
+        el.className = "burst-emoji";
+        el.textContent = emojis[i % emojis.length];
+        el.style.left = `${x}px`;
+        el.style.top = `${y}px`;
+        const angle = (Math.PI * 2 * i) / 8 + (Math.random() * 0.4);
+        const dist = 45 + Math.random() * 65;
+        el.style.setProperty("--dx", `${Math.cos(angle) * dist}px`);
+        el.style.setProperty("--rot", `${(Math.random() - 0.5) * 60}deg`);
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 1150);
+      }
+    }
+
+    /* ==========================================================================
+       THEME & APP RENDERING
+       ========================================================================== */
     function applyTheme(themeName) {
       const validThemes = ["rose", "purple", "peach", "matcha"];
       const chosen = validThemes.includes(themeName) ? themeName : "rose";
@@ -1361,9 +1716,14 @@
         customizeBtn.classList.add("hidden");
       }
 
-      recipientBadge.textContent = config.recipientName.includes("✨")
+      const greeting = config.recipientName.includes("✨")
         ? config.recipientName
         : `${config.recipientName} ✨`;
+
+      document.getElementById("envRecipientBadge").textContent = greeting;
+      document.getElementById("envFromText").textContent = `From ${config.senderName || "Me"} • Tap the wax seal to unseal`;
+
+      recipientBadge.textContent = greeting;
       mainQuestionText.textContent = config.mainQuestion;
       subTextDisplay.textContent = config.subText;
       yesBtn.textContent = config.yesButtonText;
@@ -1411,9 +1771,28 @@
       }
     }
 
-    document.getElementById("mascotBoop").addEventListener("click", () => {
-      bearMascot.style.transform = "scale(1.14) rotate(-4deg)";
+    // Interactive Bear Boop & First-Page Vibe Chips
+    const boopPhrases = ["Boop! 🐾", "Hehe! 😄", "Tap Yes! ✨", "Ready when you are! ☕"];
+    let boopIdx = 0;
+    mascotContainer.addEventListener("click", (e) => {
+      bearMascot.style.transform = "scale(1.15) rotate(-5deg)";
       setTimeout(() => { bearMascot.style.transform = ""; }, 220);
+      showBearSpeech(boopPhrases[boopIdx % boopPhrases.length]);
+      boopIdx++;
+      spawnEmojiBurst(e.clientX || window.innerWidth / 2, e.clientY || 200, ["💖", "✨", "🐾"]);
+    });
+
+    document.querySelectorAll(".reaction-chip").forEach(chip => {
+      chip.addEventListener("click", (e) => {
+        const emoji = chip.dataset.emoji;
+        const quote = chip.dataset.quote;
+        const rect = chip.getBoundingClientRect();
+        spawnEmojiBurst(rect.left + rect.width / 2, rect.top, [emoji, "✨", emoji]);
+        showBearSpeech(quote);
+        if (!tappedReactions.includes(chip.textContent.trim())) {
+          tappedReactions.push(chip.textContent.trim());
+        }
+      });
     });
 
     function initBackgroundParticles() {
@@ -1450,6 +1829,7 @@
       const msg = config.noMessages[noDodgeCount % config.noMessages.length];
       pleaMessage.textContent = msg;
       pleaMessage.classList.add("visible");
+      showBearSpeech("Wait nooo! 🥺");
 
       noDodgeCount++;
       const remaining = MAX_NO_DODGES - noDodgeCount;
@@ -1500,6 +1880,7 @@
     function openCelebrationScreen() {
       noBtn.style.display = "none";
       setMascotMood("happy");
+      showBearSpeech("YAY!! 🎉🥳");
       askScreen.classList.remove("active");
       noScreen.classList.remove("active");
       celebrationScreen.classList.add("active");
@@ -1518,6 +1899,7 @@
         `📅 Calendar Date: ${formattedDate}\n` +
         `⏰ Time: ${selectedTime}\n` +
         `☕ Hangout Vibe: ${selectedVibe}`;
+      if (tappedReactions.length) msg += `\n✨ Reactions: ${tappedReactions.join(", ")}`;
       if (note) msg += `\n💬 Her Reply / Note: ${note}`;
       return msg;
     }
@@ -1554,6 +1936,7 @@
             Calendar_Date: formattedCalDate,
             Preferred_Time: chosenTime,
             Hangout_Vibe: chosenVibe,
+            Reactions: tappedReactions.join(", ") || "None",
             Her_Reply_Note: herNote,
             Ticket_ID: ticketNumber,
             Full_Summary: fullMessage
@@ -1860,7 +2243,7 @@
       ctx.arcTo(x + w, y, x + w, y + h, r);
       ctx.arcTo(x + w, y + h, x, y + h, r);
       ctx.arcTo(x, y + h, x, y, r);
-      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
       ctx.closePath();
     }
 
