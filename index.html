@@ -4,1167 +4,731 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Will You Go On A Date With Me? ✨</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-gradient: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 50%, #ffd1dc 100%);
-      --card-bg: rgba(255, 255, 255, 0.85);
-      --card-border: rgba(255, 182, 193, 0.4);
+      --bg-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #feada6 100%);
+      --card-bg: rgba(255, 255, 255, 0.88);
+      --card-border: rgba(255, 182, 193, 0.6);
       --primary: #e63946;
-      --primary-hover: #d62839;
-      --accent: #ffb703;
-      --text-main: #2b2d42;
+      --primary-hover: #d62828;
+      --secondary: #457b9d;
+      --text: #2b2d42;
       --text-muted: #6c757d;
-      --shadow: 0 10px 30px rgba(230, 57, 70, 0.15);
-      --envelope-paper: #fffcf7;
-      --wax-seal: #d62839;
-      --font-display: 'Playfair Display', 'Fredoka', serif;
-      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --accent: #ffb703;
+      --shadow: 0 12px 40px rgba(230, 57, 70, 0.15);
     }
-
-    [data-theme="purple"] {
-      --bg-gradient: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #d8b4fe 100%);
-      --card-bg: rgba(255, 255, 255, 0.85);
-      --card-border: rgba(192, 132, 252, 0.4);
-      --primary: #8b5cf6;
-      --primary-hover: #7c3aed;
-      --accent: #f59e0b;
-      --text-main: #3b0764;
-      --text-muted: #6b21a8;
-      --shadow: 0 10px 30px rgba(139, 92, 246, 0.18);
-      --envelope-paper: #faf5ff;
-      --wax-seal: #7c3aed;
+    body.theme-lavender {
+      --bg-gradient: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+      --primary: #6b5b95;
+      --primary-hover: #55447a;
+      --card-border: rgba(161, 196, 253, 0.6);
     }
-
-    [data-theme="peach"] {
-      --bg-gradient: linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fed7aa 100%);
-      --card-bg: rgba(255, 255, 255, 0.85);
-      --card-border: rgba(251, 146, 60, 0.4);
-      --primary: #f97316;
-      --primary-hover: #ea580c;
-      --accent: #ec4899;
-      --text-main: #431407;
-      --text-muted: #7c2d12;
-      --shadow: 0 10px 30px rgba(249, 115, 22, 0.18);
-      --envelope-paper: #fffbeb;
-      --wax-seal: #ea580c;
+    body.theme-peach {
+      --bg-gradient: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      --primary: #ff6b6b;
+      --primary-hover: #ee5253;
+      --card-border: rgba(252, 182, 159, 0.6);
     }
-
-    [data-theme="matcha"] {
-      --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
-      --card-bg: rgba(255, 255, 255, 0.85);
-      --card-border: rgba(74, 222, 128, 0.4);
-      --primary: #16a34a;
-      --primary-hover: #15803d;
-      --accent: #eab308;
-      --text-main: #052e16;
-      --text-muted: #14532d;
-      --shadow: 0 10px 30px rgba(22, 163, 74, 0.18);
-      --envelope-paper: #f7fee7;
-      --wax-seal: #15803d;
-    }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: var(--font-sans);
+      font-family: 'Outfit', sans-serif;
       background: var(--bg-gradient);
-      color: var(--text-main);
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      color: var(--text);
       overflow-x: hidden;
-      position: relative;
-      padding: 1rem;
-      transition: background 0.5s ease;
+      padding: 15px;
     }
-
-    .top-controls {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      right: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-      pointer-events: none;
-    }
-    .top-controls button {
-      pointer-events: auto;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--card-border);
-      border-radius: 50px;
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-main);
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: transform 0.2s ease, background 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .top-controls button:hover {
-      transform: scale(1.05);
-      background: #ffffff;
-    }
-
-    .envelope-screen {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-      perspective: 1000px;
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .envelope-screen.hidden { display: none; }
-    .envelope-container {
-      position: relative;
-      width: 320px;
-      height: 220px;
-      background: var(--envelope-paper);
-      border-radius: 12px;
-      box-shadow: var(--shadow), 0 20px 40px rgba(0,0,0,0.1);
-      border: 2px solid var(--card-border);
-      cursor: pointer;
-      transform-style: preserve-3d;
-      transition: transform 0.5s ease;
-    }
-    @media (min-width: 480px) {
-      .envelope-container { width: 400px; height: 270px; }
-    }
-    .envelope-container:hover {
-      transform: translateY(-5px) rotateX(5deg);
-    }
-    .envelope-flap {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 50%;
-      background: var(--envelope-paper);
-      border-bottom: 2px solid var(--card-border);
-      clip-path: polygon(0 0, 100% 0, 50% 100%);
-      transform-origin: top;
-      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 3;
-    }
-    .envelope-container.open .envelope-flap {
-      transform: rotateX(180deg);
-      z-index: 1;
-    }
-    .wax-seal {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60px; height: 60px;
-      background: radial-gradient(circle, var(--wax-seal) 60%, #990000 100%);
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: bold;
-      font-size: 0.75rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.4);
-      z-index: 4;
-      animation: pulse-seal 2s infinite ease-in-out;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    @keyframes pulse-seal {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); }
-      50% { transform: translate(-50%, -50%) scale(1.08); }
-    }
-    .envelope-container.open .wax-seal {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(1.5);
-      pointer-events: none;
-    }
-    .letter-preview {
-      position: absolute;
-      bottom: 10px;
-      left: 15px; right: 15px;
-      height: 85%;
-      background: #fff;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      border: 1px dashed var(--card-border);
-      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    .envelope-container.open .letter-preview {
-      transform: translateY(-80px);
-    }
-    .envelope-hint {
-      margin-top: 1.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--primary);
-      animation: bounce 1.5s infinite ease-in-out;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    .card {
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
-      padding: 2rem;
+    h1, h2, h3, .btn, .mascot-speech { font-family: 'Fredoka', sans-serif; }
+    .container {
       width: 100%;
-      max-width: 480px;
+      max-width: 520px;
+      position: relative;
+      z-index: 10;
+    }
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 2px solid var(--card-border);
+      border-radius: 28px;
+      padding: 30px 24px;
       box-shadow: var(--shadow);
       text-align: center;
       position: relative;
       overflow: hidden;
-      transition: all 0.4s ease;
+    }
+    .envelope-screen {
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 20px;
     }
-    .hidden { display: none !important; }
-
-    .mascot-wrapper {
-      width: 130px;
-      height: 130px;
-      margin-bottom: 1rem;
+    .envelope {
+      width: 220px;
+      height: 150px;
+      background: #ff85a1;
+      border-radius: 12px;
       position: relative;
       cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+    .envelope:hover { transform: scale(1.04); }
+    .wax-seal {
+      width: 54px;
+      height: 54px;
+      background: #e63946;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .mascot-container {
+      margin: 15px 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .speech-bubble {
-      position: relative;
-      background: #ffffff;
-      border: 1.5px solid var(--card-border);
-      border-radius: 16px;
-      padding: 0.6rem 1rem;
-      font-size: 0.95rem;
+      background: white;
+      border: 2px solid var(--card-border);
+      padding: 8px 16px;
+      border-radius: 20px;
       font-weight: 600;
-      color: var(--text-main);
+      color: var(--primary);
+      font-size: 15px;
+      margin-bottom: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      margin-bottom: 1rem;
-      max-width: 90%;
-      transition: all 0.3s ease;
-    }
-    .speech-bubble::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-width: 10px 10px 0;
-      border-style: solid;
-      border-color: #ffffff transparent;
-      display: block;
-      width: 0;
-    }
-
-    h1, h2 {
-      font-family: var(--font-display);
-      color: var(--text-main);
-      margin-bottom: 0.5rem;
-      line-height: 1.25;
-    }
-    p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin-bottom: 1.2rem;
-    }
-
-    .buttons-container {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      min-height: 70px;
-      position: relative;
-      margin-top: 0.5rem;
     }
     .btn {
-      padding: 0.8rem 1.8rem;
+      padding: 12px 26px;
       border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      font-family: var(--font-sans);
-      cursor: pointer;
       border: none;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-      outline: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      touch-action: manipulation;
     }
-    .btn-yes {
+    .btn-primary {
       background: var(--primary);
-      color: #ffffff;
+      color: white;
       box-shadow: 0 6px 20px rgba(230, 57, 70, 0.3);
     }
-    .btn-yes:hover {
-      background: var(--primary-hover);
-      box-shadow: 0 8px 25px rgba(230, 57, 70, 0.45);
-      transform: translateY(-2px);
+    .btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
+    .btn-secondary {
+      background: #e9ecef;
+      color: var(--text-muted);
     }
-    .btn-no {
-      background: #e2e8f0;
-      color: #475569;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+      position: relative;
+      min-height: 60px;
     }
-    .btn-no:hover { background: #cbd5e1; }
-
-    .ripple {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      transform: scale(0);
-      animation: ripple-anim 0.6s linear;
-      pointer-events: none;
-    }
-    @keyframes ripple-anim {
-      to { transform: scale(4); opacity: 0; }
-    }
-
+    .hidden { display: none !important; }
+    
+    /* Crying Cat Animation */
     .cat-overlay {
       position: fixed;
-      bottom: 10%;
-      left: -150px;
-      z-index: 99;
+      bottom: 8%;
+      left: -220px;
+      z-index: 9999;
       pointer-events: none;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: left 2.5s linear;
+      transition: left 2.6s linear;
     }
-    .cat-overlay.walking { left: 110vw; }
+    .cat-overlay.walking {
+      left: 110vw;
+    }
     .cat-bubble {
-      background: #ffffff;
-      border: 2px solid var(--primary);
-      border-radius: 12px;
-      padding: 0.4rem 0.8rem;
-      font-size: 0.85rem;
-      font-weight: 700;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      white-space: nowrap;
-      margin-bottom: 5px;
-    }
-
-    .raincheck-link {
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-decoration: underline;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-    .raincheck-link:hover { color: var(--primary); }
-
-    .planner-section {
-      width: 100%;
-      text-align: left;
-      margin-bottom: 1.2rem;
-    }
-    .planner-section h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .calendar-container {
-      background: rgba(255,255,255,0.7);
-      border: 1px solid var(--card-border);
+      background: white;
+      color: #2b2d42;
+      padding: 6px 14px;
       border-radius: 16px;
-      padding: 0.8rem;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+      margin-bottom: 6px;
+      white-space: nowrap;
+      border: 2px solid var(--accent);
     }
-    .calendar-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
+    .cat-floating-emoji {
+      font-size: 24px;
+      margin-bottom: 2px;
     }
-    .calendar-header button {
-      background: none;
-      border: none;
-      font-weight: bold;
+    @keyframes bodyBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes legWalk1 {
+      0%, 100% { transform: rotate(-22deg); }
+      50% { transform: rotate(22deg); }
+    }
+    @keyframes legWalk2 {
+      0%, 100% { transform: rotate(22deg); }
+      50% { transform: rotate(-22deg); }
+    }
+    @keyframes tearFall {
+      0% { opacity: 0; transform: translateY(0); }
+      50% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(14px); }
+    }
+    @keyframes floatEmoji {
+      0% { opacity: 0; transform: translateY(0) scale(0.8); }
+      50% { opacity: 1; transform: translateY(-18px) scale(1.2); }
+      100% { opacity: 0; transform: translateY(-35px) scale(1); }
+    }
+    .cat-overlay.walking .cat-bounce {
+      animation: bodyBounce 0.3s infinite ease-in-out alternate;
+    }
+    .cat-overlay.walking .cat-leg-1 {
+      transform-origin: 30px 68px;
+      animation: legWalk1 0.3s infinite ease-in-out;
+    }
+    .cat-overlay.walking .cat-leg-2 {
+      transform-origin: 40px 68px;
+      animation: legWalk2 0.3s infinite ease-in-out;
+    }
+    .cat-overlay.walking .cat-tear {
+      animation: tearFall 0.4s infinite linear;
+    }
+    .cat-overlay.walking .cat-floating-emoji {
+      animation: floatEmoji 1.2s infinite ease-in-out;
+    }
+
+    /* Activity Grid & Calendar */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 15px 0; }
+    .activity-card {
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: 16px;
+      padding: 12px;
       cursor: pointer;
-      color: var(--primary);
-      padding: 0.2rem 0.5rem;
-    }
-    .calendar-days-header, .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
       text-align: center;
-      gap: 4px;
+      transition: all 0.2s ease;
     }
-    .calendar-days-header span {
-      font-size: 0.75rem;
-      font-weight: bold;
-      color: var(--text-muted);
+    .activity-card.selected {
+      border-color: var(--primary);
+      background: #fff5f5;
+      transform: scale(1.02);
     }
-    .cal-day {
-      padding: 0.4rem 0;
-      font-size: 0.85rem;
+    .date-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin: 10px 0; }
+    .date-cell {
+      padding: 8px 4px;
+      font-size: 13px;
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.2s;
     }
-    .cal-day:hover:not(.disabled) { background: rgba(230,57,70,0.15); }
-    .cal-day.selected {
-      background: var(--primary) !important;
-      color: #fff !important;
-      font-weight: bold;
-    }
-    .cal-day.today { border: 1.5px solid var(--primary); }
-    .cal-day.disabled { color: #cbd5e1; cursor: not-allowed; }
+    .date-cell.selected { background: var(--primary); color: white; font-weight: bold; }
+    .time-slot { padding: 6px 12px; border-radius: 20px; border: 1px solid #ccc; cursor: pointer; font-size: 12px; }
+    .time-slot.selected { background: var(--primary); color: white; border-color: var(--primary); }
 
-    .grid-options {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.6rem;
-    }
-    .option-card {
-      background: rgba(255,255,255,0.7);
-      border: 1.5px solid var(--card-border);
-      border-radius: 12px;
-      padding: 0.7rem;
-      cursor: pointer;
-      text-align: center;
-      font-size: 0.85rem;
-      font-weight: 600;
-      transition: all 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.3rem;
-    }
-    .option-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--primary);
-    }
-    .option-card.selected {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
-    .option-card .icon { font-size: 1.3rem; }
-
-    .polaroid-strip {
-      display: flex;
-      gap: 0.8rem;
-      overflow-x: auto;
-      padding: 0.5rem 0;
-      width: 100%;
-      margin-bottom: 1rem;
-    }
-    .polaroid {
-      background: #fff;
-      padding: 0.5rem 0.5rem 1rem 0.5rem;
-      border-radius: 4px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transform: rotate(-2deg);
-      flex: 0 0 110px;
-    }
-    .polaroid img {
-      width: 100%;
-      height: 90px;
-      object-fit: cover;
-      border-radius: 2px;
-    }
-
-    .secret-card {
-      background: #fff;
-      border: 1.5px dashed var(--primary);
-      border-radius: 16px;
-      padding: 1rem;
-      width: 100%;
-      margin-bottom: 1rem;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-    .secret-card.blur { filter: blur(4px); user-select: none; }
-
+    /* Customizer Drawer */
     .drawer {
       position: fixed;
-      top: 0; right: 0; bottom: 0;
-      width: 100%;
-      max-width: 380px;
-      background: #ffffff;
+      top: 0; right: -320px;
+      width: 320px; height: 100vh;
+      background: white;
       box-shadow: -5px 0 25px rgba(0,0,0,0.15);
-      z-index: 200;
-      padding: 1.5rem;
+      z-index: 1000;
+      padding: 24px;
+      transition: right 0.3s ease;
       overflow-y: auto;
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
     }
-    .drawer.open { transform: translateX(0); }
-    .drawer h2 { font-size: 1.2rem; margin-bottom: 1rem; }
-    .form-group { margin-bottom: 1rem; text-align: left; }
-    .form-group label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      padding: 0.6rem;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font-size: 0.9rem;
+    .drawer.open { right: 0; }
+    .drawer-btn {
+      position: fixed; top: 15px; right: 15px;
+      z-index: 100; background: white;
+      border: none; border-radius: 50%;
+      width: 44px; height: 44px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer; font-size: 20px;
     }
-
-    canvas#ticketCanvas { display: none; }
+    .form-group { margin-bottom: 12px; text-align: left; }
+    .form-group label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--text-muted); }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; font-size: 14px;
+    }
   </style>
 </head>
 <body>
 
-  <div class="top-controls">
-    <button id="muteBtn" aria-label="Toggle Sound">🔊 Sound</button>
-    <button id="customizerBtn" aria-label="Open Customizer">⚙️ Customize</button>
+  <button class="drawer-btn" id="customizerBtn" title="Customize">⚙️</button>
+
+  <div class="drawer" id="customizerDrawer">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+      <h3>Customize Page 💌</h3>
+      <button id="closeCustomizerBtn" style="background:none; border:none; font-size:20px; cursor:pointer;">✕</button>
+    </div>
+    <div class="form-group">
+      <label>To (Recipient Name)</label>
+      <input type="text" id="custTo" placeholder="Cutie" />
+    </div>
+    <div class="form-group">
+      <label>From (Your Name)</label>
+      <input type="text" id="custFrom" placeholder="Secret Admirer" />
+    </div>
+    <div class="form-group">
+      <label>Proposal Title</label>
+      <input type="text" id="custTitle" placeholder="Will You Go On A Date With Me?" />
+    </div>
+    <div class="form-group">
+      <label>Formspree Form ID (Optional)</label>
+      <input type="text" id="custFormId" placeholder="e.g. xyyz123" />
+    </div>
+    <div class="form-group">
+      <label>Theme</label>
+      <select id="custTheme">
+        <option value="rose">Rose (Default)</option>
+        <option value="lavender">Lavender</option>
+        <option value="peach">Peach</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" id="saveCustomizerBtn" style="width:100%; margin-top:10px;">Save & Copy Link 🔗</button>
   </div>
 
-  <div id="envelopeScreen" class="envelope-screen">
-    <div class="envelope-container" id="envelope">
-      <div class="envelope-flap"></div>
-      <div class="wax-seal" id="waxSeal">Tap</div>
-      <div class="letter-preview">
-        <h2 id="envGreeting">For My Special Someone ✨</h2>
-        <p>A little invitation crafted just for you...</p>
+  <div class="container">
+    <div class="glass-card" id="mainCard">
+      
+      <!-- Envelope Screen -->
+      <div id="envelopeScreen" class="envelope-screen">
+        <h2 id="envRecipientTitle">For Someone Special... 💌</h2>
+        <div class="envelope" id="envelope">
+          <div class="wax-seal">❤️</div>
+        </div>
+        <p style="font-size:14px; color:var(--text-muted);">Tap the wax seal to open</p>
       </div>
+
+      <!-- Proposal Screen -->
+      <div id="proposalStep" class="hidden">
+        <div class="mascot-container">
+          <div class="speech-bubble" id="speechBubble">I have a question for you... 🥺</div>
+          <!-- Teddy SVG Mascot -->
+          <svg id="mascot" width="100" height="100" viewBox="0 0 100 100">
+            <circle cx="20" cy="25" r="14" fill="#d4a373"/>
+            <circle cx="20" cy="25" r="8" fill="#ffb703"/>
+            <circle cx="80" cy="25" r="14" fill="#d4a373"/>
+            <circle cx="80" cy="25" r="8" fill="#ffb703"/>
+            <circle cx="50" cy="55" r="35" fill="#d4a373"/>
+            <ellipse cx="50" cy="62" rx="16" ry="12" fill="#fff3b0"/>
+            <ellipse cx="50" cy="56" rx="5" ry="4" fill="#6b705c"/>
+            <circle id="mascotEyeL" cx="38" cy="48" r="4" fill="#2b2d42"/>
+            <circle id="mascotEyeR" cx="62" cy="48" r="4" fill="#2b2d42"/>
+            <circle id="mascotBlushL" cx="30" cy="56" r="5" fill="#ff85a1" opacity="0.6"/>
+            <circle id="mascotBlushR" cx="70" cy="56" r="5" fill="#ff85a1" opacity="0.6"/>
+            <path id="mascotMouth" d="M 44 64 Q 50 68 56 64" stroke="#2b2d42" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <h1 id="proposalTitle" style="font-size:24px; margin-bottom:15px;">Will You Go On A Date With Me? ✨</h1>
+        <p id="fromSubtext" style="font-size:14px; color:var(--text-muted); margin-bottom:20px;"></p>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" id="yesBtn">YES! 💖</button>
+          <button class="btn btn-secondary" id="noBtn">No 😢</button>
+        </div>
+      </div>
+
+      <!-- Planner Screen -->
+      <div id="plannerStep" class="hidden">
+        <h2 style="font-size:22px; color:var(--primary); margin-bottom:10px;">Yay! Pick Date & Activities 🎉</h2>
+        
+        <p style="font-size:13px; font-weight:600; color:var(--text-muted); text-align:left;">1. Select Date & Time</p>
+        <div id="calendar" class="date-grid"></div>
+        <div style="display:flex; gap:8px; justify-content:center; margin-bottom:15px;" id="timeGrid">
+          <div class="time-slot selected" data-time="6:00 PM">6:00 PM</div>
+          <div class="time-slot" data-time="7:30 PM">7:30 PM</div>
+          <div class="time-slot" data-time="9:00 PM">9:00 PM</div>
+        </div>
+
+        <p style="font-size:13px; font-weight:600; color:var(--text-muted); text-align:left;">2. Select Activities</p>
+        <div class="grid-2" id="activityGrid">
+          <div class="activity-card selected" data-activity="Dinner & Drinks 🍷">
+            <span style="font-size:24px;">🍷</span>
+            <div style="font-size:13px; font-weight:600;">Dinner & Drinks</div>
+          </div>
+          <div class="activity-card selected" data-activity="Movie Night 🍿">
+            <span style="font-size:24px;">🍿</span>
+            <div style="font-size:13px; font-weight:600;">Movie Night</div>
+          </div>
+          <div class="activity-card" data-activity="Stargazing ✨">
+            <span style="font-size:24px;">✨</span>
+            <div style="font-size:13px; font-weight:600;">Stargazing</div>
+          </div>
+          <div class="activity-card" data-activity="Ice Cream Walk 🍦">
+            <span style="font-size:24px;">🍦</span>
+            <div style="font-size:13px; font-weight:600;">Ice Cream Walk</div>
+          </div>
+          <div class="activity-card" data-activity="Arcade Games 🎮">
+            <span style="font-size:24px;">🎮</span>
+            <div style="font-size:13px; font-weight:600;">Arcade Games</div>
+          </div>
+          <div class="activity-card" data-activity="Coffee & Chat ☕">
+            <span style="font-size:24px;">☕</span>
+            <div style="font-size:13px; font-weight:600;">Coffee & Chat</div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="confirmPlannerBtn" style="width:100%; margin-top:10px;">Confirm Our Date! 💕</button>
+      </div>
+
+      <!-- Ticket / Confirmation Screen -->
+      <div id="ticketStep" class="hidden">
+        <h2 style="font-size:22px; color:var(--primary); margin-bottom:10px;">It's a Date! 🎟️</h2>
+        <p style="font-size:14px; margin-bottom:15px;" id="ticketDetails">We're all set!</p>
+        <canvas id="ticketCanvas" width="400" height="240" style="width:100%; max-width:360px; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,0.1); margin-bottom:15px;"></canvas>
+        <br/>
+        <button class="btn btn-primary" id="downloadTicketBtn">Download Ticket PNG 📥</button>
+      </div>
+
+      <!-- Raincheck / No Screen -->
+      <div id="raincheckStep" class="hidden">
+        <h2 style="font-size:22px; color:#6c757d; margin-bottom:10px;">Aww, maybe next time? 🥺</h2>
+        <p style="font-size:15px; margin-bottom:20px;">I'll save a raincheck for when you're ready!</p>
+        <button class="btn btn-primary" id="changeMindBtn">I Changed My Mind! 💖</button>
+      </div>
+
     </div>
-    <div class="envelope-hint">💌 Tap envelope to open</div>
   </div>
 
-  <main id="mainCard" class="card hidden">
-
-    <div class="mascot-wrapper" id="mascotWrapper">
-      <svg id="bearSvg" viewBox="0 0 200 200" width="100%" height="100%">
-        <circle cx="50" cy="50" r="25" fill="#d4a373" />
-        <circle cx="50" cy="50" r="14" fill="#faedcd" />
-        <circle cx="150" cy="50" r="25" fill="#d4a373" />
-        <circle cx="150" cy="50" r="14" fill="#faedcd" />
-        <circle cx="100" cy="110" r="65" fill="#d4a373" />
-        <ellipse cx="100" cy="125" rx="25" ry="18" fill="#faedcd" />
-        <ellipse cx="100" cy="118" rx="10" ry="7" fill="#582f0e" />
-        <circle id="bearLeftEye" cx="75" cy="100" r="7" fill="#2b2d42" />
-        <circle id="bearRightEye" cx="125" cy="100" r="7" fill="#2b2d42" />
-        <path id="bearMouth" d="M 92 130 Q 100 138 108 130" stroke="#582f0e" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <circle id="leftBlush" cx="65" cy="115" r="10" fill="#ffb703" opacity="0.6"/>
-        <circle id="rightBlush" cx="135" cy="115" r="10" fill="#ffb703" opacity="0.6"/>
-        <path id="bearTears" d="M 72 108 Q 70 125 75 135 M 128 108 Q 130 125 125 135" stroke="#3a86ff" stroke-width="3" fill="none" opacity="0"/>
-      </svg>
-    </div>
-
-    <div class="speech-bubble" id="speechBubble">I have a super important question for you... 🥺</div>
-
-    <div id="proposalStep">
-      <h1 id="invitationTitle">Will you go on a date with me?</h1>
-      <p id="invitationMsg">I'd love to spend some quality time together!</p>
-
-      <div id="photoGallery" class="polaroid-strip hidden"></div>
-
-      <div id="secretCard" class="secret-card blur hidden">
-        <span>🔒 Tap to reveal secret note</span>
-        <p id="secretText" class="hidden" style="margin-top:0.5rem; font-weight:600; color:var(--primary);"></p>
-      </div>
-
-      <div class="buttons-container">
-        <button id="yesBtn" class="btn btn-yes">YES! 💖</button>
-        <button id="noBtn" class="btn btn-no">No 😢</button>
-      </div>
-      <div id="raincheckLink" class="raincheck-link">Send a polite rain-check instead</div>
-    </div>
-
-    <div id="plannerStep" class="hidden" style="width:100%;">
-      <h2 style="font-size:1.4rem;">Yay! Let's Plan Our Date! 🎉</h2>
-      <p>Pick your preferred date, time slot, and activity below:</p>
-
-      <div class="planner-section">
-        <h3>📅 1. Select a Date</h3>
-        <div class="calendar-container">
-          <div class="calendar-header">
-            <button id="prevMonthBtn">&lt;</button>
-            <span id="calendarMonthLabel" style="font-weight:bold; font-size:0.9rem;"></span>
-            <button id="nextMonthBtn">&gt;</button>
-          </div>
-          <div class="calendar-days-header">
-            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
-          </div>
-          <div id="calendarGrid" class="calendar-grid"></div>
-        </div>
-      </div>
-
-      <div class="planner-section">
-        <h3>⏰ 2. Choose Time Slot</h3>
-        <div class="grid-options" id="timeSlotGrid">
-          <div class="option-card" data-val="Morning Coffee"><span class="icon">☕</span>Morning Coffee</div>
-          <div class="option-card selected" data-val="Afternoon"><span class="icon">☀️</span>Afternoon</div>
-          <div class="option-card" data-val="Sunset / Evening"><span class="icon">🌅</span>Sunset / Evening</div>
-          <div class="option-card" data-val="Night"><span class="icon">🌙</span>Night</div>
-        </div>
-      </div>
-
-      <div class="planner-section">
-        <h3>✨ 3. Pick Activity</h3>
-        <div class="grid-options" id="activityGrid">
-          <div class="option-card selected" data-val="☕ Coffee Date"><span class="icon">☕</span>Coffee Date</div>
-          <div class="option-card" data-val="🍝 Dinner"><span class="icon">🍝</span>Dinner</div>
-          <div class="option-card" data-val="🎬 Movie"><span class="icon">🎬</span>Movie</div>
-          <div class="option-card" data-val="🌆 Evening Walk"><span class="icon">🌆</span>Evening Walk</div>
-          <div class="option-card" data-val="🥐 Cafe Hopping"><span class="icon">🥐</span>Cafe Hopping</div>
-          <div class="option-card" data-val="✨ Surprise Plan"><span class="icon">✨</span>Surprise Plan</div>
-        </div>
-      </div>
-
-      <div class="planner-section">
-        <h3>📝 Any Special Notes?</h3>
-        <input type="text" id="plannerNotes" placeholder="Food allergies, place ideas, or excitement level..." style="width:100%; padding:0.6rem; border-radius:10px; border:1px solid var(--card-border);" />
-      </div>
-
-      <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:1rem; width:100%;">
-        <button id="confirmPlannerBtn" class="btn btn-yes" style="width:100%;">Confirm & Send RSVP 💌</button>
-        <button id="copyReplyBtn" class="btn btn-no" style="width:100%; font-size:0.95rem;">📋 Copy Reply Details</button>
-        <button id="downloadTicketBtn" class="btn btn-no" style="width:100%; font-size:0.95rem; background:#f1f5f9;">🎟️ Download VIP Ticket (PNG)</button>
-      </div>
-    </div>
-
-    <div id="raincheckStep" class="hidden" style="width:100%;">
-      <h2>No Problem At All! 😊</h2>
-      <p>I completely understand. If you'd like, leave a quick note for a rain-check later:</p>
-      <textarea id="raincheckMsg" rows="3" placeholder="Maybe next week? Or just saying hi..." style="width:100%; padding:0.6rem; border-radius:10px; border:1px solid var(--card-border); margin-bottom:1rem;"></textarea>
-      <button id="sendRaincheckBtn" class="btn btn-yes" style="width:100%;">Send Rain-Check Note 💌</button>
-      <button id="backToProposalBtn" class="btn btn-no" style="width:100%; margin-top:0.5rem;">Wait, take me back!</button>
-    </div>
-
-  </main>
-
+  <!-- Crying Cat Easter Egg Container -->
   <div id="catOverlay" class="cat-overlay">
+    <div id="catFloatingEmoji" class="cat-floating-emoji">😿</div>
     <div id="catBubble" class="cat-bubble">Noooo... really? 😭</div>
-    <svg width="70" height="60" viewBox="0 0 100 80">
-      <ellipse cx="50" cy="50" rx="30" ry="20" fill="#ffb703"/>
-      <circle cx="25" cy="35" r="16" fill="#ffb703"/>
-      <polygon points="15,22 23,8 30,22" fill="#ffb703"/>
-      <polygon points="18,20 23,12 27,20" fill="#ff85a1"/>
-      <circle cx="20" cy="32" r="2.5" fill="#000"/>
-      <circle cx="30" cy="32" r="2.5" fill="#000"/>
-      <path d="M 20 36 Q 18 45 19 50" stroke="#3a86ff" stroke-width="2" fill="none"/>
-      <line x1="30" y1="68" x2="28" y2="78" stroke="#d4a373" stroke-width="4" stroke-linecap="round"/>
-      <line x1="45" y1="68" x2="47" y2="78" stroke="#d4a373" stroke-width="4" stroke-linecap="round"/>
-      <line x1="60" y1="68" x2="58" y2="78" stroke="#d4a373" stroke-width="4" stroke-linecap="round"/>
-      <path d="M 78 45 Q 90 35 85 25" stroke="#ffb703" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <svg width="85" height="75" viewBox="0 0 100 80">
+      <g class="cat-bounce">
+        <ellipse cx="50" cy="50" rx="30" ry="20" fill="#ffb703"/>
+        <circle cx="25" cy="35" r="16" fill="#ffb703"/>
+        <polygon points="15,22 23,8 30,22" fill="#ffb703"/>
+        <polygon points="18,20 23,12 27,20" fill="#ff85a1"/>
+        <circle cx="20" cy="32" r="2.5" fill="#000"/>
+        <circle cx="30" cy="32" r="2.5" fill="#000"/>
+        <path class="cat-tear" d="M 20 36 Q 18 45 19 50" stroke="#3a86ff" stroke-width="2.5" fill="none"/>
+        <path class="cat-tear" d="M 30 36 Q 32 45 31 50" stroke="#3a86ff" stroke-width="2.5" fill="none"/>
+        <path d="M 78 45 Q 90 35 85 25" stroke="#ffb703" stroke-width="4" fill="none" stroke-linecap="round"/>
+      </g>
+      <line class="cat-leg-1" x1="30" y1="68" x2="28" y2="78" stroke="#d4a373" stroke-width="4" stroke-linecap="round"/>
+      <line class="cat-leg-2" x1="40" y1="68" x2="42" y2="78" stroke="#d4a373" stroke-width="4" stroke-linecap="round"/>
+      <line class="cat-leg-1" x1="50" y1="68" x2="48" y2="78" stroke="#d4a373" stroke-width="4" stroke-linecap="round"/>
+      <line class="cat-leg-2" x1="60" y1="68" x2="62" y2="78" stroke="#d4a373" stroke-width="4" stroke-linecap="round"/>
     </svg>
   </div>
 
-  <div id="customizerDrawer" class="drawer">
-    <h2>Customize Invitation ⚙️</h2>
-    <div class="form-group">
-      <label>To (Recipient Name):</label>
-      <input type="text" id="custTo" placeholder="Special Someone">
-    </div>
-    <div class="form-group">
-      <label>From (Your Name):</label>
-      <input type="text" id="custFrom" placeholder="Me">
-    </div>
-    <div class="form-group">
-      <label>Invitation Title:</label>
-      <input type="text" id="custTitle" placeholder="Will you go on a date with me?">
-    </div>
-    <div class="form-group">
-      <label>Custom Message:</label>
-      <textarea id="custMsg" rows="2" placeholder="I'd love to spend time together..."></textarea>
-    </div>
-    <div class="form-group">
-      <label>Theme:</label>
-      <select id="custTheme">
-        <option value="rose">Rose 🌹</option>
-        <option value="purple">Purple 💜</option>
-        <option value="peach">Peach 🍑</option>
-        <option value="matcha">Matcha 🍵</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Formspree / Web3Forms ID or Webhook URL (Stored locally):</label>
-      <input type="text" id="custFormId" placeholder="e.g. x12345y or https://formspree.io/f/...">
-    </div>
-    <button id="saveCustomizerBtn" class="btn btn-yes" style="width:100%; margin-top:0.5rem;">Save & Generate Link 🔗</button>
-    <button id="closeCustomizerBtn" class="btn btn-no" style="width:100%; margin-top:0.5rem;">Close</button>
-  </div>
-
-  <canvas id="ticketCanvas" width="800" height="500"></canvas>
-  <canvas id="confettiCanvas" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:90;"></canvas>
-
   <script>
-    const DEFAULT_CONFIG = {
-      to: "Special Someone",
-      from: "Me",
-      title: "Will you go on a date with me?",
-      msg: "I'd love to spend some quality time together and create lovely memories!",
-      theme: "rose",
-      formId: "",
-      secret: "",
-      photos: ""
+    // Configuration & URL Params
+    const urlParams = new URLSearchParams(window.location.search);
+    const config = {
+      to: urlParams.get('to') || 'Cutie',
+      from: urlParams.get('from') || '',
+      title: urlParams.get('title') || 'Will You Go On A Date With Me?',
+      formId: urlParams.get('formId') || '',
+      theme: urlParams.get('theme') || 'rose'
     };
 
-    let currentConfig = { ...DEFAULT_CONFIG };
-    let soundMuted = false;
-    let noClickCount = 0;
-    let selectedDateObj = new Date();
-    let selectedTimeSlot = "Afternoon";
-    let selectedActivity = "☕ Coffee Date";
+    // Apply Theme
+    if (config.theme === 'lavender') document.body.classList.add('theme-lavender');
+    if (config.theme === 'peach') document.body.classList.add('theme-peach');
 
-    function sanitize(str) {
-      const div = document.createElement('div');
-      div.textContent = str || '';
-      return div.textContent;
-    }
+    // DOM Elements
+    const envelope = document.getElementById('envelope');
+    const envelopeScreen = document.getElementById('envelopeScreen');
+    const proposalStep = document.getElementById('proposalStep');
+    const plannerStep = document.getElementById('plannerStep');
+    const ticketStep = document.getElementById('ticketStep');
+    const raincheckStep = document.getElementById('raincheckStep');
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const speechBubble = document.getElementById('speechBubble');
+    const mascotMouth = document.getElementById('mascotMouth');
 
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    let audioCtx = null;
-    function playChime(freq = 523.25, type = 'sine') {
-      if (soundMuted) return;
+    if (config.to) document.getElementById('envRecipientTitle').textContent = `For ${config.to}... 💌`;
+    if (config.title) document.getElementById('proposalTitle').textContent = config.title;
+    if (config.from) document.getElementById('fromSubtext').textContent = `With love from ${config.from} ❤️`;
+
+    // Audio Chime Synthesizer
+    function playChime(freq = 440, type = 'sine') {
       try {
-        if (!audioCtx) audioCtx = new AudioContext();
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
         osc.type = type;
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
         osc.connect(gain);
-        gain.connect(audioCtx.destination);
+        gain.connect(ctx.destination);
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.5);
-      } catch (e) {}
+        osc.stop(ctx.currentTime + 0.4);
+      } catch(e){}
     }
 
-    function playCelebrationSound() {
-      if (soundMuted) return;
-      const notes = [523.25, 659.25, 783.99, 1046.50];
-      notes.forEach((freq, i) => {
-        setTimeout(() => playChime(freq, 'triangle'), i * 120);
-      });
-    }
-
-    function initConfig() {
-      const params = new URLSearchParams(window.location.search);
-      currentConfig.to = sanitize(params.get('to')) || DEFAULT_CONFIG.to;
-      currentConfig.from = sanitize(params.get('from')) || DEFAULT_CONFIG.from;
-      currentConfig.title = sanitize(params.get('title')) || DEFAULT_CONFIG.title;
-      currentConfig.msg = sanitize(params.get('msg')) || DEFAULT_CONFIG.msg;
-      currentConfig.theme = sanitize(params.get('theme')) || DEFAULT_CONFIG.theme;
-      currentConfig.secret = sanitize(params.get('secret')) || DEFAULT_CONFIG.secret;
-      currentConfig.photos = sanitize(params.get('photos')) || DEFAULT_CONFIG.photos;
-      
-      const storedFormId = localStorage.getItem('invitation_form_id');
-      currentConfig.formId = sanitize(params.get('formId')) || storedFormId || DEFAULT_CONFIG.formId;
-
-      document.documentElement.setAttribute('data-theme', currentConfig.theme);
-      document.getElementById('envGreeting').textContent = `For ${currentConfig.to} ✨`;
-      document.getElementById('invitationTitle').textContent = currentConfig.title;
-      document.getElementById('invitationMsg').textContent = currentConfig.msg;
-
-      if (currentConfig.photos) {
-        const photoStrip = document.getElementById('photoGallery');
-        photoStrip.innerHTML = '';
-        const urls = currentConfig.photos.split(',');
-        urls.forEach(url => {
-          const div = document.createElement('div');
-          div.className = 'polaroid';
-          const img = document.createElement('img');
-          img.src = sanitize(url.trim());
-          img.alt = "Memory";
-          div.appendChild(img);
-          photoStrip.appendChild(div);
-        });
-        photoStrip.classList.remove('hidden');
-      }
-
-      if (currentConfig.secret) {
-        const secretCard = document.getElementById('secretCard');
-        const secretText = document.getElementById('secretText');
-        secretText.textContent = currentConfig.secret;
-        secretCard.classList.remove('hidden');
-        secretCard.addEventListener('click', () => {
-          secretCard.classList.remove('blur');
-          secretText.classList.remove('hidden');
-          secretCard.querySelector('span').classList.add('hidden');
-        });
-      }
-    }
-
-    document.getElementById('envelope').addEventListener('click', function() {
-      playChime(659.25);
-      this.classList.add('open');
-      setMascotState('opened');
-      setTimeout(() => {
-        document.getElementById('envelopeScreen').classList.add('hidden');
-        document.getElementById('mainCard').classList.remove('hidden');
-      }, 1200);
+    // Envelope Open
+    envelope.addEventListener('click', () => {
+      playChime(520, 'sine');
+      envelopeScreen.classList.add('hidden');
+      proposalStep.classList.remove('hidden');
     });
 
+    // Mascot State Manager
     function setMascotState(state) {
-      const bearLeftEye = document.getElementById('bearLeftEye');
-      const bearRightEye = document.getElementById('bearRightEye');
-      const bearMouth = document.getElementById('bearMouth');
-      const bearTears = document.getElementById('bearTears');
-      const bubble = document.getElementById('speechBubble');
-
-      if (state === 'opened') {
-        bearLeftEye.setAttribute('r', '8');
-        bearRightEye.setAttribute('r', '8');
-        bearMouth.setAttribute('d', 'M 90 125 Q 100 142 110 125');
-        bearTears.setAttribute('opacity', '0');
-        bubble.textContent = `Yay! You opened it, ${currentConfig.to}! 💖`;
+      if (state === 'yes') {
+        speechBubble.textContent = "YAY! You made my day! 🎉💖";
+        mascotMouth.setAttribute('d', 'M 40 60 Q 50 72 60 60');
       } else if (state === 'no') {
-        bearLeftEye.setAttribute('r', '5');
-        bearRightEye.setAttribute('r', '5');
-        bearMouth.setAttribute('d', 'M 92 135 Q 100 125 108 135');
-        bearTears.setAttribute('opacity', '1');
-      } else if (state === 'yes') {
-        bearLeftEye.setAttribute('r', '9');
-        bearRightEye.setAttribute('r', '9');
-        bearMouth.setAttribute('d', 'M 88 122 Q 100 148 112 122');
-        bearTears.setAttribute('opacity', '0');
-        bubble.textContent = "BEST DAY EVER!! 🎉💖✨";
+        mascotMouth.setAttribute('d', 'M 44 68 Q 50 62 56 68');
       } else if (state === 'raincheck') {
-        bearLeftEye.setAttribute('r', '7');
-        bearRightEye.setAttribute('r', '7');
-        bearMouth.setAttribute('d', 'M 92 128 Q 100 134 108 128');
-        bearTears.setAttribute('opacity', '0');
-        bubble.textContent = "No worries at all! Warm hugs! 🤗";
+        speechBubble.textContent = "Raincheck saved! 🌧️";
+        mascotMouth.setAttribute('d', 'M 44 66 L 56 66');
       }
     }
 
-    const noBtn = document.getElementById('noBtn');
-    const yesBtn = document.getElementById('yesBtn');
-    const catOverlay = document.getElementById('catOverlay');
-    const catBubble = document.getElementById('catBubble');
+    // NO Button Counter & Mobile Debounce Guard
+    let noDodgeCount = 0;
+    let lastNoInteractionTime = 0;
+    const catEmojis = ['😿', '😭', '🥺'];
+    const catMessages = ['Noooo... really? 😭', 'Wait... think about the snacks! 😿', 'Okay, I respect your choice 🥺'];
 
-    const catMessages = [
-      "Noooo... really? 😭",
-      "Wait... think about the snacks! 😭",
-      "Okay, I respect your choice 🥺"
-    ];
-    const catEmojis = ["😿", "😭", "🥺"];
+    function handleNoInteraction(e) {
+      if (e && e.cancelable) {
+        e.preventDefault();
+      }
+      const now = Date.now();
+      if (now - lastNoInteractionTime < 600) {
+        return; // Ignore duplicate touch/click events within 600ms
+      }
+      lastNoInteractionTime = now;
 
-    noBtn.addEventListener('click', function(e) {
-      playChime(300, 'sawtooth');
-      noClickCount++;
-      setMascotState('no');
+      noDodgeCount++;
 
-      const currentScale = 1 + (noClickCount * 0.25);
-      yesBtn.style.transform = `scale(${currentScale})`;
+      if (noDodgeCount <= 3) {
+        playChime(300, 'sawtooth');
+        setMascotState('no');
 
-      const msgIndex = Math.min(noClickCount - 1, 2);
-      catBubble.textContent = catMessages[msgIndex];
-      catOverlay.classList.add('walking');
+        // Grow YES button on each dodge
+        const currentScale = 1 + (noDodgeCount * 0.25);
+        yesBtn.style.transform = `scale(${currentScale})`;
 
-      document.getElementById('speechBubble').textContent = catEmojis[msgIndex] + " " + catMessages[msgIndex];
+        const msgIndex = noDodgeCount - 1;
+        const emoji = catEmojis[msgIndex] || '😿';
+        const msg = catMessages[msgIndex] || 'Noooo... really? 😭';
 
-      setTimeout(() => {
-        catOverlay.classList.remove('walking');
-      }, 2600);
+        const catFloatingEmoji = document.getElementById('catFloatingEmoji');
+        if (catFloatingEmoji) catFloatingEmoji.textContent = emoji;
+        const catBubble = document.getElementById('catBubble');
+        if (catBubble) catBubble.textContent = msg;
 
-      if (noClickCount <= 3) {
+        if (speechBubble) speechBubble.textContent = emoji + " " + msg;
+
+        const catOverlay = document.getElementById('catOverlay');
+        if (catOverlay) {
+          catOverlay.classList.remove('walking');
+          void catOverlay.offsetWidth; // force reflow for animation restart
+          catOverlay.classList.add('walking');
+
+          setTimeout(() => {
+            catOverlay.classList.remove('walking');
+          }, 2600);
+        }
+
         const x = (Math.random() - 0.5) * 150;
         const y = (Math.random() - 0.5) * 80;
         noBtn.style.transform = `translate(${x}px, ${y}px)`;
+      } else {
+        // 4th click (after 3 full dodges): unlock final Raincheck screen
+        setMascotState('raincheck');
+        proposalStep.classList.add('hidden');
+        raincheckStep.classList.remove('hidden');
       }
-    });
+    }
 
-    yesBtn.addEventListener('click', function(e) {
-      playCelebrationSound();
+    noBtn.addEventListener('touchstart', handleNoInteraction, { passive: false });
+    noBtn.addEventListener('click', handleNoInteraction);
+
+    // YES Button Click
+    yesBtn.addEventListener('click', () => {
+      playChime(650, 'sine');
       setMascotState('yes');
-
-      const rect = yesBtn.getBoundingClientRect();
-      const circle = document.createElement('span');
-      circle.className = 'ripple';
-      circle.style.width = circle.style.height = `${Math.max(rect.width, rect.height)}px`;
-      circle.style.left = `${e.clientX - rect.left - rect.width/2}px`;
-      circle.style.top = `${e.clientY - rect.top - rect.height/2}px`;
-      yesBtn.appendChild(circle);
-
-      triggerConfetti();
-
-      setTimeout(() => {
-        document.getElementById('proposalStep').classList.add('hidden');
-        document.getElementById('plannerStep').classList.remove('hidden');
-        renderCalendar();
-      }, 800);
+      proposalStep.classList.add('hidden');
+      plannerStep.classList.remove('hidden');
+      renderCalendar();
     });
 
-    document.getElementById('raincheckLink').addEventListener('click', () => {
-      setMascotState('raincheck');
-      document.getElementById('proposalStep').classList.add('hidden');
-      document.getElementById('raincheckStep').classList.remove('hidden');
-    });
-    document.getElementById('backToProposalBtn').addEventListener('click', () => {
-      document.getElementById('raincheckStep').classList.add('hidden');
-      document.getElementById('proposalStep').classList.remove('hidden');
-    });
-
-    let currentCalMonth = new Date().getMonth();
-    let currentCalYear = new Date().getFullYear();
+    // Calendar & Planner Selection
+    let selectedDate = '';
+    let selectedTime = '6:00 PM';
+    let selectedActivities = ['Dinner & Drinks 🍷', 'Movie Night 🍿'];
 
     function renderCalendar() {
-      const monthLabel = document.getElementById('calendarMonthLabel');
-      const grid = document.getElementById('calendarGrid');
-      grid.innerHTML = '';
-
-      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      monthLabel.textContent = `${monthNames[currentCalMonth]} ${currentCalYear}`;
-
-      const firstDay = new Date(currentCalYear, currentCalMonth, 1).getDay();
-      const daysInMonth = new Date(currentCalYear, currentCalMonth + 1, 0).getDate();
-      const today = new Date();
-      today.setHours(0,0,0,0);
-
-      for (let i = 0; i < firstDay; i++) {
-        const empty = document.createElement('div');
-        grid.appendChild(empty);
-      }
-
-      for (let d = 1; d <= daysInMonth; d++) {
-        const dayDiv = document.createElement('div');
-        dayDiv.className = 'cal-day';
-        dayDiv.textContent = d;
-
-        const thisDate = new Date(currentCalYear, currentCalMonth, d);
-        thisDate.setHours(0,0,0,0);
-
-        if (thisDate < today) {
-          dayDiv.classList.add('disabled');
-        } else {
-          if (thisDate.getTime() === today.getTime()) {
-            dayDiv.classList.add('today');
-          }
-          if (selectedDateObj && thisDate.getTime() === selectedDateObj.getTime()) {
-            dayDiv.classList.add('selected');
-          }
-          dayDiv.addEventListener('click', () => {
-            selectedDateObj = thisDate;
-            renderCalendar();
-            playChime(500);
-          });
-        }
-        grid.appendChild(dayDiv);
-      }
-    }
-
-    document.getElementById('prevMonthBtn').addEventListener('click', () => {
-      currentCalMonth--;
-      if (currentCalMonth < 0) { currentCalMonth = 11; currentCalYear--; }
-      renderCalendar();
-    });
-    document.getElementById('nextMonthBtn').addEventListener('click', () => {
-      currentCalMonth++;
-      if (currentCalMonth > 11) { currentCalMonth = 0; currentCalYear++; }
-      renderCalendar();
-    });
-
-    function setupGridSelect(gridId, onSelect) {
-      const items = document.querySelectorAll(`#${gridId} .option-card`);
-      items.forEach(item => {
-        item.addEventListener('click', () => {
-          items.forEach(i => i.classList.remove('selected'));
-          item.classList.add('selected');
-          onSelect(item.getAttribute('data-val'));
-          playChime(550);
-        });
+      const cal = document.getElementById('calendar');
+      cal.innerHTML = '';
+      const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+      days.forEach(d => {
+        const el = document.createElement('div');
+        el.style.fontWeight = 'bold';
+        el.style.fontSize = '12px';
+        el.textContent = d;
+        cal.appendChild(el);
       });
+      const today = new Date();
+      for (let i = 1; i <= 28; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'date-cell' + (i === today.getDate() + 1 ? ' selected' : '');
+        if (i === today.getDate() + 1 && !selectedDate) selectedDate = `Day ${i}`;
+        cell.textContent = i;
+        cell.addEventListener('click', () => {
+          document.querySelectorAll('.date-cell').forEach(c => c.classList.remove('selected'));
+          cell.classList.add('selected');
+          selectedDate = `Day ${i}`;
+        });
+        cal.appendChild(cell);
+      }
     }
 
-    setupGridSelect('timeSlotGrid', val => { selectedTimeSlot = val; });
-    setupGridSelect('activityGrid', val => { selectedActivity = val; });
+    document.querySelectorAll('.time-slot').forEach(slot => {
+      slot.addEventListener('click', () => {
+        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+        slot.classList.add('selected');
+        selectedTime = slot.getAttribute('data-time');
+      });
+    });
 
-    document.getElementById('confirmPlannerBtn').addEventListener('click', function() {
-      playCelebrationSound();
-      const notes = document.getElementById('plannerNotes').value;
-      const formattedDate = selectedDateObj ? selectedDateObj.toDateString() : "Selected Date";
-
-      const rsvpData = {
-        to: currentConfig.to,
-        from: currentConfig.from,
-        date: formattedDate,
-        time: selectedTimeSlot,
-        activity: selectedActivity,
-        notes: notes
-      };
-
-      if (currentConfig.formId) {
-        let endpoint = currentConfig.formId;
-        if (!endpoint.startsWith('http')) {
-          endpoint = `https://formspree.io/f/${currentConfig.formId}`;
+    document.querySelectorAll('.activity-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('selected');
+        const act = card.getAttribute('data-activity');
+        if (card.classList.contains('selected')) {
+          if (!selectedActivities.includes(act)) selectedActivities.push(act);
+        } else {
+          selectedActivities = selectedActivities.filter(a => a !== act);
         }
-        fetch(endpoint, {
+      });
+    });
+
+    // Confirm Planner
+    document.getElementById('confirmPlannerBtn').addEventListener('click', () => {
+      playChime(700, 'sine');
+      plannerStep.classList.add('hidden');
+      ticketStep.classList.remove('hidden');
+      
+      const details = `${selectedDate} at ${selectedTime} - ${selectedActivities.join(', ')}`;
+      document.getElementById('ticketDetails').textContent = details;
+      drawTicket(details);
+
+      if (config.formId) {
+        fetch(`https://formspree.io/f/${config.formId}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(rsvpData)
+          body: JSON.stringify({
+            response: 'YES',
+            date: selectedDate,
+            time: selectedTime,
+            activities: selectedActivities,
+            to: config.to,
+            from: config.from
+          })
         }).catch(() => {});
       }
-
-      alert(`RSVP Confirmed! 💖\nDate: ${formattedDate}\nTime: ${selectedTimeSlot}\nActivity: ${selectedActivity}`);
     });
 
-    document.getElementById('copyReplyBtn').addEventListener('click', function() {
-      const formattedDate = selectedDateObj ? selectedDateObj.toDateString() : "Selected Date";
-      const notes = document.getElementById('plannerNotes').value;
-      const text = `💖 Date RSVP Confirmation!\nRecipient: ${currentConfig.to}\nDate: ${formattedDate}\nTime: ${selectedTimeSlot}\nActivity: ${selectedActivity}\nNotes: ${notes || 'None'}`;
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Reply details copied to clipboard! 📋");
-      });
-    });
-
-    document.getElementById('downloadTicketBtn').addEventListener('click', function() {
+    // Draw Canvas Ticket
+    function drawTicket(detailsText) {
       const canvas = document.getElementById('ticketCanvas');
       const ctx = canvas.getContext('2d');
-
-      const grad = ctx.createLinearGradient(0, 0, 800, 500);
-      grad.addColorStop(0, '#ffedf2');
-      grad.addColorStop(1, '#ffd1dc');
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, 800, 500);
-
+      ctx.fillStyle = '#fff5f5';
+      ctx.fillRect(0, 0, 400, 240);
       ctx.strokeStyle = '#e63946';
-      ctx.lineWidth = 6;
-      ctx.strokeRect(30, 30, 740, 440);
-
-      ctx.fillStyle = '#2b2d42';
-      ctx.font = 'bold 36px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('🎟️ OFFICIAL MEETUP TICKET', 400, 90);
-
-      ctx.font = '22px sans-serif';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(10, 10, 380, 220);
+      
       ctx.fillStyle = '#e63946';
-      ctx.fillText(`For: ${currentConfig.to} | From: ${currentConfig.from}`, 400, 140);
-
-      ctx.textAlign = 'left';
-      ctx.font = '20px sans-serif';
+      ctx.font = 'bold 20px Fredoka, sans-serif';
+      ctx.fillText('DATE NIGHT TICKET 🎟️', 90, 45);
+      
       ctx.fillStyle = '#2b2d42';
+      ctx.font = '14px Outfit, sans-serif';
+      ctx.fillText(`For: ${config.to}`, 30, 85);
+      ctx.fillText(`From: ${config.from || 'Your Date'}`, 30, 110);
+      ctx.fillText(`Date & Time: ${selectedDate || 'Upcoming'} @ ${selectedTime}`, 30, 135);
+      
+      ctx.font = '12px Outfit, sans-serif';
+      ctx.fillText(`Activities: ${selectedActivities.slice(0, 2).join(', ')}`, 30, 165);
 
-      const formattedDate = selectedDateObj ? selectedDateObj.toDateString() : "Selected Date";
-      ctx.fillText(`📅 Date: ${formattedDate}`, 100, 220);
-      ctx.fillText(`⏰ Time: ${selectedTimeSlot}`, 100, 270);
-      ctx.fillText(`✨ Activity: ${selectedActivity}`, 100, 320);
+      ctx.fillStyle = '#ffb703';
+      ctx.font = 'bold 16px Fredoka, sans-serif';
+      ctx.fillText('CONFIRMED 💕', 140, 205);
+    }
 
-      const notes = document.getElementById('plannerNotes').value;
-      if (notes) {
-        ctx.fillText(`📝 Notes: ${notes}`, 100, 370);
-      }
-
-      const ticketNo = 'VIP-' + Math.floor(100000 + Math.random() * 900000);
-      ctx.textAlign = 'right';
-      ctx.font = 'bold 18px monospace';
-      ctx.fillStyle = '#6c757d';
-      ctx.fillText(`No. ${ticketNo}`, 720, 430);
-
+    // Download Ticket PNG
+    document.getElementById('downloadTicketBtn').addEventListener('click', () => {
+      const canvas = document.getElementById('ticketCanvas');
       const link = document.createElement('a');
-      link.download = `date-ticket-${currentConfig.to.toLowerCase().replace(/\s+/g,'-')}.png`;
-      link.href = canvas.toDataURL('image/png');
+      link.download = 'date-ticket.png';
+      link.href = canvas.toDataURL();
       link.click();
     });
 
-    document.getElementById('muteBtn').addEventListener('click', function() {
-      soundMuted = !soundMuted;
-      this.textContent = soundMuted ? '🔇 Muted' : '🔊 Sound';
+    // Change Mind Button (from Raincheck step)
+    document.getElementById('changeMindBtn').addEventListener('click', () => {
+      noDodgeCount = 0;
+      yesBtn.style.transform = 'scale(1)';
+      noBtn.style.transform = 'translate(0, 0)';
+      raincheckStep.classList.add('hidden');
+      proposalStep.classList.remove('hidden');
     });
 
+    // Customizer Drawer Controls
     const drawer = document.getElementById('customizerDrawer');
     document.getElementById('customizerBtn').addEventListener('click', () => {
-      document.getElementById('custTo').value = currentConfig.to;
-      document.getElementById('custFrom').value = currentConfig.from;
-      document.getElementById('custTitle').value = currentConfig.title;
-      document.getElementById('custMsg').value = currentConfig.msg;
-      document.getElementById('custTheme').value = currentConfig.theme;
-      document.getElementById('custFormId').value = currentConfig.formId;
+      document.getElementById('custTo').value = config.to;
+      document.getElementById('custFrom').value = config.from;
+      document.getElementById('custTitle').value = config.title;
+      document.getElementById('custFormId').value = config.formId;
+      document.getElementById('custTheme').value = config.theme;
       drawer.classList.add('open');
     });
     document.getElementById('closeCustomizerBtn').addEventListener('click', () => drawer.classList.remove('open'));
 
     document.getElementById('saveCustomizerBtn').addEventListener('click', () => {
-      const to = document.getElementById('custTo').value;
-      const from = document.getElementById('custFrom').value;
-      const title = document.getElementById('custTitle').value;
-      const msg = document.getElementById('custMsg').value;
-      const theme = document.getElementById('custTheme').value;
-      const formId = document.getElementById('custFormId').value;
-
-      if (formId) localStorage.setItem('invitation_form_id', formId);
-
       const params = new URLSearchParams();
-      if (to) params.set('to', to);
-      if (from) params.set('from', from);
-      if (title) params.set('title', title);
-      if (msg) params.set('msg', msg);
-      if (theme) params.set('theme', theme);
+      const toVal = document.getElementById('custTo').value.trim();
+      const fromVal = document.getElementById('custFrom').value.trim();
+      const titleVal = document.getElementById('custTitle').value.trim();
+      const formIdVal = document.getElementById('custFormId').value.trim();
+      const themeVal = document.getElementById('custTheme').value;
+
+      if (toVal) params.set('to', toVal);
+      if (fromVal) params.set('from', fromVal);
+      if (titleVal) params.set('title', titleVal);
+      if (formIdVal) params.set('formId', formIdVal);
+      if (themeVal) params.set('theme', themeVal);
 
       const newUrl = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
       navigator.clipboard.writeText(newUrl).then(() => {
-        alert("Custom link copied to clipboard! 🔗\n\n" + newUrl);
-        window.location.href = newUrl;
+        alert('Customized link copied to clipboard! 🔗');
+      }).catch(() => {
+        alert(`Link generated: ${newUrl}`);
       });
+      drawer.classList.remove('open');
     });
-
-    function triggerConfetti() {
-      const canvas = document.getElementById('confettiCanvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      const particles = [];
-      const colors = ['#ff4d6d', '#ff758f', '#ffb3c1', '#ffb703', '#70e000', '#3a86ff'];
-
-      for (let i = 0; i < 100; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height - canvas.height,
-          size: Math.random() * 8 + 4,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          speedY: Math.random() * 3 + 2,
-          speedX: Math.random() * 2 - 1,
-          rot: Math.random() * 360
-        });
-      }
-
-      let frame = 0;
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-          p.y += p.speedY;
-          p.x += p.speedX;
-          p.rot += 2;
-          ctx.save();
-          ctx.translate(p.x, p.y);
-          ctx.rotate(p.rot * Math.PI / 180);
-          ctx.fillStyle = p.color;
-          ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
-          ctx.restore();
-        });
-        frame++;
-        if (frame < 180) requestAnimationFrame(animate);
-        else ctx.clearRect(0, 0, canvas.width, canvas.height);
-      }
-      animate();
-    }
-
-    initConfig();
   </script>
 </body>
 </html>
